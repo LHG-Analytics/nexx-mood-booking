@@ -8,13 +8,11 @@ import HumanTraffickingSection from "@/components/HumanTraffickingSection";
 import ImportantInfo from "@/components/ImportantInfo";
 import BookNowCTA from "@/components/BookNowCTA";
 import Footer from "@/components/Footer";
-import LogoBackgroundRemover from "@/components/LogoBackgroundRemover";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <LogoBackgroundRemover />
       
       {/* Hero with Check Availability Card */}
       <div className="relative">
