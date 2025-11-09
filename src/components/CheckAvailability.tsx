@@ -25,8 +25,6 @@ const CheckAvailability = () => {
       transition={{ duration: 0.6 }}
       className="bg-card rounded-3xl shadow-2xl p-6 md:p-8 max-w-md mx-auto lg:mx-0 border border-border"
     >
-      <h3 className="text-xl font-bold mb-6 text-foreground">Get Directions</h3>
-
       {/* User Address Input */}
       <div className="mb-4">
         <label className="block text-sm font-medium text-foreground mb-2">
