@@ -57,15 +57,6 @@ const CheckAvailability = () => {
           loading="lazy"
           title="Mood Motel Location"
         />
-        <div className="absolute bottom-3 left-3 bg-card rounded-xl px-4 py-2 shadow-lg">
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-primary" />
-            <div>
-              <p className="text-xs font-medium text-foreground">Mood Motel</p>
-              <p className="text-xs text-muted-foreground">{motelAddress}</p>
-            </div>
-          </div>
-        </div>
       </div>
     </motion.div>
   );
