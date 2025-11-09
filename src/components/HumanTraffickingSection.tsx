@@ -44,15 +44,15 @@ const HumanTraffickingSection = () => {
             className="text-white"
           >
             <p className="text-lg leading-relaxed">
-              Nexx Motels is staunchly committed to the fight against human
+              Mood Motel is staunchly committed to the fight against human
               trafficking, understanding the critical role the hospitality industry
-              plays in this battle. Nexx Motels has implemented training and
+              plays in this battle. Mood Motel has implemented training and
               educational campaigns, crafted to ensure that both managers and staff
-              across all Nexx Motels locations are thoroughly equipped. The
+              across all Mood Motel locations are thoroughly equipped. The
               training focuses on identifying and understanding the signs of human
               trafficking, ensuring that employees are not only vigilant but also
               knowledgeable about the appropriate actions to take in potential
-              situations. This commitment underscores Nexx Motels' dedication to
+              situations. This commitment underscores Mood Motel's dedication to
               safeguarding the welfare of individuals and communities, reinforcing
               its standing as a responsible and ethical leader in the hospitality
               sector.

@@ -38,11 +38,10 @@ const ADASection = () => {
             className="text-white"
           >
             <p className="text-lg leading-relaxed">
-              NEXX Motels, Unique Motel and Yes Motel are compliant with the
-              Department of Justice 2010 ADA Standards for Accessible Design. We
-              welcome guests of all abilities. Our property descriptions aim to
-              allow any visitor to make an informed decision on whether the hotel
-              is an appropriate choice for their needs.
+              Mood Motel is compliant with the Department of Justice 2010 ADA 
+              Standards for Accessible Design. We welcome guests of all abilities. 
+              Our property descriptions aim to allow any visitor to make an informed 
+              decision on whether the hotel is an appropriate choice for their needs.
             </p>
           </motion.div>
         </div>

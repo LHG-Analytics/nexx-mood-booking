@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import motelExterior1 from "@/assets/motel-exterior-1.jpg";
-import motelInterior1 from "@/assets/motel-interior-1.jpg";
-import motelRoom1 from "@/assets/motel-room-1.jpg";
-import motelExterior2 from "@/assets/motel-exterior-2.jpg";
+import room1 from "@/assets/room-1.jpg";
+import room2 from "@/assets/room-2.jpg";
+import room3 from "@/assets/room-3.jpg";
+import room4 from "@/assets/room-4.jpg";
 
 const HeroSection = () => {
   const images = [
-    motelExterior1,
-    motelInterior1,
-    motelRoom1,
-    motelExterior2,
+    room1,
+    room2,
+    room3,
+    room4,
   ];
 
   return (
@@ -29,10 +29,10 @@ const HeroSection = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <h2 className="text-2xl md:text-3xl font-light text-foreground mb-2">
-                Hotel
+                Welcome to
               </h2>
               <h1 className="text-6xl md:text-8xl font-bold text-foreground leading-tight">
-                BOOKING
+                MOOD MOTEL
               </h1>
             </motion.div>
 
@@ -42,9 +42,9 @@ const HeroSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg text-muted-foreground max-w-lg"
             >
-              The Star Hotel was reopened to visitors in 2016. The building was
-              renovated and modernized to meet the expectations of the most
-              demanding guests.
+              Experience luxury and comfort at Mood Motel. Our modern suites feature 
+              stunning LED lighting, premium amenities, and contemporary design to 
+              create the perfect atmosphere for your stay.
             </motion.p>
 
             <motion.div
