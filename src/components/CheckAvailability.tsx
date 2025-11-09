@@ -7,11 +7,13 @@ import { Input } from "./ui/input";
 const CheckAvailability = () => {
   const [userAddress, setUserAddress] = useState("");
   const motelAddress = "11102 Biscayne Blvd, Miami, FL 33181";
+  const motelLatLng = "25.8788039,-80.1682156";
   
   const handleGetDirections = () => {
     if (userAddress.trim()) {
-      const directionsUrl = `https://www.google.com/maps/dir/${encodeURIComponent(userAddress)}/${encodeURIComponent(motelAddress)}`;
-      window.open(directionsUrl, '_blank');
+      // Using Google Maps directions with coordinates for better reliability
+      const directionsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(userAddress)}&destination=${motelLatLng}&destination_place_id=ChIJo6O4g4Ob2YgR6E04Q-eZOkM`;
+      window.open(directionsUrl, '_blank', 'noopener,noreferrer');
     }
   };
 
