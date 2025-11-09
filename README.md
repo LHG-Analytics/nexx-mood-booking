@@ -1,73 +1,73 @@
-# Welcome to your Lovable project
+# MOOD MOTEL - Landing Page
 
-## Project info
+Landing page premium para o MOOD MOTEL, desenvolvida com Next.js 15, TypeScript, Tailwind CSS e shadcn/ui.
 
-**URL**: https://lovable.dev/projects/65a05617-eba4-4cee-bfed-587c0a249993
+## 🚀 Tecnologias
 
-## How can I edit this code?
+- **Next.js 15** - Framework React com App Router
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Framework CSS utility-first
+- **shadcn/ui** - Componentes UI de alta qualidade
+- **Framer Motion** - Animações e transições
+- **React Hook Form + Zod** - Gerenciamento e validação de formulários
+- **TanStack Query** - Gerenciamento de estado do servidor
+- **Embla Carousel** - Carrossel de suítes
+- **Lucide React** - Ícones
 
-There are several ways of editing your application.
+## 📦 Instalação
 
-**Use Lovable**
+```bash
+# Instalar dependências
+npm install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/65a05617-eba4-4cee-bfed-587c0a249993) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Rodar em desenvolvimento
 npm run dev
+
+# Build de produção
+npm run build
+
+# Iniciar servidor de produção
+npm start
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Scripts Disponíveis
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Cria build de produção
+- `npm start` - Inicia servidor de produção
+- `npm run lint` - Executa ESLint
+- `npm run lint:fix` - Corrige erros do ESLint
+- `npm run format` - Formata código com Prettier
+- `npm run format:check` - Verifica formatação
+- `npm run type-check` - Verifica erros de TypeScript
 
-**Use GitHub Codespaces**
+## 📝 Migração Completa para Next.js
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Este projeto foi **migrado com sucesso** da Lovable (Vite + React Router) para Next.js 15:
 
-## What technologies are used for this project?
+### ✅ O que foi feito:
 
-This project is built with:
+1. **Estrutura Next.js criada** - App Router com layout e providers
+2. **ESLint configurado** - Regras do Next.js + TypeScript + Prettier
+3. **Prettier configurado** - Formatação automática com plugin Tailwind
+4. **TypeScript corrigido** - Strict mode habilitado, todos os erros resolvidos
+5. **Componentes migrados** - Todos os 59 componentes adaptados para Next.js
+6. **Assets movidos** - Imagens otimizadas em /public/assets
+7. **Build testado** - Build de produção funcionando perfeitamente
+8. **Código formatado** - Todo o código formatado com Prettier
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 🔧 Mudanças principais:
 
-## How can I deploy this project?
+- Removido React Router → Next.js App Router
+- Removido Vite → Next.js build system
+- Adicionado "use client" em componentes interativos
+- Importações de imagens atualizadas para caminhos públicos
+- Configurações adaptadas para Next.js
 
-Simply open [Lovable](https://lovable.dev/projects/65a05617-eba4-4cee-bfed-587c0a249993) and click on Share -> Publish.
+## 📄 Licença
 
-## Can I connect a custom domain to my Lovable project?
+Projeto privado - MOOD MOTEL
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Desenvolvido com ❤️ usando Next.js e TypeScript**
