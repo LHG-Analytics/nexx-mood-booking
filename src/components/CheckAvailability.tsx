@@ -50,10 +50,10 @@ const CheckAvailability = () => {
       </Button>
 
       {/* Mini Map */}
-      <div className="relative bg-secondary/30 rounded-xl overflow-hidden h-64 mb-4">
+      <div className="relative bg-secondary/30 rounded-xl overflow-hidden h-64 mb-4 pointer-events-none">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.364!2d-80.1683391!3d25.8784223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b21383ba37a3%3A0x433a99e8738d4de8!2s11102%20Biscayne%20Blvd%2C%20Miami%2C%20FL%2033181!5e0!3m2!1sen!2sus!4v1234567890"
-          className="w-full h-full border-0"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.364!2d-80.1683391!3d25.8784223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b21383ba37a3%3A0x433a99e8738d4de8!2s11102%20Biscayne%20Blvd%2C%20Miami%2C%20FL%2033181!5e0!3m2!1sen!2sus!4v1234567890&disableDefaultUI=1"
+          className="w-full h-full border-0 pointer-events-auto"
           loading="lazy"
           title="Mood Motel Location"
         />
