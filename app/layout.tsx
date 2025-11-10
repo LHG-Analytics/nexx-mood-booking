@@ -3,13 +3,13 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "MOOD MOTEL - Luxury Suites in Miami",
+  title: "Mood Motel",
   description:
     "Experience luxury at MOOD MOTEL - Premium suites with LED lighting, smart TV, high-speed WiFi, and more. Located in Miami, FL.",
   keywords: ["motel", "hotel", "luxury suites", "Miami", "accommodation", "LED lighting"],
   authors: [{ name: "MOOD MOTEL" }],
   openGraph: {
-    title: "MOOD MOTEL - Luxury Suites in Miami",
+    title: "Mood Motel",
     description:
       "Experience luxury at MOOD MOTEL - Premium suites with LED lighting, smart TV, high-speed WiFi, and more.",
     type: "website",
