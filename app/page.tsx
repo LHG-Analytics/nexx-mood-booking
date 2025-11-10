@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import CheckAvailability from "@/components/CheckAvailability";
 import RoomAmenities from "@/components/RoomAmenities";
 import SuiteCarousel from "@/components/SuiteCarousel";
 import ADASection from "@/components/ADASection";
@@ -17,9 +16,6 @@ export default function Home() {
       {/* Hero with Check Availability Card */}
       <div className="relative">
         <HeroSection />
-        <div className="container relative z-20 mx-auto -mt-32 px-6">
-          <CheckAvailability />
-        </div>
       </div>
 
       <RoomAmenities />
