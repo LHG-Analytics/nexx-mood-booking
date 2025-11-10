@@ -46,7 +46,7 @@ const Footer = () => {
             <p className="mb-2 text-muted-foreground">Phone: (305) 555-0123</p>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <span>info@nexxmotel.com</span>
+              <span>info@moodmotel.com</span>
             </div>
           </motion.div>
 
@@ -71,17 +71,17 @@ const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="mb-4 flex justify-center">
             <a
-              href="https://www.instagram.com/nexxmotel"
+              href="https://www.instagram.com/moodmotel"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
             >
               <Instagram className="h-6 w-6 transition-transform group-hover:scale-110" />
-              <span className="font-medium">@nexxmotel</span>
+              <span className="font-medium">@moodmotel</span>
             </a>
           </div>
           <p className="text-center text-sm text-muted-foreground">
-            &copy; 2024 Nexx Motel Biscayne. All rights reserved.
+            &copy; 2025 Mood Motel. All rights reserved.
           </p>
         </div>
       </div>
