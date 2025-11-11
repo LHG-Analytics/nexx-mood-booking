@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -57,7 +57,10 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h3 className="mb-4 font-bold text-foreground">Hours</h3>
+            <h3 className="mb-4 flex items-center gap-2 font-bold text-foreground">
+              <Clock className="h-5 w-5 text-primary" />
+              Hours
+            </h3>
             <p className="text-muted-foreground">
               Check-in: 3:00 PM
               <br />

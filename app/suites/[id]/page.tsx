@@ -28,9 +28,9 @@ interface Suite {
 }
 
 const suitesData: Record<string, Suite> = {
-  nexx: {
-    id: "nexx",
-    name: "Suite Nexx",
+  mood: {
+    id: "mood",
+    name: "Suite Mood",
     price: 55,
     address: "11102 Biscayne Blvd., North Miami, FL 33181",
     hours: {
@@ -52,11 +52,11 @@ const suitesData: Record<string, Suite> = {
     amenities: ["TV", "RADIO", "SINGLE SHOWER", "MINI BAR"],
     images: ["/assets/motel-room-1.jpg", "/assets/room-1.jpg", "/assets/room-2.jpg"],
     description:
-      "Experience comfort and style in our Suite Nexx. Perfect for a relaxing stay with all essential amenities.",
+      "Experience comfort and style in our Suite Mood. Perfect for a relaxing stay with all essential amenities.",
   },
-  "nexx-plus": {
-    id: "nexx-plus",
-    name: "Suite Nexx Plus",
+  "mood-plus": {
+    id: "mood-plus",
+    name: "Suite Mood Plus",
     price: 59,
     address: "11102 Biscayne Blvd., North Miami, FL 33181",
     hours: {
@@ -78,7 +78,7 @@ const suitesData: Record<string, Suite> = {
     amenities: ["TV", "RADIO", "POLE", "MINI BAR", "DOUBLE SHOWER"],
     images: ["/assets/room-2.jpg", "/assets/motel-room-1.jpg", "/assets/room-3.jpg"],
     description:
-      "Elevate your experience with Suite Nexx Plus. Featuring a pole and double shower for added luxury.",
+      "Elevate your experience with Suite Mood Plus. Featuring a pole and double shower for added luxury.",
   },
   jacuzzi: {
     id: "jacuzzi",

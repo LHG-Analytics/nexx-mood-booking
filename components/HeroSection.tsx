@@ -11,23 +11,18 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen px-6 pb-20 pt-32" id="home">
+    <section className="relative min-h-screen px-4 pb-12 pt-24 sm:px-6 sm:pb-20 sm:pt-32" id="home">
       <div className="container mx-auto">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Side - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
+          <div className="space-y-4 sm:space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <h2 className="mb-2 text-2xl font-light text-foreground md:text-3xl">Welcome to</h2>
-              <h1 className="text-6xl font-bold leading-tight text-foreground md:text-8xl">
+              <h2 className="mb-1 text-lg font-light text-foreground sm:mb-2 sm:text-2xl md:text-3xl">Welcome to</h2>
+              <h1 className="text-4xl font-bold leading-tight text-foreground sm:text-6xl md:text-8xl">
                 MOOD MOTEL
               </h1>
             </motion.div>
@@ -36,22 +31,50 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="max-w-lg text-lg text-muted-foreground"
+              className="max-w-lg text-sm text-muted-foreground sm:text-base md:text-lg"
             >
               Experience luxury and comfort at Mood Motel. Our modern suites feature stunning LED
               lighting, premium amenities, and contemporary design to create the perfect atmosphere
               for your stay.
             </motion.p>
 
+            {/* Mobile Image Grid - Between text and button */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="grid grid-cols-2 gap-3 lg:hidden"
+            >
+              {images.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    delay: 0.6 + index * 0.1,
+                    duration: 0.5,
+                  }}
+                  className="relative aspect-square overflow-hidden rounded-2xl shadow-xl"
+                >
+                  <img
+                    src={image}
+                    alt={`Motel view ${index + 1}`}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
+                </motion.div>
+              ))}
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="pt-4"
+              className="pt-2 sm:pt-4"
             >
               <motion.a
                 href="#rooms"
-                className="inline-block rounded-full bg-primary px-8 py-4 text-lg font-medium text-primary-foreground shadow-lg"
+                className="inline-block rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-lg sm:px-8 sm:py-4 sm:text-lg"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 20px 40px rgba(217, 70, 239, 0.3)",
@@ -61,14 +84,14 @@ const HeroSection = () => {
                 Explore Rooms
               </motion.a>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Right Side - Image Grid */}
+          {/* Right Side - Image Grid (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4 lg:gap-6"
+            className="hidden grid-cols-2 gap-4 lg:grid lg:gap-6"
           >
             {images.map((image, index) => (
               <motion.div

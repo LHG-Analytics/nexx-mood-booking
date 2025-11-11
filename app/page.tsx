@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <Navbar />
 
       {/* Hero with Check Availability Card */}
@@ -20,9 +20,9 @@ export default function Home() {
 
       <RoomAmenities />
       <SuiteCarousel />
+      <ImportantInfo />
       <ADASection />
       <HumanTraffickingSection />
-      <ImportantInfo />
       <BookNowCTA />
       <Footer />
     </div>

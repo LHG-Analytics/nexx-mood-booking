@@ -58,6 +58,7 @@ export function TiltedCard({
       style={{
         perspective: "800px",
         transformStyle: "preserve-3d",
+        pointerEvents: "auto",
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
@@ -69,6 +70,7 @@ export function TiltedCard({
           rotateY,
           scale,
           transformStyle: "preserve-3d",
+          pointerEvents: "auto",
         }}
       >
         {children}

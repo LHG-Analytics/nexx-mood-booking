@@ -26,7 +26,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 py-3 shadow-lg backdrop-blur-lg" : "bg-transparent py-6"
+        scrolled ? "bg-background/80 py-2 shadow-lg backdrop-blur-lg" : "bg-transparent py-3"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
@@ -34,19 +34,18 @@ const Navbar = () => {
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="relative h-28 w-auto md:h-32 lg:h-36"
+          className="relative flex items-center"
+          style={{ height: '100%' }}
         >
           <img
             src="/assets/logo-light.webp"
             alt="Mood Motel"
-            className="h-full w-full object-contain transition-opacity duration-300 dark:hidden"
-            style={{ maxHeight: "100%", width: "auto" }}
+            className="h-20 w-auto object-contain transition-opacity duration-300 dark:hidden sm:h-24 md:h-28 lg:h-32"
           />
           <img
             src="/assets/logo-dark.webp"
             alt="Mood Motel"
-            className="hidden h-full w-full object-contain transition-opacity duration-300 dark:block"
-            style={{ maxHeight: "100%", width: "auto" }}
+            className="hidden h-20 w-auto object-contain transition-opacity duration-300 dark:block sm:h-24 md:h-28 lg:h-32"
           />
         </motion.div>
 

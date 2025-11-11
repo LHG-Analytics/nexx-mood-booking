@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Shield, Home, Tv, Wifi, Snowflake, Coffee, MoreHorizontal } from "lucide-react";
+import { Shield, Home, Tv, Wifi, Snowflake, Coffee } from "lucide-react";
 
 const RoomAmenities = () => {
   const amenities = [
@@ -45,11 +45,8 @@ const RoomAmenities = () => {
           viewport={{ once: true }}
           className="mx-auto max-w-4xl rounded-3xl bg-secondary/30 p-8 md:p-12"
         >
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-8">
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">Room Amenities</h2>
-            <button className="text-muted-foreground transition-colors hover:text-foreground">
-              <MoreHorizontal className="h-6 w-6" />
-            </button>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
