@@ -62,10 +62,6 @@ const Footer = () => {
               Hours
             </h3>
             <p className="text-muted-foreground">
-              Check-in: 3:00 PM
-              <br />
-              Check-out: 11:00 AM
-              <br />
               Front Desk: 24/7
             </p>
           </motion.div>
@@ -74,13 +70,13 @@ const Footer = () => {
         <div className="border-t border-border pt-8">
           <div className="mb-4 flex justify-center">
             <a
-              href="https://www.instagram.com/moodmotel"
+              href="https://www.instagram.com/mood.motel"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
             >
               <Instagram className="h-6 w-6 transition-transform group-hover:scale-110" />
-              <span className="font-medium">@moodmotel</span>
+              <span className="font-medium">@mood.motel</span>
             </a>
           </div>
           <p className="text-center text-sm text-muted-foreground">
