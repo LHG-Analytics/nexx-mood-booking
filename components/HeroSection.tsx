@@ -1,14 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMotel } from "@/contexts/MotelContext";
+import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
-  const images = [
-    "/assets/room-1.jpg",
-    "/assets/room-2.jpg",
-    "/assets/room-3.jpg",
-    "/assets/room-4.jpg",
-  ];
+  const config = useMotel();
+  const { t } = useLanguage();
+  const images = config.assets.heroImages;
 
   return (
     <section className="relative min-h-screen px-4 pb-12 pt-24 sm:px-6 sm:pb-20 sm:pt-32" id="home">
@@ -21,9 +20,9 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <h2 className="mb-1 text-lg font-light text-foreground sm:mb-2 sm:text-2xl md:text-3xl">Welcome to</h2>
+              <h2 className="mb-1 text-lg font-light text-foreground sm:mb-2 sm:text-2xl md:text-3xl">{t.hero.welcomeTo}</h2>
               <h1 className="text-4xl font-bold leading-tight text-foreground sm:text-6xl md:text-8xl">
-                MOOD MOTEL
+                {config.displayName}
               </h1>
             </motion.div>
 
@@ -33,9 +32,7 @@ const HeroSection = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="max-w-lg text-sm text-muted-foreground sm:text-base md:text-lg"
             >
-              Experience luxury and comfort at Mood Motel. Our modern suites feature stunning LED
-              lighting, premium amenities, and contemporary design to create the perfect atmosphere
-              for your stay.
+              {translateWithVars(t.hero.description, { motelName: config.name })}
             </motion.p>
 
             {/* Mobile Image Grid - Between text and button */}
@@ -81,7 +78,7 @@ const HeroSection = () => {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Explore Rooms
+                {t.hero.exploreRooms}
               </motion.a>
             </motion.div>
           </div>
@@ -128,9 +125,9 @@ const HeroSection = () => {
           <div className="absolute inset-0 animate-spin-slow rounded-full border-2 border-primary/30" />
           <div className="absolute inset-2 flex items-center justify-center rounded-full border border-border bg-card shadow-xl">
             <div className="text-center">
-              <div className="text-xs font-bold text-primary">LUXURY</div>
-              <div className="text-xs text-muted-foreground">BOUTIQUE</div>
-              <div className="text-xs font-bold text-primary">MOTEL</div>
+              <div className="text-xs font-bold text-primary">{t.hero.luxuryBadge.luxury}</div>
+              <div className="text-xs text-muted-foreground">{t.hero.luxuryBadge.boutique}</div>
+              <div className="text-xs font-bold text-primary">{t.hero.luxuryBadge.motel}</div>
             </div>
           </div>
         </div>

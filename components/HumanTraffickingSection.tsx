@@ -1,8 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { HandHeart } from "lucide-react";
+import { useMotel } from "@/contexts/MotelContext";
+import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
 
 const HumanTraffickingSection = () => {
+  const config = useMotel();
+  const { t } = useLanguage();
+
   return (
     <section className="relative overflow-hidden bg-black px-6 py-20">
       {/* Background decorative elements */}
@@ -28,10 +33,10 @@ const HumanTraffickingSection = () => {
             </div>
             <div>
               <h2 className="text-4xl font-bold tracking-wide text-white md:text-5xl">
-                HUMAN TRAFFICKING
+                {t.trafficking.title}
               </h2>
               <h3 className="text-3xl font-light tracking-widest text-white md:text-4xl">
-                AWARENESS
+                {t.trafficking.subtitle}
               </h3>
             </div>
           </motion.div>
@@ -45,16 +50,7 @@ const HumanTraffickingSection = () => {
             className="text-white"
           >
             <p className="text-lg leading-relaxed">
-              Mood Motel is staunchly committed to the fight against human trafficking,
-              understanding the critical role the hospitality industry plays in this battle. Mood
-              Motel has implemented training and educational campaigns, crafted to ensure that both
-              managers and staff across all Mood Motel locations are thoroughly equipped. The
-              training focuses on identifying and understanding the signs of human trafficking,
-              ensuring that employees are not only vigilant but also knowledgeable about the
-              appropriate actions to take in potential situations. This commitment underscores Mood
-              Motel's dedication to safeguarding the welfare of individuals and communities,
-              reinforcing its standing as a responsible and ethical leader in the hospitality
-              sector.
+              {translateWithVars(t.trafficking.description, { motelName: config.name })}
             </p>
           </motion.div>
         </div>

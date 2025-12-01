@@ -4,8 +4,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useMotel } from "@/contexts/MotelContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
+  const config = useMotel();
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -38,28 +42,33 @@ const Navbar = () => {
           style={{ height: '100%' }}
         >
           <img
-            src="/assets/logo-light.webp"
-            alt="Mood Motel"
+            src={config.assets.logo.light}
+            alt={config.name}
             className="h-20 w-auto object-contain transition-opacity duration-300 dark:hidden sm:h-24 md:h-28 lg:h-32"
           />
           <img
-            src="/assets/logo-dark.webp"
-            alt="Mood Motel"
+            src={config.assets.logo.dark}
+            alt={config.name}
             className="hidden h-20 w-auto object-contain transition-opacity duration-300 dark:block sm:h-24 md:h-28 lg:h-32"
           />
         </motion.div>
 
         {/* Desktop Menu */}
         <div className="hidden items-center gap-8 md:flex">
-          {["Home", "Rooms", "Services", "Contact"].map((item) => (
+          {[
+            { label: t.nav.home, href: "#home" },
+            { label: t.nav.rooms, href: "#rooms" },
+            { label: t.nav.services, href: "#services" },
+            { label: t.nav.contact, href: "#contact" }
+          ].map((item) => (
             <motion.a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               className="font-medium text-foreground transition-colors duration-200 hover:text-primary"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              {item}
+              {item.label}
             </motion.a>
           ))}
 
@@ -106,14 +115,19 @@ const Navbar = () => {
           className="bg-background/95 backdrop-blur-lg md:hidden"
         >
           <div className="container mx-auto flex flex-col gap-4 px-6 py-4">
-            {["Home", "Rooms", "Services", "Contact"].map((item) => (
+            {[
+              { label: t.nav.home, href: "#home" },
+              { label: t.nav.rooms, href: "#rooms" },
+              { label: t.nav.services, href: "#services" },
+              { label: t.nav.contact, href: "#contact" }
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-2 font-medium text-foreground transition-colors duration-200 hover:text-primary"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>

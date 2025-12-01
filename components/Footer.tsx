@@ -1,8 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
+import { useMotel } from "@/contexts/MotelContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { LanguageSelector } from "./LanguageSelector";
 
 const Footer = () => {
+  const config = useMotel();
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t border-border bg-card px-6 py-12">
       <div className="container mx-auto">
@@ -15,20 +21,20 @@ const Footer = () => {
           >
             <h3 className="mb-4 flex items-center gap-2 font-bold text-foreground">
               <MapPin className="h-5 w-5 text-primary" />
-              Location
+              {t.footer.location}
             </h3>
             <p className="text-muted-foreground">
-              11102 Biscayne Blvd
+              {config.contact.address.street}
               <br />
-              Miami, FL 33181
+              {config.contact.address.city}, {config.contact.address.state} {config.contact.address.zip}
             </p>
             <a
-              href="https://google.com/maps/dir//11102+Biscayne+Blvd,+Miami,+FL+33181/@25.8784223,-80.1683391,15z"
+              href={config.contact.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-block text-sm text-primary hover:underline"
             >
-              Get Directions →
+              {t.footer.getDirections}
             </a>
           </motion.div>
 
@@ -41,12 +47,12 @@ const Footer = () => {
           >
             <h3 className="mb-4 flex items-center gap-2 font-bold text-foreground">
               <Phone className="h-5 w-5 text-primary" />
-              Contact
+              {t.footer.contact}
             </h3>
-            <p className="mb-2 text-muted-foreground">Phone: (305) 555-0123</p>
+            <p className="mb-2 text-muted-foreground">{t.footer.phone}: {config.contact.phone}</p>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <span>info@moodmotel.com</span>
+              <span>{config.contact.email}</span>
             </div>
           </motion.div>
 
@@ -59,28 +65,33 @@ const Footer = () => {
           >
             <h3 className="mb-4 flex items-center gap-2 font-bold text-foreground">
               <Clock className="h-5 w-5 text-primary" />
-              Hours
+              {t.footer.hours}
             </h3>
             <p className="text-muted-foreground">
-              Front Desk: 24/7
+              {t.footer.frontDesk}: {config.contact.hours}
             </p>
           </motion.div>
         </div>
 
         <div className="border-t border-border pt-8">
+          {/* Language Selector */}
+          <div className="mb-6 flex justify-center">
+            <LanguageSelector />
+          </div>
+
           <div className="mb-4 flex justify-center">
             <a
-              href="https://www.instagram.com/mood.motel"
+              href={config.contact.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
             >
               <Instagram className="h-6 w-6 transition-transform group-hover:scale-110" />
-              <span className="font-medium">@mood.motel</span>
+              <span className="font-medium">{config.contact.instagram}</span>
             </a>
           </div>
           <p className="text-center text-sm text-muted-foreground">
-            &copy; 2025 Mood Motel. All rights reserved.
+            &copy; 2025 {config.name}. {t.footer.allRightsReserved}.
           </p>
         </div>
       </div>

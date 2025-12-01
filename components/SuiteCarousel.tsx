@@ -7,8 +7,12 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { TiltedCard } from "./ui/tilted-card";
+import { useMotel } from "@/contexts/MotelContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const SuiteCarousel = () => {
+  const config = useMotel();
+  const { t } = useLanguage();
   const [isHovered, setIsHovered] = useState(false);
   const autoplayRef = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
@@ -41,40 +45,8 @@ const SuiteCarousel = () => {
     }
   }, []);
 
-  const suitesBase = [
-    {
-      id: "mood",
-      name: "Suite Mood",
-      image: "/assets/motel-room-1.jpg",
-      price: 55,
-      rating: 5,
-      amenities: ["TV", "RADIO", "SINGLE SHOWER", "MINI BAR"],
-    },
-    {
-      id: "mood-plus",
-      name: "Suite Mood Plus",
-      image: "/assets/room-2.jpg",
-      price: 59,
-      rating: 5,
-      amenities: ["TV", "RADIO", "POLE", "MINI BAR", "DOUBLE SHOWER"],
-    },
-    {
-      id: "jacuzzi",
-      name: "Suite Jacuzzi",
-      image: "/assets/room-3.jpg",
-      price: 79,
-      rating: 5,
-      amenities: ["TV", "RADIO", "MINI BAR", "DOUBLE SHOWER", "POLE", "JACUZZI"],
-    },
-    {
-      id: "vip",
-      name: "Suite VIP",
-      image: "/assets/room-4.jpg",
-      price: 125,
-      rating: 5,
-      amenities: ["TV", "RADIO", "MINI BAR", "DOUBLE CRYSTAL SHOWER", "POLE", "SPA BATHTUP"],
-    },
-  ];
+  // Get suites from config
+  const suitesBase = config.suites;
 
   // Duplicate slides for smoother infinite loop
   const suites = [...suitesBase, ...suitesBase];
@@ -88,9 +60,9 @@ const SuiteCarousel = () => {
           viewport={{ once: true }}
           className="mb-8 text-center sm:mb-12"
         >
-          <h2 className="mb-2 text-2xl font-bold text-foreground sm:mb-4 sm:text-4xl md:text-5xl">Our Suites</h2>
+          <h2 className="mb-2 text-2xl font-bold text-foreground sm:mb-4 sm:text-4xl md:text-5xl">{t.suites.title}</h2>
           <p className="mx-auto max-w-2xl text-sm text-muted-foreground sm:text-base md:text-lg">
-            Discover comfort and luxury in our carefully designed suites
+            {t.suites.subtitle}
           </p>
         </motion.div>
 
@@ -154,7 +126,7 @@ const SuiteCarousel = () => {
                             <span className="text-lg font-bold text-foreground xs:text-xl sm:text-2xl md:text-3xl">
                               ${suite.price}
                             </span>
-                            <span className="text-[10px] text-muted-foreground xs:text-[11px] sm:text-xs md:text-sm">/night</span>
+                            <span className="text-[10px] text-muted-foreground xs:text-[11px] sm:text-xs md:text-sm">{t.suites.perNight}</span>
                           </div>
                           <Link
                             href={`/suites/${suite.id}`}
@@ -167,7 +139,7 @@ const SuiteCarousel = () => {
                               className="w-full rounded-full bg-primary px-4 py-2 text-[10px] font-medium text-primary-foreground shadow-lg transition-shadow hover:shadow-xl xs:px-4 xs:text-[11px] sm:px-5 sm:py-2.5 sm:text-xs md:px-6 md:py-3 md:text-sm"
                               style={{ pointerEvents: 'auto' }}
                             >
-                              VIEW →
+                              {t.suites.viewButton}
                             </motion.button>
                           </Link>
                         </div>

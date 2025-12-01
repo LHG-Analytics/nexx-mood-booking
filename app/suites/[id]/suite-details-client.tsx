@@ -5,6 +5,7 @@ import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, X, ChevronLeft, Chev
 import Link from "next/link";
 import { useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Suite {
   id: string;
@@ -45,6 +46,7 @@ const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> 
 };
 
 export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
+  const { t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -82,13 +84,13 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
               className="flex items-center gap-1 text-sm text-foreground transition-colors hover:text-primary sm:gap-2 sm:text-base"
             >
               <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="hidden xs:inline">Back to Suites</span>
-              <span className="xs:hidden">Back</span>
+              <span className="hidden xs:inline">{t.suiteDetails.backToSuites}</span>
+              <span className="xs:hidden">{t.suiteDetails.back}</span>
             </motion.button>
           </Link>
           <div className="flex items-center gap-1 sm:gap-2">
             <span className="text-xl font-bold text-foreground sm:text-2xl md:text-3xl">${suite.price}</span>
-            <span className="text-xs text-muted-foreground sm:text-sm md:text-base">Starting From</span>
+            <span className="text-xs text-muted-foreground sm:text-sm md:text-base">{t.suiteDetails.startingFrom}</span>
           </div>
         </div>
       </div>
@@ -141,7 +143,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <div className="rounded-full bg-primary/90 p-3 sm:p-4">
                           <span className="text-xs font-medium text-primary-foreground sm:text-sm">
-                            Click to view
+                            {t.suiteDetails.clickToView}
                           </span>
                         </div>
                       </div>
@@ -176,7 +178,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="rounded-2xl border border-border bg-card p-4 shadow-xl sm:rounded-3xl sm:p-6 md:p-8"
               >
-                <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">Location</h2>
+                <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">{t.suiteDetails.location}</h2>
                 <p className="text-sm text-muted-foreground sm:text-base md:text-lg">{suite.address}</p>
               </motion.div>
 
@@ -187,7 +189,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="rounded-2xl border border-border bg-card p-4 shadow-xl sm:rounded-3xl sm:p-6 md:p-8"
               >
-                <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">Hours</h2>
+                <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">{t.suiteDetails.hours}</h2>
                 <div className="space-y-2 sm:space-y-3">
                   <p className="text-sm text-muted-foreground sm:text-base md:text-lg">{suite.hours.weekdays}</p>
                   <p className="text-sm text-muted-foreground sm:text-base md:text-lg">{suite.hours.weekend}</p>
@@ -201,7 +203,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="rounded-2xl border border-border bg-card p-4 shadow-xl sm:rounded-3xl sm:p-6"
               >
-                <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">Amenities</h2>
+                <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">{t.suiteDetails.amenities}</h2>
                 <div className="grid gap-2 sm:grid-cols-2 sm:gap-3">
                   {suite.amenities.map((amenity, index) => {
                     const Icon = amenityIcons[amenity] || Tv;
@@ -228,23 +230,23 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="rounded-2xl border border-border bg-card p-4 shadow-xl sm:rounded-3xl sm:p-6 md:p-8"
               >
-                <h2 className="mb-1 text-xl font-bold text-foreground sm:mb-2 sm:text-2xl md:text-3xl">Weekday Pricing</h2>
+                <h2 className="mb-1 text-xl font-bold text-foreground sm:mb-2 sm:text-2xl md:text-3xl">{t.suiteDetails.weekdayPricing}</h2>
                 <p className="mb-4 text-xs text-muted-foreground sm:mb-5 sm:text-sm md:mb-6 md:text-base">{suite.hours.weekdays}</p>
                 <div className="space-y-2.5 sm:space-y-3 md:space-y-4">
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">Fractional Rate</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.fractionalRate}</span>
                     <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
                       ${suite.pricing.weekdays.fractional}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">Daily Rate (3PM to 11AM)</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.dailyRate}</span>
                     <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
                       ${suite.pricing.weekdays.daily}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">Overnight (11PM to 11AM)</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.overnightWeekday}</span>
                     <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
                       ${suite.pricing.weekdays.overnight}
                     </span>
@@ -259,23 +261,23 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="rounded-2xl border border-border bg-card p-4 shadow-xl sm:rounded-3xl sm:p-6 md:p-8"
               >
-                <h2 className="mb-1 text-xl font-bold text-foreground sm:mb-2 sm:text-2xl md:text-3xl">Weekend Pricing</h2>
+                <h2 className="mb-1 text-xl font-bold text-foreground sm:mb-2 sm:text-2xl md:text-3xl">{t.suiteDetails.weekendPricing}</h2>
                 <p className="mb-4 text-xs text-muted-foreground sm:mb-5 sm:text-sm md:mb-6 md:text-base">{suite.hours.weekend}</p>
                 <div className="space-y-2.5 sm:space-y-3 md:space-y-4">
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">Fractional Rate</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.fractionalRate}</span>
                     <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
                       ${suite.pricing.weekend.fractional}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">Daily Rate (3PM to 11AM)</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.dailyRate}</span>
                     <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
                       ${suite.pricing.weekend.daily}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">Overnight (2AM to 11AM)</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.overnightWeekend}</span>
                     <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
                       ${suite.pricing.weekend.overnight}
                     </span>
@@ -283,15 +285,15 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 </div>
               </motion.div>
 
-              {/* Book Now CTA */}
-              <motion.div
+              {/* Book Now CTA - Commented out until booking link is ready */}
+              {/* <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="rounded-2xl border border-primary bg-gradient-to-br from-primary/10 to-primary/5 p-4 text-center shadow-xl sm:rounded-3xl sm:p-5 md:p-6"
               >
-                <h3 className="mb-2 text-lg font-bold text-foreground sm:mb-3 sm:text-xl">Ready to Book?</h3>
-                <p className="mb-3 text-xs text-muted-foreground sm:mb-4 sm:text-sm">Reserve your suite now</p>
+                <h3 className="mb-2 text-lg font-bold text-foreground sm:mb-3 sm:text-xl">{t.suiteDetails.readyToBook}</h3>
+                <p className="mb-3 text-xs text-muted-foreground sm:mb-4 sm:text-sm">{t.suiteDetails.reserveNow}</p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -301,9 +303,9 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                   }}
                   className="w-full rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-lg transition-shadow hover:shadow-xl sm:px-6 sm:py-3 sm:text-base"
                 >
-                  Book Now
+                  {t.suiteDetails.bookNow}
                 </motion.button>
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
         </div>

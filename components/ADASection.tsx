@@ -1,7 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
+import { useMotel } from "@/contexts/MotelContext";
+import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
 
 const ADASection = () => {
+  const config = useMotel();
+  const { t } = useLanguage();
+
   return (
     <section className="relative overflow-hidden bg-ada-purple px-6 py-20">
       {/* Background decorative elements */}
@@ -20,8 +25,8 @@ const ADASection = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-4 text-7xl font-bold text-white md:text-9xl">ADA</h2>
-            <h3 className="text-3xl font-bold text-motel-pink md:text-4xl">Accessible Features</h3>
-            <h3 className="mb-6 text-3xl font-bold text-motel-pink md:text-4xl">and Amenities</h3>
+            <h3 className="text-3xl font-bold text-motel-pink md:text-4xl">{t.ada.subtitle1}</h3>
+            <h3 className="mb-6 text-3xl font-bold text-motel-pink md:text-4xl">{t.ada.subtitle2}</h3>
           </motion.div>
 
           {/* Right Side - Content */}
@@ -33,10 +38,7 @@ const ADASection = () => {
             className="text-white"
           >
             <p className="text-lg leading-relaxed">
-              Mood Motel is compliant with the Department of Justice 2010 ADA Standards for
-              Accessible Design. We welcome guests of all abilities. Our property descriptions aim
-              to allow any visitor to make an informed decision on whether the hotel is an
-              appropriate choice for their needs.
+              {translateWithVars(t.ada.description, { motelName: config.name })}
             </p>
           </motion.div>
         </div>

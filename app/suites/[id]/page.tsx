@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
+import { getMotelConfigFromHostname } from "@/lib/getMotelConfig";
+import { headers } from "next/headers";
 import SuiteDetailsClient from "./suite-details-client";
+import { getTranslation } from "@/locales";
+import { Language } from "@/types/i18n";
 
 interface Suite {
   id: string;
@@ -27,120 +31,73 @@ interface Suite {
   description: string;
 }
 
-const suitesData: Record<string, Suite> = {
-  mood: {
-    id: "mood",
-    name: "Suite Mood",
-    price: 55,
-    address: "11102 Biscayne Blvd., North Miami, FL 33181",
-    hours: {
-      weekdays: "SUNDAY 11PM TO FRIDAY 7AM",
-      weekend: "FRIDAY 7AM TO SUNDAY 11PM",
-    },
-    pricing: {
-      weekdays: {
-        fractional: 55,
-        daily: 218,
-        overnight: 109,
-      },
-      weekend: {
-        fractional: 59,
-        daily: 230,
-        overnight: 115,
-      },
-    },
-    amenities: ["TV", "RADIO", "SINGLE SHOWER", "MINI BAR"],
-    images: ["/assets/motel-room-1.jpg", "/assets/room-1.jpg", "/assets/room-2.jpg"],
-    description:
-      "Experience comfort and style in our Suite Mood. Perfect for a relaxing stay with all essential amenities.",
-  },
-  "mood-plus": {
-    id: "mood-plus",
-    name: "Suite Mood Plus",
-    price: 59,
-    address: "11102 Biscayne Blvd., North Miami, FL 33181",
-    hours: {
-      weekdays: "SUNDAY 11PM TO FRIDAY 7AM",
-      weekend: "FRIDAY 7AM TO SUNDAY 11PM",
-    },
-    pricing: {
-      weekdays: {
-        fractional: 59,
-        daily: 230,
-        overnight: 115,
-      },
-      weekend: {
-        fractional: 63,
-        daily: 245,
-        overnight: 125,
-      },
-    },
-    amenities: ["TV", "RADIO", "POLE", "MINI BAR", "DOUBLE SHOWER"],
-    images: ["/assets/room-2.jpg", "/assets/motel-room-1.jpg", "/assets/room-3.jpg"],
-    description:
-      "Elevate your experience with Suite Mood Plus. Featuring a pole and double shower for added luxury.",
-  },
-  jacuzzi: {
-    id: "jacuzzi",
-    name: "Suite Jacuzzi",
-    price: 79,
-    address: "11102 Biscayne Blvd., North Miami, FL 33181",
-    hours: {
-      weekdays: "SUNDAY 11PM TO FRIDAY 7AM",
-      weekend: "FRIDAY 7AM TO SUNDAY 11PM",
-    },
-    pricing: {
-      weekdays: {
-        fractional: 79,
-        daily: 280,
-        overnight: 140,
-      },
-      weekend: {
-        fractional: 85,
-        daily: 295,
-        overnight: 150,
-      },
-    },
-    amenities: ["TV", "RADIO", "MINI BAR", "DOUBLE SHOWER", "POLE", "JACUZZI"],
-    images: ["/assets/room-3.jpg", "/assets/motel-interior-1.jpg", "/assets/room-4.jpg"],
-    description:
-      "Indulge in ultimate relaxation with our Suite Jacuzzi. Complete with a luxurious jacuzzi and premium amenities.",
-  },
-  vip: {
-    id: "vip",
-    name: "Suite VIP",
-    price: 125,
-    address: "11102 Biscayne Blvd., North Miami, FL 33181",
-    hours: {
-      weekdays: "SUNDAY 11PM TO FRIDAY 7AM",
-      weekend: "FRIDAY 7AM TO SUNDAY 11PM",
-    },
-    pricing: {
-      weekdays: {
-        fractional: 125,
-        daily: 380,
-        overnight: 190,
-      },
-      weekend: {
-        fractional: 135,
-        daily: 400,
-        overnight: 200,
-      },
-    },
-    amenities: ["TV", "RADIO", "MINI BAR", "DOUBLE CRYSTAL SHOWER", "POLE", "SPA BATHTUP"],
-    images: ["/assets/room-4.jpg", "/assets/motel-exterior-1.jpg", "/assets/room-1.jpg"],
-    description:
-      "Experience the pinnacle of luxury in our Suite VIP. Featuring a spa bathtub, crystal shower, and exclusive amenities.",
-  },
-};
+function getLanguageFromCookie(cookieHeader: string | null): Language {
+  if (!cookieHeader) return 'en';
+
+  const cookies = cookieHeader.split(';').map(c => c.trim());
+  const langCookie = cookies.find(c => c.startsWith('motel-language='));
+
+  if (langCookie) {
+    const lang = langCookie.split('=')[1] as Language;
+    if (['en', 'pt', 'es'].includes(lang)) {
+      return lang;
+    }
+  }
+
+  return 'en';
+}
 
 export default async function SuitePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const suite = suitesData[id];
 
-  if (!suite) {
+  // Get motel config from hostname
+  const headersList = await headers();
+  const hostname = headersList.get('host') || 'localhost';
+  const motelConfig = getMotelConfigFromHostname(hostname);
+
+  // Get language from cookie (fallback to 'en')
+  const cookieHeader = headersList.get('cookie');
+  const language = getLanguageFromCookie(cookieHeader);
+  const t = getTranslation(language);
+
+  // Find suite in motel config
+  const suiteData = motelConfig.suites.find(s => s.id === id);
+
+  if (!suiteData) {
     notFound();
   }
+
+  // Helper function to replace variables in translation strings
+  const replaceVars = (str: string, vars: Record<string, string>) => {
+    return str.replace(/\{(\w+)\}/g, (_, key) => vars[key] || `{${key}}`);
+  };
+
+  // Transform to full suite format (with default values for detailed pricing)
+  const suite: Suite = {
+    id: suiteData.id,
+    name: suiteData.name,
+    price: suiteData.price,
+    address: motelConfig.contact.address.full,
+    hours: {
+      weekdays: t.suiteDetails.weekdayHours,
+      weekend: t.suiteDetails.weekendHours,
+    },
+    pricing: {
+      weekdays: {
+        fractional: suiteData.price,
+        daily: suiteData.price * 4,
+        overnight: suiteData.price * 2,
+      },
+      weekend: {
+        fractional: suiteData.price + 4,
+        daily: (suiteData.price + 4) * 4,
+        overnight: (suiteData.price + 4) * 2,
+      },
+    },
+    amenities: suiteData.amenities,
+    images: suiteData.images || [suiteData.image],
+    description: suiteData.description || replaceVars(t.suiteDetails.defaultDescription, { suiteName: suiteData.name }),
+  };
 
   return <SuiteDetailsClient suite={suite} />;
 }
