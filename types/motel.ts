@@ -62,17 +62,34 @@ export interface SuiteAmenity {
 }
 
 /**
+ * Suite pricing structure
+ */
+export interface SuitePricing {
+  weekdays: {
+    fractional: number;
+    daily: number;
+    overnight: number;
+  };
+  weekend: {
+    fractional: number;
+    daily: number;
+    overnight: number;
+  };
+}
+
+/**
  * Suite/Room configuration
  */
 export interface Suite {
   id: string;
   name: string;
   image: string;
-  price: number;
+  price: number; // Lowest price for display in carousel
   rating: number;
   amenities: string[];
   description?: string;
   images?: string[];
+  pricing?: SuitePricing; // Optional detailed pricing
 }
 
 /**

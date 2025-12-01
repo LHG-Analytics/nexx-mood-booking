@@ -72,7 +72,7 @@ export default async function SuitePage({ params }: { params: Promise<{ id: stri
     return str.replace(/\{(\w+)\}/g, (_, key) => vars[key] || `{${key}}`);
   };
 
-  // Transform to full suite format (with default values for detailed pricing)
+  // Transform to full suite format (use specific pricing if available, otherwise calculate)
   const suite: Suite = {
     id: suiteData.id,
     name: suiteData.name,
@@ -82,7 +82,8 @@ export default async function SuitePage({ params }: { params: Promise<{ id: stri
       weekdays: t.suiteDetails.weekdayHours,
       weekend: t.suiteDetails.weekendHours,
     },
-    pricing: {
+    pricing: suiteData.pricing || {
+      // Fallback: calculate pricing if not specified
       weekdays: {
         fractional: suiteData.price,
         daily: suiteData.price * 4,

@@ -49,10 +49,10 @@ export const motelsConfig: MotelsConfigMap = {
         dark: '/assets/mood/logo-dark.webp',
       },
       heroImages: [
-        '/assets/mood/room-1.jpg',
-        '/assets/mood/room-2.jpg',
-        '/assets/mood/room-3.jpg',
-        '/assets/mood/room-4.jpg',
+        '/assets/mood/suite-mood/principal.jpg',
+        '/assets/mood/suite-mood-plus/principal.jpg',
+        '/assets/mood/suite-jacuzzi/principal.jpg',
+        '/assets/mood/suite-vip/principal.jpg',
       ],
       favicon: '/favicon.ico',
     },
@@ -61,34 +61,108 @@ export const motelsConfig: MotelsConfigMap = {
       {
         id: 'mood',
         name: 'Suite Mood',
-        image: '/assets/mood/motel-room-1.jpg',
-        price: 55,
+        image: '/assets/mood/suite-mood/principal.jpg',
+        images: [
+          '/assets/mood/suite-mood/room-1.jpg',
+          '/assets/mood/suite-mood/room-2.jpg',
+          '/assets/mood/suite-mood/room-3.jpg',
+        ],
+        price: 55, // Lowest price (fractional weekday)
         rating: 5,
         amenities: ['TV', 'RADIO', 'SINGLE SHOWER', 'MINI BAR'],
+        pricing: {
+          weekdays: {
+            fractional: 55,
+            daily: 218,
+            overnight: 109,
+          },
+          weekend: {
+            fractional: 59,
+            daily: 230,
+            overnight: 115,
+          },
+        },
       },
       {
         id: 'mood-plus',
         name: 'Suite Mood Plus',
-        image: '/assets/mood/room-2.jpg',
-        price: 59,
+        image: '/assets/mood/suite-mood-plus/principal.jpg',
+        images: [
+          '/assets/mood/suite-mood-plus/room-1.jpg',
+          '/assets/mood/suite-mood-plus/room-2.jpg',
+          '/assets/mood/suite-mood-plus/room-3.jpg',
+          '/assets/mood/suite-mood-plus/room-4.jpg',
+          '/assets/mood/suite-mood-plus/room-5.jpg',
+          '/assets/mood/suite-mood-plus/room-6.jpg',
+          '/assets/mood/suite-mood-plus/room-7.jpg',
+          '/assets/mood/suite-mood-plus/room-8.jpg',
+        ],
+        price: 59, // Lowest price (fractional weekday)
         rating: 5,
         amenities: ['TV', 'RADIO', 'POLE', 'MINI BAR', 'DOUBLE SHOWER'],
+        pricing: {
+          weekdays: {
+            fractional: 59,
+            daily: 230,
+            overnight: 115,
+          },
+          weekend: {
+            fractional: 65,
+            daily: 244,
+            overnight: 122,
+          },
+        },
       },
       {
         id: 'jacuzzi',
         name: 'Suite Jacuzzi',
-        image: '/assets/mood/room-3.jpg',
-        price: 79,
+        image: '/assets/mood/suite-jacuzzi/principal.jpg',
+        images: [
+          '/assets/mood/suite-jacuzzi/room-1.jpg',
+          '/assets/mood/suite-jacuzzi/room-2.jpg',
+          '/assets/mood/suite-jacuzzi/room-3.jpg',
+        ],
+        price: 79, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'MINI BAR', 'DOUBLE SHOWER', 'POLE', 'JACUZZI'],
+        amenities: ['TV', 'RADIO', 'MINI BAR', 'LOVE SEAT', 'DOUBLE SHOWER', 'POLE', 'JACUZZI'],
+        pricing: {
+          weekdays: {
+            fractional: 79,
+            daily: 278,
+            overnight: 139,
+          },
+          weekend: {
+            fractional: 85,
+            daily: 290,
+            overnight: 145,
+          },
+        },
       },
       {
         id: 'vip',
         name: 'Suite VIP',
-        image: '/assets/mood/room-4.jpg',
-        price: 125,
+        image: '/assets/mood/suite-vip/principal.jpg',
+        images: [
+          '/assets/mood/suite-vip/room-1.jpg',
+          '/assets/mood/suite-vip/room-2.jpg',
+          '/assets/mood/suite-vip/room-3.jpg',
+          '/assets/mood/suite-vip/room-4.jpg',
+        ],
+        price: 125, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'MINI BAR', 'DOUBLE CRYSTAL SHOWER', 'POLE', 'SPA BATHTUP'],
+        amenities: ['TV', 'RADIO', 'MINI BAR', 'LOVE SEAT', 'DOUBLE SHOWER', 'POLE', 'JACUZZI'],
+        pricing: {
+          weekdays: {
+            fractional: 125,
+            daily: 370,
+            overnight: 185,
+          },
+          weekend: {
+            fractional: 139,
+            daily: 395,
+            overnight: 199,
+          },
+        },
       },
     ],
 
@@ -100,7 +174,7 @@ export const motelsConfig: MotelsConfigMap = {
         zip: '33181',
         full: '11102 Biscayne Blvd, Miami, FL 33181',
       },
-      phone: '(305) 555-0123',
+      phone: '(305) 893-4540',
       email: 'info@moodmotel.com',
       instagram: '@mood.motel',
       instagramUrl: 'https://www.instagram.com/mood.motel',
