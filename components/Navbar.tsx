@@ -58,8 +58,7 @@ const Navbar = () => {
           {[
             { label: t.nav.home, href: "#home" },
             { label: t.nav.rooms, href: "#rooms" },
-            { label: t.nav.services, href: "#services" },
-            { label: t.nav.contact, href: "#contact" }
+            { label: t.nav.services, href: "#services" }
           ].map((item) => (
             <motion.a
               key={item.href}
@@ -118,8 +117,7 @@ const Navbar = () => {
             {[
               { label: t.nav.home, href: "#home" },
               { label: t.nav.rooms, href: "#rooms" },
-              { label: t.nav.services, href: "#services" },
-              { label: t.nav.contact, href: "#contact" }
+              { label: t.nav.services, href: "#services" }
             ].map((item) => (
               <a
                 key={item.href}

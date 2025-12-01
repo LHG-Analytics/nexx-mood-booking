@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Footer from "@/components/Footer";
 
 interface Suite {
   id: string;
@@ -367,6 +368,9 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
           </div>
         </motion.div>
       )}
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
