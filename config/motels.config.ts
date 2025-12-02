@@ -54,7 +54,7 @@ export const motelsConfig: MotelsConfigMap = {
         '/assets/mood/suite-jacuzzi/principal.jpg',
         '/assets/mood/suite-vip/principal.jpg',
       ],
-      favicon: '/favicon.ico',
+      favicon: '/assets/mood/favicon/favicon.ico',
     },
 
     suites: [
@@ -230,42 +230,120 @@ export const motelsConfig: MotelsConfigMap = {
 
     assets: {
       logo: {
-        light: '/assets/yes/logo-light.webp',
-        dark: '/assets/yes/logo-dark.webp',
+        light: '/assets/yes/logo-light.png',
+        dark: '/assets/yes/logo-dark.png',
       },
       heroImages: [
-        '/assets/yes/room-1.jpg',
-        '/assets/yes/room-2.jpg',
-        '/assets/yes/room-3.jpg',
-        '/assets/yes/room-4.jpg',
+        '/assets/yes/suite-yes/principal.jpg',
+        '/assets/yes/suite-yes-plus/principal.jpg',
+        '/assets/yes/suite-jacuzzi/principal.jpg',
+        '/assets/yes/suite-jacuzzi/room-7.jpg',
       ],
-      favicon: '/favicon.ico',
+      favicon: '/assets/yes/favicon/favicon.ico',
     },
 
     suites: [
       {
-        id: 'standard',
-        name: 'Standard Suite',
-        image: '/assets/yes/room-1.jpg',
-        price: 55,
+        id: 'yes',
+        name: 'Suite Yes',
+        image: '/assets/yes/suite-yes/principal.jpg',
+        images: [
+          '/assets/yes/suite-yes/room-1.jpg',
+          '/assets/yes/suite-yes/room-2.jpg',
+          '/assets/yes/suite-yes/room-3.jpg',
+          '/assets/yes/suite-yes/room-4.jpg',
+          '/assets/yes/suite-yes/room-5.jpg',
+          '/assets/yes/suite-yes/room-6.jpg',
+        ],
+        price: 42,
         rating: 5,
         amenities: ['TV', 'RADIO', 'SHOWER', 'MINI BAR'],
+        pricing: {
+          weekdays: {
+            fractional: 42,
+            daily: 198,
+            overnight: 99,
+          },
+          weekend: {
+            fractional: 49,
+            daily: 210,
+            overnight: 105,
+          },
+        },
+      },
+      {
+        id: 'yes-plus',
+        name: 'Suite Yes Plus',
+        image: '/assets/yes/suite-yes-plus/principal.jpg',
+        images: [
+          '/assets/yes/suite-yes-plus/room-1.jpg',
+          '/assets/yes/suite-yes-plus/room-2.jpg',
+          '/assets/yes/suite-yes-plus/room-3.jpg',
+          '/assets/yes/suite-yes-plus/room-4.jpg',
+          '/assets/yes/suite-yes-plus/room-5.jpg',
+        ],
+        price: 49,
+        rating: 5,
+        amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT'],
+        pricing: {
+          weekdays: {
+            fractional: 49,
+            daily: 210,
+            overnight: 105,
+          },
+          weekend: {
+            fractional: 55,
+            daily: 224,
+            overnight: 112,
+          },
+        },
+      },
+      {
+        id: 'yes-jacuzzi',
+        name: 'Suite Jacuzzi',
+        image: '/assets/yes/suite-jacuzzi/principal.jpg',
+        images: [
+          '/assets/yes/suite-jacuzzi/room-1.jpg',
+          '/assets/yes/suite-jacuzzi/room-2.jpg',
+          '/assets/yes/suite-jacuzzi/room-3.jpg',
+          '/assets/yes/suite-jacuzzi/room-4.jpg',
+          '/assets/yes/suite-jacuzzi/room-5.jpg',
+          '/assets/yes/suite-jacuzzi/room-6.jpg',
+          '/assets/yes/suite-jacuzzi/room-7.jpg',
+          '/assets/yes/suite-jacuzzi/room-8.jpg',
+          '/assets/yes/suite-jacuzzi/room-9.jpg',
+        ],
+        price: 65,
+        rating: 5,
+        amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'JACUZZI'],
+        pricing: {
+          weekdays: {
+            fractional: 65,
+            daily: 230,
+            overnight: 115,
+          },
+          weekend: {
+            fractional: 72,
+            daily: 244,
+            overnight: 122,
+          },
+        },
       },
     ],
 
     contact: {
       address: {
-        street: 'TBD',
-        city: 'Miami',
+        street: '28475 S Dixie Hwy',
+        city: 'Homestead',
         state: 'FL',
-        zip: '00000',
-        full: 'TBD, Miami, FL',
+        zip: '33033',
+        full: '28475 S Dixie Hwy, Homestead, FL 33033',
       },
-      phone: '(305) 000-0000',
+      phone: '(305) 248-5622',
       email: 'info@yesmotel.com',
       instagram: '@yes.motel',
       instagramUrl: 'https://www.instagram.com/yes.motel',
-      mapsUrl: '#',
+      mapsUrl: 'https://maps.google.com/?q=28475+S+Dixie+Hwy,+Homestead,+FL+33033',
       hours: '24/7',
     },
 
