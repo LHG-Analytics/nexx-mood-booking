@@ -61,6 +61,7 @@ const HeroSection = () => {
                     sizes="(max-width: 1024px) 50vw, 0vw"
                     className="object-cover"
                     priority={index === 0}
+                    fetchPriority={index === 0 ? "high" : "low"}
                     quality={85}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
@@ -114,6 +115,7 @@ const HeroSection = () => {
                   sizes="(min-width: 1024px) 25vw, 0vw"
                   className="object-cover"
                   priority={index === 0}
+                  fetchPriority={index === 0 ? "high" : "low"}
                   quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />

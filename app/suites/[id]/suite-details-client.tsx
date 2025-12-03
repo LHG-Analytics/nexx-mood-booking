@@ -143,7 +143,9 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          loading={index < 3 ? "eager" : "lazy"}
+                          priority={index < 2}
+                          loading={index < 2 ? undefined : "lazy"}
+                          fetchPriority={index === 0 ? "high" : index === 1 ? "high" : "low"}
                           quality={85}
                         />
                       </div>
