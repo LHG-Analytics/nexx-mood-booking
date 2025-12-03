@@ -49,7 +49,10 @@ const Footer = () => {
               <Phone className="h-5 w-5 text-primary" />
               {t.footer.contact}
             </h3>
-            <p className="mb-2 text-muted-foreground">{t.footer.phone}: {config.contact.phone}</p>
+            <div className="mb-2 flex items-center gap-2 text-muted-foreground">
+              <Phone className="h-4 w-4" />
+              <span>{config.contact.phone}</span>
+            </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
               <span>{config.contact.email}</span>
