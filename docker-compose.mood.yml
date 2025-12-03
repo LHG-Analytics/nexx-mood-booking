@@ -22,12 +22,12 @@ services:
         - "traefik.docker.network=network_public"
 
         # HTTP Router (redirect to HTTPS)
-        - "traefik.http.routers.mood-web.rule=Host(`moodmotel.com`) || Host(`www.moodmotel.com`)"
+        - "traefik.http.routers.mood-web.rule=Host(`motelmood.com`) || Host(`www.motelmood.com`)"
         - "traefik.http.routers.mood-web.entrypoints=web"
         - "traefik.http.routers.mood-web.middlewares=redirect-to-https"
 
         # HTTPS Router
-        - "traefik.http.routers.mood-web-secure.rule=Host(`moodmotel.com`) || Host(`www.moodmotel.com`)"
+        - "traefik.http.routers.mood-web-secure.rule=Host(`motelmood.com`) || Host(`www.motelmood.com`)"
         - "traefik.http.routers.mood-web-secure.entrypoints=websecure"
         - "traefik.http.routers.mood-web-secure.tls.certresolver=letsencryptresolver"
 
