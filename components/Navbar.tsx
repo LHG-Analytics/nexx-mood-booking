@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -39,18 +40,29 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
           className="relative flex items-center"
-          style={{ height: '100%' }}
         >
-          <img
-            src={config.assets.logo.light}
-            alt={config.name}
-            className="h-20 w-auto object-contain transition-opacity duration-300 dark:hidden sm:h-24 md:h-28 lg:h-32"
-          />
-          <img
-            src={config.assets.logo.dark}
-            alt={config.name}
-            className="hidden h-20 w-auto object-contain transition-opacity duration-300 dark:block sm:h-24 md:h-28 lg:h-32"
-          />
+          <div className="relative h-20 w-auto dark:hidden sm:h-24 md:h-28 lg:h-32">
+            <Image
+              src={config.assets.logo.light}
+              alt={config.name}
+              width={210}
+              height={140}
+              className="h-full w-auto object-contain"
+              priority
+              quality={90}
+            />
+          </div>
+          <div className="relative hidden h-20 w-auto dark:block sm:h-24 md:h-28 lg:h-32">
+            <Image
+              src={config.assets.logo.dark}
+              alt={config.name}
+              width={210}
+              height={140}
+              className="h-full w-auto object-contain"
+              priority
+              quality={90}
+            />
+          </div>
         </motion.div>
 
         {/* Desktop Menu */}
