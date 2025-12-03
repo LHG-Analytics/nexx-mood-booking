@@ -159,6 +159,7 @@ const SuiteCarousel = () => {
           {/* Navigation Buttons - Only visible on hover (desktop) or always visible (mobile) */}
           <motion.button
             onClick={scrollPrev}
+            aria-label="Previous suite"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 20 }}
             transition={{ duration: 0.3 }}
@@ -169,6 +170,7 @@ const SuiteCarousel = () => {
           </motion.button>
           <motion.button
             onClick={scrollNext}
+            aria-label="Next suite"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -20 }}
             transition={{ duration: 0.3 }}

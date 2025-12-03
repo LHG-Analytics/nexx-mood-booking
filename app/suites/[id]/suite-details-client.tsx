@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -135,11 +136,17 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                       className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-2xl sm:rounded-3xl"
                       onClick={() => openModal(index)}
                     >
-                      <img
-                        src={image}
-                        alt={`${suite.name} view ${index + 1}`}
-                        className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-110 sm:h-80 md:h-96"
-                      />
+                      <div className="relative h-64 w-full sm:h-80 md:h-96">
+                        <Image
+                          src={image}
+                          alt={`${suite.name} view ${index + 1}`}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading={index < 3 ? "eager" : "lazy"}
+                          quality={85}
+                        />
+                      </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <div className="rounded-full bg-primary/90 p-3 sm:p-4">
@@ -157,12 +164,14 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
             {/* Navigation Buttons */}
             <button
               onClick={scrollPrev}
+              aria-label="Previous image"
               className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground sm:left-4 sm:h-12 sm:w-12"
             >
               <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
             <button
               onClick={scrollNext}
+              aria-label="Next image"
               className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground sm:right-4 sm:h-12 sm:w-12"
             >
               <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -323,6 +332,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
         >
           <button
             onClick={closeModal}
+            aria-label="Close modal"
             className="absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             <X className="h-6 w-6" />
@@ -330,10 +340,14 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
 
           <div className="relative h-full w-full max-w-7xl px-4 py-20" onClick={(e) => e.stopPropagation()}>
             <div className="relative h-full w-full">
-              <img
+              <Image
                 src={suite.images[selectedImageIndex]}
                 alt={`${suite.name} view ${selectedImageIndex + 1}`}
-                className="h-full w-full object-contain"
+                fill
+                sizes="100vw"
+                className="object-contain"
+                quality={90}
+                priority
               />
 
               {/* Modal Navigation Buttons */}
@@ -343,6 +357,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                   scrollPrev();
                   setSelectedImageIndex((prev) => (prev === 0 ? suite.images.length - 1 : prev - 1));
                 }}
+                aria-label="Previous image"
                 className="absolute left-4 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 <ChevronLeft className="h-8 w-8" />
@@ -353,6 +368,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                   scrollNext();
                   setSelectedImageIndex((prev) => (prev === suite.images.length - 1 ? 0 : prev + 1));
                 }}
+                aria-label="Next image"
                 className="absolute right-4 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 <ChevronRight className="h-8 w-8" />
