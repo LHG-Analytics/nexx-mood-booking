@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Instagram, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
@@ -50,10 +50,10 @@ const Footer = () => {
               {t.footer.contact}
             </h3>
             <p className="mb-2 text-muted-foreground">{t.footer.phone}: {config.contact.phone}</p>
-            {/* <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
               <span>{config.contact.email}</span>
-            </div> */}
+            </div>
           </motion.div>
 
           {/* Hours */}
