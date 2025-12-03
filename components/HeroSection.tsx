@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
 
@@ -53,10 +54,14 @@ const HeroSection = () => {
                   }}
                   className="relative aspect-square overflow-hidden rounded-2xl shadow-xl"
                 >
-                  <img
+                  <Image
                     src={image}
-                    alt={`Motel view ${index + 1}`}
-                    className="h-full w-full object-cover"
+                    alt={`${config.name} - Suite view ${index + 1}`}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 0vw"
+                    className="object-cover"
+                    priority={index === 0}
+                    quality={85}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
                 </motion.div>
@@ -102,10 +107,14 @@ const HeroSection = () => {
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 className="relative aspect-square overflow-hidden rounded-full shadow-2xl"
               >
-                <img
+                <Image
                   src={image}
-                  alt={`Motel view ${index + 1}`}
-                  className="h-full w-full object-cover"
+                  alt={`${config.name} - Suite view ${index + 1}`}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 0vw"
+                  className="object-cover"
+                  priority={index === 0}
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
               </motion.div>

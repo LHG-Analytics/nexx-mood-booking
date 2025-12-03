@@ -6,6 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { TiltedCard } from "./ui/tilted-card";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -82,10 +83,14 @@ const SuiteCarousel = () => {
                   <TiltedCard className="w-full h-[560px] sm:h-[580px] md:h-[600px]">
                     <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl transition-all duration-300 hover:shadow-2xl sm:rounded-2xl">
                       <div className="relative h-48 flex-shrink-0 overflow-hidden xs:h-52 sm:h-56 md:h-60">
-                        <img
+                        <Image
                           src={suite.image}
-                          alt={suite.name}
-                          className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                          alt={`${suite.name} - ${config.name}`}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 hover:scale-110"
+                          loading="lazy"
+                          quality={85}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       </div>
