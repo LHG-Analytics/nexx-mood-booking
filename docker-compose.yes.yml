@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  yes-web:
+    image: ghcr.io/${GITHUB_USERNAME}/nexx-mood-booking:latest
+    networks:
+      - network_public
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      labels:
+        # Enable Traefik
+        - "traefik.enable=true"
+        - "traefik.docker.network=network_public"
+
+        # HTTP Router (redirect to HTTPS)
+        - "traefik.http.routers.yes-web.rule=Host(`yesmotels.com`) || Host(`www.yesmotels.com`)"
+        - "traefik.http.routers.yes-web.entrypoints=web"
+        - "traefik.http.routers.yes-web.middlewares=redirect-to-https"
+
+        # HTTPS Router
+        - "traefik.http.routers.yes-web-secure.rule=Host(`yesmotels.com`) || Host(`www.yesmotels.com`)"
+        - "traefik.http.routers.yes-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.yes-web-secure.tls.certresolver=letsencryptresolver"
+
+        # Service
+        - "traefik.http.services.yes-web.loadbalancer.server.port=3000"
+
+networks:
+  network_public:
+    external: true
