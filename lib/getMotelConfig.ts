@@ -12,6 +12,8 @@ const DOMAIN_TO_MOTEL: Record<string, MotelId> = {
 
   'yesmotel.com': 'yes',
   'www.yesmotel.com': 'yes',
+  'yesmotels.com': 'yes',
+  'www.yesmotels.com': 'yes',
 
   'calle8motel.com': 'calle8',
   'www.calle8motel.com': 'calle8',
