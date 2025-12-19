@@ -194,7 +194,7 @@ export const motelsConfig: MotelsConfigMap = {
     id: 'yes',
     name: 'Yes Motel',
     displayName: 'YES MOTEL',
-    domain: 'yesmotel.com',
+    domain: 'yesmotels.com',
 
     theme: {
       light: {
