@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { MotelProvider } from "@/contexts/MotelContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeInjector } from "@/components/ThemeInjector";
+import { LanguageHtmlUpdater } from "@/components/LanguageHtmlUpdater";
 import { useState } from "react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -24,6 +25,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
+        <LanguageHtmlUpdater />
         <MotelProvider>
           <ThemeInjector />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
