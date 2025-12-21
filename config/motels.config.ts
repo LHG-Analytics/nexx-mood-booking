@@ -529,8 +529,8 @@ export const motelsConfig: MotelsConfigMap = {
 
     assets: {
       logo: {
-        light: '/assets/scape/logo-light.webp',
-        dark: '/assets/scape/logo-dark.webp',
+        light: '/assets/scape/logo-light.png',
+        dark: '/assets/scape/logo-dark.png',
       },
       heroImages: [
         '/assets/scape/suite-scape/principal.jpg',
