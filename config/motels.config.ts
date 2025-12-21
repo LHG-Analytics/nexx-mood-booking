@@ -358,7 +358,7 @@ export const motelsConfig: MotelsConfigMap = {
     id: 'calle8',
     name: 'Calle 8 Motel',
     displayName: 'CALLE 8 MOTEL',
-    domain: 'calle8motel.com',
+    domain: 'motelcalle8.com',
 
     theme: {
       light: {
@@ -394,49 +394,98 @@ export const motelsConfig: MotelsConfigMap = {
 
     assets: {
       logo: {
-        light: '/assets/calle8/logo-light.webp',
-        dark: '/assets/calle8/logo-dark.webp',
+        light: '/assets/calle8/logo-light.png',
+        dark: '/assets/calle8/logo-dark.png',
       },
       heroImages: [
-        '/assets/calle8/room-1.jpg',
-        '/assets/calle8/room-2.jpg',
-        '/assets/calle8/room-3.jpg',
-        '/assets/calle8/room-4.jpg',
+        '/assets/calle8/suite-calle8/principal.jpg',
+        '/assets/calle8/suite-calle8-plus/principal.jpg',
+        '/assets/calle8/suite-calle8-plus/room-1.jpg',
+        '/assets/calle8/suite-calle8-plus/room-2.jpg',
       ],
-      favicon: '/favicon.ico',
+      favicon: '/assets/calle8/favicon/favicon.ico',
     },
 
     suites: [
       {
-        id: 'standard',
-        name: 'Standard Suite',
-        image: '/assets/calle8/room-1.jpg',
-        price: 55,
+        id: 'calle8',
+        name: 'Suite Calle 8',
+        image: '/assets/calle8/suite-calle8/principal.jpg',
+        images: [
+          '/assets/calle8/suite-calle8/room-1.jpg',
+          '/assets/calle8/suite-calle8/room-2.jpg',
+          '/assets/calle8/suite-calle8/room-3.jpg',
+          '/assets/calle8/suite-calle8/room-4.jpg',
+        ],
+        price: 45,
         rating: 5,
-        amenities: ['TV', 'RADIO', 'SHOWER', 'MINI BAR'],
+        amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT'],
+        pricing: {
+          weekdays: {
+            fractional: 45,
+            daily: 210,
+            overnight: 105,
+          },
+          weekend: {
+            fractional: 52,
+            daily: 218,
+            overnight: 109,
+          },
+        },
+      },
+      {
+        id: 'calle8-plus',
+        name: 'Suite Calle 8 Plus',
+        image: '/assets/calle8/suite-calle8-plus/principal.jpg',
+        images: [
+          '/assets/calle8/suite-calle8-plus/room-1.jpg',
+          '/assets/calle8/suite-calle8-plus/room-2.jpg',
+          '/assets/calle8/suite-calle8-plus/room-3.jpg',
+          '/assets/calle8/suite-calle8-plus/room-4.jpg',
+          '/assets/calle8/suite-calle8-plus/room-5.jpg',
+          '/assets/calle8/suite-calle8-plus/room-6.jpg',
+          '/assets/calle8/suite-calle8-plus/room-7.jpg',
+          '/assets/calle8/suite-calle8-plus/room-8.jpg',
+          '/assets/calle8/suite-calle8-plus/room-9.jpg',
+        ],
+        price: 52,
+        rating: 5,
+        amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'POLE'],
+        pricing: {
+          weekdays: {
+            fractional: 52,
+            daily: 218,
+            overnight: 109,
+          },
+          weekend: {
+            fractional: 57,
+            daily: 230,
+            overnight: 115,
+          },
+        },
       },
     ],
 
     contact: {
       address: {
-        street: 'TBD',
+        street: '7290 SW 8th St',
         city: 'Miami',
         state: 'FL',
-        zip: '00000',
-        full: 'TBD, Miami, FL',
+        zip: '33144',
+        full: '7290 SW 8th St, Miami, FL 33144',
       },
-      phone: '(305) 000-0000',
-      email: 'info@calle8motel.com',
-      instagram: '@calle8.motel',
-      instagramUrl: 'https://www.instagram.com/calle8.motel',
-      mapsUrl: '#',
+      phone: '(786) 632-6399',
+      email: 'info@motelcalle8.com',
+      instagram: '@motelcalle8',
+      instagramUrl: 'https://www.instagram.com/motelcalle8/',
+      mapsUrl: 'https://maps.app.goo.gl/ezGoSAt2aRhPHxLg7',
       hours: '24/7',
     },
 
     seo: {
-      title: 'Calle 8 Motel - Miami',
-      description: 'Calle 8 Motel - Premium accommodation in Miami',
-      keywords: ['calle 8 motel', 'miami motel'],
+      title: 'Motel Calle 8 - Miami',
+      description: 'Motel Calle 8 - Premium accommodation in Miami',
+      keywords: ['motel calle 8', 'miami motel'],
     },
   },
 
