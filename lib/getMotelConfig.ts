@@ -28,7 +28,7 @@ const DOMAIN_TO_MOTEL: Record<string, MotelId> = {
   'www.aquamotel.com': 'aqua',
 
   // Local development
-  'localhost': 'calle8',
+  'localhost': 'scape',
   '127.0.0.1': 'mood',
 
   // Local testing with hosts file
