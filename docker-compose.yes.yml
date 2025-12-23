@@ -34,6 +34,10 @@ services:
         # Service
         - "traefik.http.services.yes-web.loadbalancer.server.port=3000"
 
+        # Middleware for HTTPS redirect
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
 networks:
   network_public:
     external: true
