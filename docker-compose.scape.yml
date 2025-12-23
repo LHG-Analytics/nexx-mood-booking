@@ -22,12 +22,12 @@ services:
         - "traefik.docker.network=network_public"
 
         # HTTP Router (redirect to HTTPS)
-        - "traefik.http.routers.scape-web.rule=Host(`scapemotel.com`) || Host(`www.scapemotel.com`)"
+        - "traefik.http.routers.scape-web.rule=Host(`motelscape.com`) || Host(`www.motelscape.com`)"
         - "traefik.http.routers.scape-web.entrypoints=web"
         - "traefik.http.routers.scape-web.middlewares=redirect-to-https"
 
         # HTTPS Router
-        - "traefik.http.routers.scape-web-secure.rule=Host(`scapemotel.com`) || Host(`www.scapemotel.com`)"
+        - "traefik.http.routers.scape-web-secure.rule=Host(`motelscape.com`) || Host(`www.motelscape.com`)"
         - "traefik.http.routers.scape-web-secure.entrypoints=websecure"
         - "traefik.http.routers.scape-web-secure.tls.certresolver=letsencryptresolver"
 

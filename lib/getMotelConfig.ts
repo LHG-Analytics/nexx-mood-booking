@@ -16,8 +16,8 @@ const DOMAIN_TO_MOTEL: Record<string, MotelId> = {
   'motelcalle8.com': 'calle8',
   'www.motelcalle8.com': 'calle8',
 
-  'scapemotel.com': 'scape',
-  'www.scapemotel.com': 'scape',
+  'motelscape.com': 'scape',
+  'www.motelscape.com': 'scape',
 
   'nexxmotel.com': 'nexx',
   'www.nexxmotel.com': 'nexx',

@@ -493,7 +493,7 @@ export const motelsConfig: MotelsConfigMap = {
     id: 'scape',
     name: 'Scape Motel',
     displayName: 'SCAPE MOTEL',
-    domain: 'scapemotel.com',
+    domain: 'motelscape.com',
 
     theme: {
       light: {
@@ -660,7 +660,7 @@ export const motelsConfig: MotelsConfigMap = {
         full: '22345 S Dixie Hwy, Miami, FL 33170',
       },
       phone: '(305) 258-2114',
-      email: 'info@scapemotel.com',
+      email: 'info@motelscape.com',
       instagram: '@scape.motel',
       instagramUrl: 'https://www.instagram.com/scape.motel',
       mapsUrl: 'https://maps.app.goo.gl/LquWA2vqNqqyJfZy8',
