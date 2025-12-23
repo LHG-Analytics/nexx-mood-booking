@@ -35,11 +35,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set lowercase image name
+        id: set-image-name
+        run: |
+          IMAGE_NAME_LOWER=$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_NAME_LOWER=${IMAGE_NAME_LOWER}" >> $GITHUB_ENV
+
       - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_LOWER }}
           tags: |
             type=raw,value=latest
             type=sha,prefix={{branch}}-
@@ -85,12 +91,16 @@ jobs:
           port: ${{ secrets.SSH_PORT || 22 }}
           envs: GITHUB_USERNAME
           script: |
-            # Pull latest image
-            docker pull ghcr.io/${{ github.repository }}:latest
+            # Convert to lowercase for Docker Registry (requires lowercase repository names)
+            REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+            USERNAME_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+            
+            # Pull latest image (using lowercase - must match the build tag)
+            docker pull ghcr.io/${REPO_LOWER}:latest
 
-            # Deploy stack
+            # Deploy stack (GITHUB_USERNAME must be lowercase for docker-compose variable substitution)
             cd /opt/stacks/calle8
-            GITHUB_USERNAME=${{ github.repository_owner }} docker stack deploy -c docker-compose.calle8.yml calle8 --with-registry-auth
+            GITHUB_USERNAME=${USERNAME_LOWER} docker stack deploy -c docker-compose.calle8.yml calle8 --with-registry-auth
 
             # Wait for deployment
             sleep 10
