@@ -403,7 +403,7 @@ export const motelsConfig: MotelsConfigMap = {
         '/assets/calle8/suite-calle8-plus/room-1.jpg',
         '/assets/calle8/suite-calle8-plus/room-2.jpg',
       ],
-      favicon: '/assets/calle8/favicon/favicon.ico',
+      favicon: '/assets/calle8/favicon/favicon.png',
     },
 
     suites: [
