@@ -50,9 +50,9 @@ export const motelsConfig: MotelsConfigMap = {
       },
       heroImages: [
         '/assets/mood/suite-mood/principal.jpg',
-        '/assets/mood/suite-mood-plus/principal.jpg',
+        '/assets/mood/suite-mood-plus/principal.webp',
         '/assets/mood/suite-jacuzzi/principal.jpg',
-        '/assets/mood/suite-vip/principal.jpg',
+        '/assets/mood/suite-vip/principal.webp',
       ],
       favicon: '/assets/mood/favicon/favicon.ico',
     },
@@ -86,16 +86,16 @@ export const motelsConfig: MotelsConfigMap = {
       {
         id: 'mood-plus',
         name: 'Suite Mood Plus',
-        image: '/assets/mood/suite-mood-plus/principal.jpg',
+        image: '/assets/mood/suite-mood-plus/principal.webp',
         images: [
-          '/assets/mood/suite-mood-plus/room-1.jpg',
-          '/assets/mood/suite-mood-plus/room-2.jpg',
-          '/assets/mood/suite-mood-plus/room-3.jpg',
-          '/assets/mood/suite-mood-plus/room-4.jpg',
-          '/assets/mood/suite-mood-plus/room-5.jpg',
-          '/assets/mood/suite-mood-plus/room-6.jpg',
-          '/assets/mood/suite-mood-plus/room-7.jpg',
-          '/assets/mood/suite-mood-plus/room-8.jpg',
+          '/assets/mood/suite-mood-plus/room-1.webp',
+          '/assets/mood/suite-mood-plus/room-2.webp',
+          '/assets/mood/suite-mood-plus/room-3.webp',
+          '/assets/mood/suite-mood-plus/room-4.webp',
+          '/assets/mood/suite-mood-plus/room-5.webp',
+          '/assets/mood/suite-mood-plus/room-6.webp',
+          '/assets/mood/suite-mood-plus/room-7.webp',
+          '/assets/mood/suite-mood-plus/room-8.webp',
         ],
         price: 59, // Lowest price (fractional weekday)
         rating: 5,
@@ -119,8 +119,8 @@ export const motelsConfig: MotelsConfigMap = {
         image: '/assets/mood/suite-jacuzzi/principal.jpg',
         images: [
           '/assets/mood/suite-jacuzzi/room-1.jpg',
-          '/assets/mood/suite-jacuzzi/room-2.jpg',
-          '/assets/mood/suite-jacuzzi/room-3.jpg',
+          '/assets/mood/suite-jacuzzi/room-2.webp',
+          '/assets/mood/suite-jacuzzi/room-3.webp',
         ],
         price: 79, // Lowest price (fractional weekday)
         rating: 5,
@@ -141,12 +141,12 @@ export const motelsConfig: MotelsConfigMap = {
       {
         id: 'vip',
         name: 'Suite VIP',
-        image: '/assets/mood/suite-vip/principal.jpg',
+        image: '/assets/mood/suite-vip/principal.webp',
         images: [
-          '/assets/mood/suite-vip/room-1.jpg',
-          '/assets/mood/suite-vip/room-2.jpg',
-          '/assets/mood/suite-vip/room-3.jpg',
-          '/assets/mood/suite-vip/room-4.jpg',
+          '/assets/mood/suite-vip/room-1.webp',
+          '/assets/mood/suite-vip/room-2.webp',
+          '/assets/mood/suite-vip/room-3.webp',
+          '/assets/mood/suite-vip/room-4.webp',
         ],
         price: 125, // Lowest price (fractional weekday)
         rating: 5,
@@ -230,12 +230,12 @@ export const motelsConfig: MotelsConfigMap = {
 
     assets: {
       logo: {
-        light: '/assets/yes/logo-light.png',
-        dark: '/assets/yes/logo-dark.png',
+        light: '/assets/yes/logo-light.webp',
+        dark: '/assets/yes/logo-dark.webp',
       },
       heroImages: [
         '/assets/yes/suite-yes/principal.jpg',
-        '/assets/yes/suite-yes-plus/principal.jpg',
+        '/assets/yes/suite-yes-plus/principal.webp',
         '/assets/yes/suite-jacuzzi/principal.jpg',
         '/assets/yes/suite-jacuzzi/room-7.jpg',
       ],
@@ -274,9 +274,9 @@ export const motelsConfig: MotelsConfigMap = {
       {
         id: 'yes-plus',
         name: 'Suite Yes Plus',
-        image: '/assets/yes/suite-yes-plus/principal.jpg',
+        image: '/assets/yes/suite-yes-plus/principal.webp',
         images: [
-          '/assets/yes/suite-yes-plus/room-1.jpg',
+          '/assets/yes/suite-yes-plus/room-1.webp',
           '/assets/yes/suite-yes-plus/room-2.jpg',
           '/assets/yes/suite-yes-plus/room-3.jpg',
           '/assets/yes/suite-yes-plus/room-4.jpg',
@@ -395,12 +395,12 @@ export const motelsConfig: MotelsConfigMap = {
     assets: {
       logo: {
         light: '/assets/calle8/logo-light.png',
-        dark: '/assets/calle8/logo-dark.png',
+        dark: '/assets/calle8/logo-dark.webp',
       },
       heroImages: [
         '/assets/calle8/suite-calle8/principal.jpg',
-        '/assets/calle8/suite-calle8-plus/principal.jpg',
-        '/assets/calle8/suite-calle8-plus/room-1.jpg',
+        '/assets/calle8/suite-calle8-plus/principal.webp',
+        '/assets/calle8/suite-calle8-plus/room-1.webp',
         '/assets/calle8/suite-calle8-plus/room-2.jpg',
       ],
       favicon: '/assets/calle8/favicon/favicon.png',
@@ -412,10 +412,10 @@ export const motelsConfig: MotelsConfigMap = {
         name: 'Suite Calle 8',
         image: '/assets/calle8/suite-calle8/principal.jpg',
         images: [
-          '/assets/calle8/suite-calle8/room-1.jpg',
-          '/assets/calle8/suite-calle8/room-2.jpg',
+          '/assets/calle8/suite-calle8/room-1.webp',
+          '/assets/calle8/suite-calle8/room-2.webp',
           '/assets/calle8/suite-calle8/room-3.jpg',
-          '/assets/calle8/suite-calle8/room-4.jpg',
+          '/assets/calle8/suite-calle8/room-4.webp',
         ],
         price: 45,
         rating: 5,
@@ -436,17 +436,17 @@ export const motelsConfig: MotelsConfigMap = {
       {
         id: 'calle8-plus',
         name: 'Suite Calle 8 Plus',
-        image: '/assets/calle8/suite-calle8-plus/principal.jpg',
+        image: '/assets/calle8/suite-calle8-plus/principal.webp',
         images: [
-          '/assets/calle8/suite-calle8-plus/room-1.jpg',
+          '/assets/calle8/suite-calle8-plus/room-1.webp',
           '/assets/calle8/suite-calle8-plus/room-2.jpg',
           '/assets/calle8/suite-calle8-plus/room-3.jpg',
-          '/assets/calle8/suite-calle8-plus/room-4.jpg',
-          '/assets/calle8/suite-calle8-plus/room-5.jpg',
-          '/assets/calle8/suite-calle8-plus/room-6.jpg',
-          '/assets/calle8/suite-calle8-plus/room-7.jpg',
-          '/assets/calle8/suite-calle8-plus/room-8.jpg',
-          '/assets/calle8/suite-calle8-plus/room-9.jpg',
+          '/assets/calle8/suite-calle8-plus/room-4.webp',
+          '/assets/calle8/suite-calle8-plus/room-5.webp',
+          '/assets/calle8/suite-calle8-plus/room-6.webp',
+          '/assets/calle8/suite-calle8-plus/room-7.webp',
+          '/assets/calle8/suite-calle8-plus/room-8.webp',
+          '/assets/calle8/suite-calle8-plus/room-9.webp',
         ],
         price: 52,
         rating: 5,
@@ -529,8 +529,8 @@ export const motelsConfig: MotelsConfigMap = {
 
     assets: {
       logo: {
-        light: '/assets/scape/logo-light.png',
-        dark: '/assets/scape/logo-dark.png',
+        light: '/assets/scape/logo-light.webp',
+        dark: '/assets/scape/logo-dark.webp',
       },
       heroImages: [
         '/assets/scape/suite-scape/principal.jpg',
