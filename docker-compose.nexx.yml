@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  nexx-web:
+    image: ghcr.io/${GITHUB_USERNAME}/nexx-mood-booking:latest
+    networks:
+      - network_public
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      labels:
+        # Enable Traefik
+        - "traefik.enable=true"
+        - "traefik.docker.network=network_public"
+
+        # HTTP Router (redirect to HTTPS)
+        - "traefik.http.routers.nexx-web.rule=Host(`motelnexx.com`) || Host(`www.motelnexx.com`)"
+        - "traefik.http.routers.nexx-web.entrypoints=web"
+        - "traefik.http.routers.nexx-web.middlewares=redirect-to-https"
+
+        # HTTPS Router
+        - "traefik.http.routers.nexx-web-secure.rule=Host(`motelnexx.com`) || Host(`www.motelnexx.com`)"
+        - "traefik.http.routers.nexx-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.nexx-web-secure.tls.certresolver=letsencryptresolver"
+
+        # Service
+        - "traefik.http.services.nexx-web.loadbalancer.server.port=3000"
+
+        # Middleware for HTTPS redirect
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+networks:
+  network_public:
+    external: true

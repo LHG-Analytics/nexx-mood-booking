@@ -41,23 +41,23 @@ const Navbar = () => {
           transition={{ type: "spring", stiffness: 300 }}
           className="relative flex items-center"
         >
-          <div className="relative h-20 w-auto dark:hidden sm:h-24 md:h-28 lg:h-32">
+          <div className="relative h-12 w-auto dark:hidden sm:h-14 md:h-16 lg:h-20">
             <Image
               src={config.assets.logo.light}
               alt={config.name}
-              width={210}
-              height={140}
+              width={160}
+              height={80}
               className="h-full w-auto object-contain"
               priority
               quality={90}
             />
           </div>
-          <div className="relative hidden h-20 w-auto dark:block sm:h-24 md:h-28 lg:h-32">
+          <div className="relative hidden h-12 w-auto dark:block sm:h-14 md:h-16 lg:h-20">
             <Image
               src={config.assets.logo.dark}
               alt={config.name}
-              width={210}
-              height={140}
+              width={160}
+              height={80}
               className="h-full w-auto object-contain"
               priority
               quality={90}

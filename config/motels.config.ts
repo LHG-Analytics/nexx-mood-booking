@@ -678,7 +678,7 @@ export const motelsConfig: MotelsConfigMap = {
     id: 'nexx',
     name: 'Nexx Motel',
     displayName: 'NEXX MOTEL',
-    domain: 'nexxmotel.com',
+    domain: 'motelnexx.com',
 
     theme: {
       light: {
@@ -718,45 +718,113 @@ export const motelsConfig: MotelsConfigMap = {
         dark: '/assets/nexx/logo-dark.webp',
       },
       heroImages: [
-        '/assets/nexx/room-1.jpg',
-        '/assets/nexx/room-2.jpg',
-        '/assets/nexx/room-3.jpg',
-        '/assets/nexx/room-4.jpg',
+        '/assets/nexx/suite-nexx/principal.jpg',
+        '/assets/nexx/suite-nexx-plus/principal.jpg',
+        '/assets/nexx/suite-jacuzzi/principal.jpg',
+        '/assets/nexx/suite-jacuzzi/room-1.jpg',
       ],
-      favicon: '/favicon.ico',
+      favicon: '/assets/nexx/favicon/favicon.ico',
     },
 
     suites: [
       {
-        id: 'standard',
-        name: 'Standard Suite',
-        image: '/assets/nexx/room-1.jpg',
-        price: 55,
+        id: 'nexx',
+        name: 'Suite Nexx',
+        image: '/assets/nexx/suite-nexx/principal.jpg',
+        images: [
+          '/assets/nexx/suite-nexx/room-1.jpg',
+          '/assets/nexx/suite-nexx/room-2.jpg',
+          '/assets/nexx/suite-nexx/room-3.jpg',
+        ],
+        price: 45,
         rating: 5,
-        amenities: ['TV', 'RADIO', 'SHOWER', 'MINI BAR'],
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR'],
+        pricing: {
+          weekdays: {
+            fractional: 45,
+            daily: 210,
+            overnight: 105,
+          },
+          weekend: {
+            fractional: 52,
+            daily: 218,
+            overnight: 109,
+          },
+        },
+      },
+      {
+        id: 'nexx-plus',
+        name: 'Suite Nexx Plus',
+        image: '/assets/nexx/suite-nexx-plus/principal.jpg',
+        images: [
+          '/assets/nexx/suite-nexx-plus/room-1.jpg',
+          '/assets/nexx/suite-nexx-plus/room-2.jpg',
+          '/assets/nexx/suite-nexx-plus/room-3.jpg',
+        ],
+        price: 52,
+        rating: 5,
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'DOUBLE SHOWER'],
+        pricing: {
+          weekdays: {
+            fractional: 52,
+            daily: 218,
+            overnight: 109,
+          },
+          weekend: {
+            fractional: 57,
+            daily: 230,
+            overnight: 115,
+          },
+        },
+      },
+      {
+        id: 'nexx-jacuzzi',
+        name: 'Suite Jacuzzi',
+        image: '/assets/nexx/suite-jacuzzi/principal.jpg',
+        images: [
+          '/assets/nexx/suite-jacuzzi/room-1.jpg',
+          '/assets/nexx/suite-jacuzzi/room-2.jpg',
+          '/assets/nexx/suite-jacuzzi/room-3.jpg',
+          '/assets/nexx/suite-jacuzzi/room-4.jpg',
+        ],
+        price: 69,
+        rating: 5,
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'DOUBLE SHOWER', 'JACUZZI'],
+        pricing: {
+          weekdays: {
+            fractional: 69,
+            daily: 238,
+            overnight: 119,
+          },
+          weekend: {
+            fractional: 77,
+            daily: 250,
+            overnight: 125,
+          },
+        },
       },
     ],
 
     contact: {
       address: {
-        street: 'TBD',
-        city: 'Miami',
+        street: '699 E Okeechobee Rd',
+        city: 'Hialeah',
         state: 'FL',
-        zip: '00000',
-        full: 'TBD, Miami, FL',
+        zip: '33010',
+        full: '699 E Okeechobee Rd, Hialeah, FL 33010',
       },
-      phone: '(305) 000-0000',
-      email: 'info@nexxmotel.com',
-      instagram: '@nexx.motel',
-      instagramUrl: 'https://www.instagram.com/nexx.motel',
-      mapsUrl: '#',
+      phone: '(305) 885-2999',
+      email: 'info@motelnexx.com',
+      instagram: '@nexxmotels',
+      instagramUrl: 'https://www.instagram.com/nexxmotels',
+      mapsUrl: 'https://maps.google.com/?q=699+E+Okeechobee+Rd,+Hialeah,+FL+33010',
       hours: '24/7',
     },
 
     seo: {
-      title: 'Nexx Motel - Miami',
-      description: 'Nexx Motel - Premium accommodation in Miami',
-      keywords: ['nexx motel', 'miami motel'],
+      title: 'Nexx Motel - Hialeah',
+      description: 'Nexx Motel boasts rooms that are elegantly designed, infused with boutique touches that ensure a comfortable stay. Located in Hialeah, FL.',
+      keywords: ['nexx motel', 'hialeah motel', 'motel hialeah'],
     },
   },
 
