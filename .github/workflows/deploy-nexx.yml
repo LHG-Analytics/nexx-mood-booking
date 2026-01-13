@@ -56,21 +56,18 @@ jobs:
 
       - name: Deploy to Docker Swarm via SSH
         uses: appleboy/ssh-action@v1.0.0
-        env:
-          GITHUB_USERNAME: ${{ github.repository_owner }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
-          envs: GITHUB_USERNAME
           script: |
-            # Pull latest image
-            docker pull ghcr.io/${{ github.repository }}:latest
+            # Pull latest image (lowercase)
+            docker pull ghcr.io/lhg-analytics/nexx-mood-booking:latest
 
             # Deploy stack
             cd /opt/stacks/nexx
-            GITHUB_USERNAME=${{ github.repository_owner }} docker stack deploy -c docker-compose.nexx.yml nexx --with-registry-auth
+            docker stack deploy -c docker-compose.nexx.yml nexx --with-registry-auth
 
             # Wait for deployment
             sleep 10
