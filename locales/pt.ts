@@ -72,6 +72,57 @@ export const pt: Translation = {
     button: 'Reservar Agora',
   },
 
+  // Comodidades do Quarto
+  roomAmenities: {
+    title: 'Comodidades do Quarto',
+    housekeeping: {
+      title: 'Serviço de Limpeza Gratuito',
+      description: 'Limpeza diária e roupas de cama frescas',
+    },
+    checkInOut: {
+      title: 'Check-In e Check-Out Eletrônico',
+      description: 'Sem contato e conveniente',
+    },
+    smartTv: {
+      title: 'Smart TV',
+      description: 'Serviços de streaming disponíveis',
+    },
+    wifi: {
+      title: 'WiFi de Alta Velocidade',
+      description: 'Acesso à internet gratuito',
+    },
+    climate: {
+      title: 'Climatização',
+      description: 'Ar condicionado/Aquecimento individual',
+    },
+    miniBar: {
+      title: 'Frigobar',
+      description: 'Bebidas disponíveis no quarto',
+    },
+  },
+
+  // Informações Importantes
+  importantInfo: {
+    title: 'Informações Importantes',
+    subtitle: 'Por favor, revise nossas políticas antes de reservar',
+    ageRequirement: {
+      title: 'Maiores de 18 Anos',
+      description: 'Documento de identidade válido no check-in',
+    },
+    occupancy: {
+      title: 'Suítes para até 02 pessoas',
+      description: 'Ocupação máxima por quarto',
+    },
+    extraPerson: {
+      title: 'Pessoa Extra: +50%',
+      description: 'Adicional sobre o valor da suíte',
+    },
+    noAlcohol: {
+      title: 'Sem Venda de Álcool',
+      description: 'Disponível em locais próximos',
+    },
+  },
+
   // Detalhes da Suíte
   suiteDetails: {
     backToSuites: 'Voltar às Suítes',

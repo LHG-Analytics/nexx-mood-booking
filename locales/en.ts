@@ -70,6 +70,57 @@ export const en = {
     button: 'Book Now',
   },
 
+  // Room Amenities
+  roomAmenities: {
+    title: 'Room Amenities',
+    housekeeping: {
+      title: 'Free Housekeeping Services',
+      description: 'Daily cleaning and fresh linens',
+    },
+    checkInOut: {
+      title: 'Electronic Check-In Check-out Services',
+      description: 'Contactless and convenient',
+    },
+    smartTv: {
+      title: 'Smart TV',
+      description: 'Streaming services available',
+    },
+    wifi: {
+      title: 'High-Speed WiFi',
+      description: 'Complimentary internet access',
+    },
+    climate: {
+      title: 'Climate Control',
+      description: 'Individual AC/Heating',
+    },
+    miniBar: {
+      title: 'Mini Bar',
+      description: 'Refreshments in room',
+    },
+  },
+
+  // Important Info
+  importantInfo: {
+    title: 'Important Information',
+    subtitle: 'Please review our policies before booking',
+    ageRequirement: {
+      title: 'Must be 18+ To Rent',
+      description: 'Valid ID required at check-in',
+    },
+    occupancy: {
+      title: 'Suites for up to 02 people',
+      description: 'Maximum occupancy per room',
+    },
+    extraPerson: {
+      title: 'Extra Person: +50%',
+      description: 'Additional charge of suite value',
+    },
+    noAlcohol: {
+      title: 'No Alcohol Sales',
+      description: 'Available at nearby locations',
+    },
+  },
+
   // Suite Details
   suiteDetails: {
     backToSuites: 'Back to Suites',

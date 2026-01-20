@@ -1,38 +1,41 @@
 "use client";
 import { motion } from "framer-motion";
 import { Shield, Home, Tv, Wifi, Snowflake, Coffee } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const RoomAmenities = () => {
+  const { t } = useLanguage();
+
   const amenities = [
     {
       icon: Shield,
-      title: "Free Housekeeping Services",
-      description: "Daily cleaning and fresh linens",
+      title: t.roomAmenities.housekeeping.title,
+      description: t.roomAmenities.housekeeping.description,
     },
     {
       icon: Home,
-      title: "Electronic Check-In Check-out Services",
-      description: "Contactless and convenient",
+      title: t.roomAmenities.checkInOut.title,
+      description: t.roomAmenities.checkInOut.description,
     },
     {
       icon: Tv,
-      title: "Smart TV",
-      description: "Streaming services available",
+      title: t.roomAmenities.smartTv.title,
+      description: t.roomAmenities.smartTv.description,
     },
     {
       icon: Wifi,
-      title: "High-Speed WiFi",
-      description: "Complimentary internet access",
+      title: t.roomAmenities.wifi.title,
+      description: t.roomAmenities.wifi.description,
     },
     {
       icon: Snowflake,
-      title: "Climate Control",
-      description: "Individual AC/Heating",
+      title: t.roomAmenities.climate.title,
+      description: t.roomAmenities.climate.description,
     },
     {
       icon: Coffee,
-      title: "Mini Bar",
-      description: "Refreshments in room",
+      title: t.roomAmenities.miniBar.title,
+      description: t.roomAmenities.miniBar.description,
     },
   ];
 
@@ -46,7 +49,7 @@ const RoomAmenities = () => {
           className="mx-auto max-w-4xl rounded-3xl bg-secondary/30 p-8 md:p-12"
         >
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Room Amenities</h2>
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">{t.roomAmenities.title}</h2>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">

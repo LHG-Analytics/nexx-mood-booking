@@ -1,28 +1,31 @@
 "use client";
 import { motion } from "framer-motion";
 import { CheckCircle2, Users, DollarSign, Ban } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ImportantInfo = () => {
+  const { t } = useLanguage();
+
   const info = [
     {
       icon: CheckCircle2,
-      title: "Must be 18+ To Rent",
-      description: "Valid ID required at check-in",
+      title: t.importantInfo.ageRequirement.title,
+      description: t.importantInfo.ageRequirement.description,
     },
     {
       icon: Users,
-      title: "Suites for up to 02 people",
-      description: "Maximum occupancy per room",
+      title: t.importantInfo.occupancy.title,
+      description: t.importantInfo.occupancy.description,
     },
     {
       icon: DollarSign,
-      title: "Extra Person: +50%",
-      description: "Additional charge of suite value",
+      title: t.importantInfo.extraPerson.title,
+      description: t.importantInfo.extraPerson.description,
     },
     {
       icon: Ban,
-      title: "No Alcohol Sales",
-      description: "Available at nearby locations",
+      title: t.importantInfo.noAlcohol.title,
+      description: t.importantInfo.noAlcohol.description,
     },
   ];
 
@@ -36,10 +39,10 @@ const ImportantInfo = () => {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
-            Important Information
+            {t.importantInfo.title}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Please review our policies before booking
+            {t.importantInfo.subtitle}
           </p>
         </motion.div>
 
