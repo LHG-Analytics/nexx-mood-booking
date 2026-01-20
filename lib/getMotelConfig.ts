@@ -7,8 +7,8 @@ import { motelsConfig } from '@/config/motels.config';
  */
 const DOMAIN_TO_MOTEL: Record<string, MotelId> = {
   // Production domains
-  'moodmotel.com': 'mood',
-  'www.moodmotel.com': 'mood',
+  'motelmood.com': 'mood',
+  'www.motelmood.com': 'mood',
 
   'yesmotel.com': 'yes',
   'www.yesmotel.com': 'yes',

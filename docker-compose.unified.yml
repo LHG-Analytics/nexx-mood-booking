@@ -24,10 +24,10 @@ services:
         # ============================================
         # MOOD MOTEL
         # ============================================
-        - "traefik.http.routers.mood-web.rule=Host(`moodmotel.com`) || Host(`www.moodmotel.com`)"
+        - "traefik.http.routers.mood-web.rule=Host(`motelmood.com`) || Host(`www.motelmood.com`)"
         - "traefik.http.routers.mood-web.entrypoints=web"
         - "traefik.http.routers.mood-web.middlewares=redirect-to-https"
-        - "traefik.http.routers.mood-web-secure.rule=Host(`moodmotel.com`) || Host(`www.moodmotel.com`)"
+        - "traefik.http.routers.mood-web-secure.rule=Host(`motelmood.com`) || Host(`www.motelmood.com`)"
         - "traefik.http.routers.mood-web-secure.entrypoints=websecure"
         - "traefik.http.routers.mood-web-secure.tls.certresolver=letsencryptresolver"
         - "traefik.http.routers.mood-web-secure.service=motels-web"
