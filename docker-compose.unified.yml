@@ -1,0 +1,88 @@
+version: "3.8"
+
+services:
+  motels-web:
+    image: ghcr.io/lhg-analytics/nexx-mood-booking:latest
+    networks:
+      - network_public
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+      labels:
+        # Enable Traefik
+        - "traefik.enable=true"
+        - "traefik.docker.network=network_public"
+
+        # ============================================
+        # MOOD MOTEL
+        # ============================================
+        - "traefik.http.routers.mood-web.rule=Host(`moodmotel.com`) || Host(`www.moodmotel.com`)"
+        - "traefik.http.routers.mood-web.entrypoints=web"
+        - "traefik.http.routers.mood-web.middlewares=redirect-to-https"
+        - "traefik.http.routers.mood-web-secure.rule=Host(`moodmotel.com`) || Host(`www.moodmotel.com`)"
+        - "traefik.http.routers.mood-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.mood-web-secure.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.mood-web-secure.service=motels-web"
+
+        # ============================================
+        # YES MOTEL
+        # ============================================
+        - "traefik.http.routers.yes-web.rule=Host(`yesmotel.com`) || Host(`www.yesmotel.com`) || Host(`yesmotels.com`) || Host(`www.yesmotels.com`)"
+        - "traefik.http.routers.yes-web.entrypoints=web"
+        - "traefik.http.routers.yes-web.middlewares=redirect-to-https"
+        - "traefik.http.routers.yes-web-secure.rule=Host(`yesmotel.com`) || Host(`www.yesmotel.com`) || Host(`yesmotels.com`) || Host(`www.yesmotels.com`)"
+        - "traefik.http.routers.yes-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.yes-web-secure.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.yes-web-secure.service=motels-web"
+
+        # ============================================
+        # CALLE8 MOTEL
+        # ============================================
+        - "traefik.http.routers.calle8-web.rule=Host(`motelcalle8.com`) || Host(`www.motelcalle8.com`)"
+        - "traefik.http.routers.calle8-web.entrypoints=web"
+        - "traefik.http.routers.calle8-web.middlewares=redirect-to-https"
+        - "traefik.http.routers.calle8-web-secure.rule=Host(`motelcalle8.com`) || Host(`www.motelcalle8.com`)"
+        - "traefik.http.routers.calle8-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.calle8-web-secure.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.calle8-web-secure.service=motels-web"
+
+        # ============================================
+        # SCAPE MOTEL
+        # ============================================
+        - "traefik.http.routers.scape-web.rule=Host(`motelscape.com`) || Host(`www.motelscape.com`)"
+        - "traefik.http.routers.scape-web.entrypoints=web"
+        - "traefik.http.routers.scape-web.middlewares=redirect-to-https"
+        - "traefik.http.routers.scape-web-secure.rule=Host(`motelscape.com`) || Host(`www.motelscape.com`)"
+        - "traefik.http.routers.scape-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.scape-web-secure.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.scape-web-secure.service=motels-web"
+
+        # ============================================
+        # NEXX MOTEL
+        # ============================================
+        - "traefik.http.routers.nexx-web.rule=Host(`motelnexx.com`) || Host(`www.motelnexx.com`)"
+        - "traefik.http.routers.nexx-web.entrypoints=web"
+        - "traefik.http.routers.nexx-web.middlewares=redirect-to-https"
+        - "traefik.http.routers.nexx-web-secure.rule=Host(`motelnexx.com`) || Host(`www.motelnexx.com`)"
+        - "traefik.http.routers.nexx-web-secure.entrypoints=websecure"
+        - "traefik.http.routers.nexx-web-secure.tls.certresolver=letsencryptresolver"
+        - "traefik.http.routers.nexx-web-secure.service=motels-web"
+
+        # ============================================
+        # SERVICE & MIDDLEWARES
+        # ============================================
+        - "traefik.http.services.motels-web.loadbalancer.server.port=3000"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+networks:
+  network_public:
+    external: true

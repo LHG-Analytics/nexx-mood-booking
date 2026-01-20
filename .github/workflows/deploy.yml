@@ -1,13 +1,9 @@
-name: Deploy YES Motel
+name: Deploy Motels (Unified)
 
 on:
   push:
     branches:
       - main
-    paths:
-      - '**'
-      - '!.github/workflows/deploy-*.yml'
-      - '.github/workflows/deploy-yes.yml'
   workflow_dispatch:
 
 env:
@@ -56,25 +52,22 @@ jobs:
 
       - name: Deploy to Docker Swarm via SSH
         uses: appleboy/ssh-action@v1.0.0
-        env:
-          GITHUB_USERNAME: ${{ github.repository_owner }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
-          envs: GITHUB_USERNAME
           script: |
             # Pull latest image
-            docker pull ghcr.io/${{ github.repository }}:latest
+            docker pull ghcr.io/lhg-analytics/nexx-mood-booking:latest
 
-            # Deploy stack
-            cd /opt/stacks/yes
-            GITHUB_USERNAME=${{ github.repository_owner }} docker stack deploy -c docker-compose.yes.yml yes --with-registry-auth
+            # Deploy unified stack
+            cd /opt/stacks/unified
+            docker stack deploy -c docker-compose.unified.yml motels --with-registry-auth
 
             # Wait for deployment
             sleep 10
 
             # Show service status
-            docker service ls | grep yes
-            docker service ps yes_yes-web --no-trunc
+            docker service ls | grep motels
+            docker service ps motels_motels-web --no-trunc
