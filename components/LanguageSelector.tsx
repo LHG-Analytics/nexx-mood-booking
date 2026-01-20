@@ -7,11 +7,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { LANGUAGES } from '@/types/i18n';
 
 export function LanguageSelector() {
-  const { language, setLanguage, t } = useLanguage();
+  const { locale, setLocale, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLang = LANGUAGES.find(l => l.code === language) || LANGUAGES[0];
+  const currentLang = LANGUAGES.find(l => l.locale === locale) || LANGUAGES[0];
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -50,13 +50,13 @@ export function LanguageSelector() {
           >
             {LANGUAGES.map((lang) => (
               <button
-                key={lang.code}
+                key={lang.locale}
                 onClick={() => {
-                  setLanguage(lang.code);
+                  setLocale(lang.locale);
                   setIsOpen(false);
                 }}
                 className={`flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-accent ${
-                  language === lang.code ? 'bg-accent/50' : ''
+                  locale === lang.locale ? 'bg-accent/50' : ''
                 }`}
               >
                 <span className="text-2xl">{lang.flag}</span>
@@ -64,7 +64,7 @@ export function LanguageSelector() {
                   <div className="text-sm font-medium text-foreground">{lang.nativeName}</div>
                   <div className="text-xs text-muted-foreground">{lang.name}</div>
                 </div>
-                {language === lang.code && (
+                {locale === lang.locale && (
                   <div className="h-2 w-2 rounded-full bg-primary" />
                 )}
               </button>

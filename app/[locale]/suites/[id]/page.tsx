@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import { getMotelConfigFromHostname } from "@/lib/getMotelConfig";
 import { headers } from "next/headers";
 import SuiteDetailsClient from "./suite-details-client";
-import { getTranslation } from "@/locales";
-import { Language } from "@/types/i18n";
+import { getTranslationByLocale } from "@/locales";
+import { Locale, LOCALES } from "@/types/i18n";
 
 interface Suite {
   id: string;
@@ -31,34 +31,25 @@ interface Suite {
   description: string;
 }
 
-function getLanguageFromCookie(cookieHeader: string | null): Language {
-  if (!cookieHeader) return 'en';
+export default async function SuitePage({
+  params
+}: {
+  params: Promise<{ id: string; locale: string }>
+}) {
+  const { id, locale } = await params;
 
-  const cookies = cookieHeader.split(';').map(c => c.trim());
-  const langCookie = cookies.find(c => c.startsWith('motel-language='));
-
-  if (langCookie) {
-    const lang = langCookie.split('=')[1] as Language;
-    if (['en', 'pt', 'es'].includes(lang)) {
-      return lang;
-    }
+  // Validate locale
+  if (!LOCALES.includes(locale as Locale)) {
+    notFound();
   }
-
-  return 'en';
-}
-
-export default async function SuitePage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
 
   // Get motel config from hostname
   const headersList = await headers();
   const hostname = headersList.get('host') || 'localhost';
   const motelConfig = getMotelConfigFromHostname(hostname);
 
-  // Get language from cookie (fallback to 'en')
-  const cookieHeader = headersList.get('cookie');
-  const language = getLanguageFromCookie(cookieHeader);
-  const t = getTranslation(language);
+  // Get translation based on URL locale
+  const t = getTranslationByLocale(locale as Locale);
 
   // Find suite in motel config
   const suiteData = motelConfig.suites.find(s => s.id === id);

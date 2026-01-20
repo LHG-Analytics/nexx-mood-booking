@@ -1,46 +1,52 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Language, DEFAULT_LANGUAGE } from '@/types/i18n';
+import { createContext, useContext, ReactNode } from 'react';
+import { useParams, useRouter, usePathname } from 'next/navigation';
+import { Language, Locale, DEFAULT_LOCALE, LOCALES, localeToLanguage } from '@/types/i18n';
 import { getTranslation } from '@/locales';
 import type { Translation } from '@/locales/en';
 
 interface LanguageContextType {
   language: Language;
-  setLanguage: (lang: Language) => void;
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
   t: Translation;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'motel-language';
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
-  const [mounted, setMounted] = useState(false);
+  const params = useParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    setMounted(true);
-    // Load saved language from localStorage
-    const saved = localStorage.getItem(STORAGE_KEY) as Language;
-    if (saved && ['en', 'pt', 'es'].includes(saved)) {
-      setLanguageState(saved);
-    }
-  }, []);
+  // Get locale from URL params or default
+  const urlLocale = params?.locale as Locale;
+  const currentLocale: Locale = LOCALES.includes(urlLocale) ? urlLocale : DEFAULT_LOCALE;
+  const currentLanguage = localeToLanguage(currentLocale);
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    if (mounted) {
-      localStorage.setItem(STORAGE_KEY, lang);
-      // Also save to cookie for server-side access
-      document.cookie = `motel-language=${lang}; path=/; max-age=31536000; SameSite=Lax`;
+  const setLocale = (newLocale: Locale) => {
+    // Navigate to the same page with new locale
+    const segments = pathname.split('/');
+    // Replace locale segment (first segment after empty string)
+    if (LOCALES.includes(segments[1] as Locale)) {
+      segments[1] = newLocale;
+    } else {
+      segments.splice(1, 0, newLocale);
     }
+    const newPath = segments.join('/') || `/${newLocale}`;
+    router.push(newPath);
   };
 
-  const t = getTranslation(language);
+  const t = getTranslation(currentLanguage);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{
+      language: currentLanguage,
+      locale: currentLocale,
+      setLocale,
+      t
+    }}>
       {children}
     </LanguageContext.Provider>
   );
