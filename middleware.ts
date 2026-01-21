@@ -28,7 +28,9 @@ export function middleware(request: NextRequest) {
 
   // Redirect to default locale (en-US)
   const locale = DEFAULT_LOCALE;
-  const newUrl = new URL(`/${locale}${pathname}`, request.url);
+  // Avoid trailing slash to prevent double redirect (Next.js removes trailing slashes by default)
+  const normalizedPath = pathname === '/' ? '' : pathname;
+  const newUrl = new URL(`/${locale}${normalizedPath}`, request.url);
 
   // Preserve query parameters
   newUrl.search = request.nextUrl.search;
