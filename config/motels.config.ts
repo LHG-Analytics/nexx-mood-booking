@@ -186,6 +186,8 @@ export const motelsConfig: MotelsConfigMap = {
       title: 'Mood Motel - Luxury Suites in Miami',
       description: 'Experience luxury at MOOD MOTEL - Premium suites with LED lighting, smart TV, high-speed WiFi, and more. Located in Miami, FL.',
       keywords: ['motel', 'hotel', 'luxury suites', 'Miami', 'accommodation', 'LED lighting'],
+      googleAnalytics: 'G-HT367PH646',
+      googleTagManager: 'GTM-MD7LXG3S',
     },
   },
 
@@ -351,6 +353,8 @@ export const motelsConfig: MotelsConfigMap = {
       title: 'Yes Motel - Miami',
       description: 'Yes Motel - Premium accommodation in Miami',
       keywords: ['yes motel', 'miami motel'],
+      googleAnalytics: 'G-84BGW2KQE1',
+      googleTagManager: 'GTM-THVGGJQP',
     },
   },
 
@@ -486,6 +490,8 @@ export const motelsConfig: MotelsConfigMap = {
       title: 'Motel Calle 8 - Miami',
       description: 'Motel Calle 8 - Premium accommodation in Miami',
       keywords: ['motel calle 8', 'miami motel'],
+      googleAnalytics: 'G-KS0D5ZD6T8',
+      googleTagManager: 'GTM-MKR7CVVW',
     },
   },
 
@@ -671,6 +677,8 @@ export const motelsConfig: MotelsConfigMap = {
       title: 'Scape Motel - Miami',
       description: 'Scape Motel - Premium accommodation in Miami',
       keywords: ['scape motel', 'miami motel'],
+      googleAnalytics: 'G-6HK8HDW31Q',
+      googleTagManager: 'GTM-N9HZKSB6',
     },
   },
 
@@ -825,6 +833,8 @@ export const motelsConfig: MotelsConfigMap = {
       title: 'Nexx Motel - Hialeah',
       description: 'Nexx Motel boasts rooms that are elegantly designed, infused with boutique touches that ensure a comfortable stay. Located in Hialeah, FL.',
       keywords: ['nexx motel', 'hialeah motel', 'motel hialeah'],
+      googleAnalytics: 'G-FJXEDTW5WE',
+      googleTagManager: 'GTM-W64BLFQG',
     },
   },
 

@@ -112,12 +112,14 @@ export interface MotelContact {
 }
 
 /**
- * SEO Configuration (for future implementation)
+ * SEO Configuration
  */
 export interface MotelSEO {
   title: string;
   description: string;
   keywords: string[];
+  googleAnalytics?: string; // Google Analytics ID (e.g., G-HT367PH646)
+  googleTagManager?: string; // Google Tag Manager ID (e.g., GTM-MD7LXG3S)
 }
 
 /**
