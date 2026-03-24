@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Script from "next/script";
 import { getMotelConfigFromHostname } from "@/lib/getMotelConfig";
+import { generateMotelSchema } from "@/lib/schemaOrg";
 import { LOCALES, Locale } from "@/types/i18n";
 import { notFound } from "next/navigation";
 
@@ -105,6 +106,12 @@ export default async function LocaleLayout({ children, params }: Props) {
       <link rel="alternate" hrefLang="pt-BR" href="/pt-BR" />
       <link rel="alternate" hrefLang="es-ES" href="/es-ES" />
       <link rel="alternate" hrefLang="x-default" href="/en-US" />
+
+      {/* Schema.org JSON-LD — structured data for AI crawlers and search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateMotelSchema(config, locale)) }}
+      />
 
       {children}
     </>
