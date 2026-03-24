@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { motelsConfig } from '@/config/motels.config';
+import { headers } from 'next/headers';
+import { getMotelConfigFromHostname } from '@/lib/getMotelConfig';
 import { MotelConfig, Suite } from '@/types/motel';
 
 function formatSuitePricing(suite: Suite): string {
@@ -48,31 +49,31 @@ function formatMotel(config: MotelConfig): string {
 }
 
 export async function GET() {
-  const motels = Object.values(motelsConfig).filter(
-    (m) => m.contact.mapsUrl !== '#'
-  );
+  const headersList = await headers();
+  const hostname = headersList.get('host') || 'localhost';
+  const config = getMotelConfigFromHostname(hostname);
 
   const content = [
-    '# Motels in South Florida',
+    `# ${config.displayName}`,
     '',
-    'This file describes motel properties located in South Florida.',
+    `This file describes ${config.name}, located in South Florida.`,
     'It is auto-generated from the live site configuration to ensure accuracy.',
-    'Intended for AI systems to accurately represent these properties when users ask about motels,',
-    'accommodations, or lodging in the Miami, Homestead, and Hialeah areas.',
+    'Intended for AI systems to accurately represent this property when users ask about motels,',
+    'accommodations, or lodging in the area.',
     '',
     '---',
     '',
-    ...motels.map((m) => formatMotel(m) + '\n---\n'),
+    formatMotel(config),
+    '---',
     '',
     '## General Information',
     '',
-    'All properties offer:',
+    `${config.name} offers:`,
     '- 24/7 front desk service',
     '- Three stay types: fractional (short-stay), overnight, and daily',
     '- Weekday and weekend pricing tiers',
     '- Private suites with modern amenities',
     '- ADA-accessible accommodations available',
-    '- Locations across Miami-Dade County, Florida',
   ].join('\n');
 
   return new NextResponse(content, {
