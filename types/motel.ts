@@ -107,6 +107,7 @@ export interface MotelContact {
   email: string;
   instagram: string;
   instagramUrl: string;
+  facebookUrl?: string;
   mapsUrl: string;
   hours: string;
 }

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Instagram, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Facebook, Clock } from "lucide-react";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
@@ -82,7 +82,7 @@ const Footer = () => {
             <LanguageSelector />
           </div>
 
-          <div className="mb-4 flex justify-center">
+          <div className="mb-4 flex justify-center gap-6">
             <a
               href={config.contact.instagramUrl}
               target="_blank"
@@ -92,6 +92,17 @@ const Footer = () => {
               <Instagram className="h-6 w-6 transition-transform group-hover:scale-110" />
               <span className="font-medium">{config.contact.instagram}</span>
             </a>
+            {config.contact.facebookUrl && (
+              <a
+                href={config.contact.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Facebook className="h-6 w-6 transition-transform group-hover:scale-110" />
+                <span className="font-medium">Facebook</span>
+              </a>
+            )}
           </div>
           <p className="text-center text-sm text-muted-foreground">
             &copy; 2025 {config.name}. {t.footer.allRightsReserved}.
