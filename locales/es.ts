@@ -110,16 +110,21 @@ export const es: Translation = {
       description: 'Identificación válida requerida al check-in',
     },
     occupancy: {
-      title: 'Suites para hasta 02 personas',
-      description: 'Ocupación máxima por habitación',
+      title: 'Tarifas para 2 Huéspedes',
+      description: 'Los precios mostrados son por suite para 2 huéspedes',
     },
     extraPerson: {
       title: 'Persona Extra: +50%',
       description: 'Cargo adicional sobre el valor de la suite',
     },
-    noAlcohol: {
-      title: 'Sin Venta de Alcohol',
-      description: 'Disponible en ubicaciones cercanas',
+    alcohol: {
+      title: 'Bebidas Alcohólicas Disponibles',
+      description: 'Para mayores de 21 años con identificación con foto',
+    },
+    // Activado por motel mediante `importantInfoExtras` en motels.config.ts
+    flexibleRates: {
+      title: 'Estancias por Día y Noche',
+      description: 'También alquilamos por día y noche. Los fines de semana tienen tarifas distintas',
     },
   },
 

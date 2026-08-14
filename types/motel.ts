@@ -124,6 +124,12 @@ export interface MotelSEO {
 }
 
 /**
+ * Extra cards a motel can add to the Important Info section.
+ * Each key maps to an `importantInfo.<key>` entry in the locale files.
+ */
+export type ImportantInfoExtra = 'flexibleRates';
+
+/**
  * Complete Motel Configuration
  */
 export interface MotelConfig {
@@ -136,6 +142,7 @@ export interface MotelConfig {
   suites: Suite[];
   contact: MotelContact;
   seo: MotelSEO;
+  importantInfoExtras?: ImportantInfoExtra[]; // Extra Important Info cards for this motel
 }
 
 /**

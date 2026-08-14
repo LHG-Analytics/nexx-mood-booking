@@ -24,11 +24,11 @@ const MOTEL_CONTEXT: Record<string, {
     faq: [
       {
         q: 'Is there a motel with jacuzzi in Miami?',
-        a: 'Yes — Mood Motel offers jacuzzi suites starting at $79 on Biscayne Blvd, Miami.',
+        a: 'Yes — Mood Motel offers jacuzzi suites starting at $82 on Biscayne Blvd, Miami.',
       },
       {
         q: 'Are there hourly motels in Miami?',
-        a: 'Mood Motel offers fractional stays designed for privacy and flexibility, starting at $55.',
+        a: 'Mood Motel offers fractional stays designed for privacy and flexibility, starting at $57.',
       },
       {
         q: 'Is there a motel similar to Brazilian motels in Miami?',
@@ -36,7 +36,7 @@ const MOTEL_CONTEXT: Record<string, {
       },
       {
         q: 'What is the most luxurious motel in Miami?',
-        a: 'The Suite VIP at Mood Motel offers jacuzzi, pole, love seat, and double shower, starting at $125 per fractional stay.',
+        a: 'The Suite VIP at Mood Motel offers jacuzzi, pole, love seat, and double shower, starting at $109 per fractional stay.',
       },
     ],
   },
@@ -44,12 +44,12 @@ const MOTEL_CONTEXT: Record<string, {
   yes: {
     bestFor: [
       'Couples in South Miami-Dade, Homestead, or Florida City area',
-      'Budget-friendly short stays starting at $42',
+      'Budget-friendly short stays starting at $45',
       'Jacuzzi suite experience in South Dade at accessible prices',
       'Travelers near Homestead or the Florida Keys corridor',
     ],
     marketPosition:
-      'Yes Motel in Homestead offers the most affordable motel experience in South Miami-Dade County, with fractional stays starting at $42. Located on South Dixie Highway, it serves couples in the southernmost part of Miami-Dade with a Brazilian-style short-stay experience at accessible price points.',
+      'Yes Motel in Homestead offers the most affordable motel experience in South Miami-Dade County, with fractional stays starting at $45. Located on South Dixie Highway, it serves couples in the southernmost part of Miami-Dade with a Brazilian-style short-stay experience at accessible price points.',
     nearbyAreas: ['Homestead', 'Florida City', 'Cutler Bay', 'Kendall', 'Florida Keys'],
     faq: [
       {
@@ -58,7 +58,7 @@ const MOTEL_CONTEXT: Record<string, {
       },
       {
         q: 'What is the cheapest motel with jacuzzi near Miami?',
-        a: 'Yes Motel in Homestead offers jacuzzi suites starting at $65 per fractional stay, making it one of the most affordable jacuzzi motel options in South Florida.',
+        a: 'Yes Motel in Homestead offers jacuzzi suites starting at $69 per fractional stay, making it one of the most affordable jacuzzi motel options in South Florida.',
       },
       {
         q: 'Are there motels near the Florida Keys?',
@@ -88,7 +88,7 @@ const MOTEL_CONTEXT: Record<string, {
       },
       {
         q: 'Are there short-stay motels in West Miami?',
-        a: 'Motel Calle 8 offers fractional stays starting at $45 in the West Miami/Little Havana area.',
+        a: 'Motel Calle 8 offers fractional stays starting at $49 in the West Miami/Little Havana area.',
       },
     ],
   },
@@ -96,7 +96,7 @@ const MOTEL_CONTEXT: Record<string, {
   scape: {
     bestFor: [
       'Couples in South Miami, Cutler Bay, or Palmetto Bay',
-      'Premium stays — VIP suite with jacuzzi starting at $79',
+      'Premium stays — VIP suite with jacuzzi starting at $89',
       'Short stays on the South Dixie Highway corridor',
       'Travelers between Miami and Homestead',
     ],
@@ -106,7 +106,7 @@ const MOTEL_CONTEXT: Record<string, {
     faq: [
       {
         q: 'Is there a motel with VIP jacuzzi suite in South Miami?',
-        a: 'Scape Motel offers a VIP suite with jacuzzi starting at $79 per fractional stay on South Dixie Highway.',
+        a: 'Scape Motel offers a VIP suite with jacuzzi starting at $89 per fractional stay on South Dixie Highway.',
       },
       {
         q: 'Are there motels in Cutler Bay or South Miami?',
@@ -136,11 +136,11 @@ const MOTEL_CONTEXT: Record<string, {
       },
       {
         q: 'Are there hourly motels in Hialeah?',
-        a: 'Nexx Motel offers fractional stays starting at $45 in Hialeah, FL.',
+        a: 'Nexx Motel offers fractional stays starting at $49 in Hialeah, FL.',
       },
       {
         q: 'Is there a motel with jacuzzi in Hialeah?',
-        a: 'Nexx Motel offers a jacuzzi suite starting at $69 per fractional stay.',
+        a: 'Nexx Motel offers a jacuzzi suite starting at $75 per fractional stay.',
       },
     ],
   },

@@ -67,12 +67,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/mood/suite-mood/room-2.jpg',
           '/assets/mood/suite-mood/room-3.jpg',
         ],
-        price: 55, // Lowest price (fractional weekday)
+        price: 57, // Lowest price (fractional weekday)
         rating: 5,
         amenities: ['TV', 'RADIO', 'SINGLE SHOWER', 'MINI BAR'],
         pricing: {
           weekdays: {
-            fractional: 55,
+            fractional: 57,
             daily: 218,
             overnight: 109,
           },
@@ -97,12 +97,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/mood/suite-mood-plus/room-7.webp',
           '/assets/mood/suite-mood-plus/room-8.webp',
         ],
-        price: 59, // Lowest price (fractional weekday)
+        price: 65, // Lowest price (fractional weekday)
         rating: 5,
         amenities: ['TV', 'RADIO', 'POLE', 'MINI BAR', 'DOUBLE SHOWER'],
         pricing: {
           weekdays: {
-            fractional: 59,
+            fractional: 65,
             daily: 230,
             overnight: 115,
           },
@@ -122,12 +122,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/mood/suite-jacuzzi/room-2.webp',
           '/assets/mood/suite-jacuzzi/room-3.webp',
         ],
-        price: 79, // Lowest price (fractional weekday)
+        price: 82, // Lowest price (fractional weekday)
         rating: 5,
         amenities: ['TV', 'RADIO', 'MINI BAR', 'LOVE SEAT', 'DOUBLE SHOWER', 'POLE', 'JACUZZI'],
         pricing: {
           weekdays: {
-            fractional: 79,
+            fractional: 82,
             daily: 278,
             overnight: 139,
           },
@@ -148,12 +148,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/mood/suite-vip/room-3.webp',
           '/assets/mood/suite-vip/room-4.webp',
         ],
-        price: 125, // Lowest price (fractional weekday)
+        price: 109, // Lowest price (fractional weekday)
         rating: 5,
         amenities: ['TV', 'RADIO', 'MINI BAR', 'LOVE SEAT', 'DOUBLE SHOWER', 'POLE', 'JACUZZI'],
         pricing: {
           weekdays: {
-            fractional: 125,
+            fractional: 109,
             daily: 370,
             overnight: 185,
           },
@@ -258,12 +258,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/yes/suite-yes/room-5.jpg',
           '/assets/yes/suite-yes/room-6.jpg',
         ],
-        price: 42,
+        price: 45,
         rating: 5,
         amenities: ['TV', 'RADIO', 'SHOWER', 'MINI BAR'],
         pricing: {
           weekdays: {
-            fractional: 42,
+            fractional: 45,
             daily: 198,
             overnight: 99,
           },
@@ -285,12 +285,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/yes/suite-yes-plus/room-4.jpg',
           '/assets/yes/suite-yes-plus/room-5.jpg',
         ],
-        price: 49,
+        price: 52,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT'],
         pricing: {
           weekdays: {
-            fractional: 49,
+            fractional: 52,
             daily: 210,
             overnight: 105,
           },
@@ -316,12 +316,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/yes/suite-jacuzzi/room-8.jpg',
           '/assets/yes/suite-jacuzzi/room-9.jpg',
         ],
-        price: 65,
+        price: 69,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'JACUZZI'],
         pricing: {
           weekdays: {
-            fractional: 65,
+            fractional: 69,
             daily: 230,
             overnight: 115,
           },
@@ -423,12 +423,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/calle8/suite-calle8/room-3.jpg',
           '/assets/calle8/suite-calle8/room-4.webp',
         ],
-        price: 45,
+        price: 49,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT'],
         pricing: {
           weekdays: {
-            fractional: 45,
+            fractional: 49,
             daily: 210,
             overnight: 105,
           },
@@ -454,12 +454,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/calle8/suite-calle8-plus/room-8.webp',
           '/assets/calle8/suite-calle8-plus/room-9.webp',
         ],
-        price: 52,
+        price: 55,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'POLE'],
         pricing: {
           weekdays: {
-            fractional: 52,
+            fractional: 55,
             daily: 218,
             overnight: 109,
           },
@@ -470,6 +470,36 @@ export const motelsConfig: MotelsConfigMap = {
           },
         },
       },
+      // TODO Jacuzzi Suite — requested by Mariana, $72 / 3 hours (weekdays).
+      // Photos have arrived; image paths below match the files on disk.
+      // Still blocked on Mariana: the daily/overnight/weekend rates (the suite
+      // detail page renders all six figures) and the real amenity list — the
+      // amenities below are copied from the other motels' jacuzzi suites.
+      // Uncomment once those numbers are confirmed.
+      // {
+      //   id: 'calle8-jacuzzi',
+      //   name: 'Suite Jacuzzi',
+      //   image: '/assets/calle8/suite-jacuzzi/principal.webp',
+      //   images: [
+      //     '/assets/calle8/suite-jacuzzi/room-1.webp',
+      //     '/assets/calle8/suite-jacuzzi/room-2.webp',
+      //   ],
+      //   price: 72,
+      //   rating: 5,
+      //   amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'JACUZZI'],
+      //   pricing: {
+      //     weekdays: {
+      //       fractional: 72,
+      //       daily: 0, // TODO ask Mariana
+      //       overnight: 0, // TODO ask Mariana
+      //     },
+      //     weekend: {
+      //       fractional: 0, // TODO ask Mariana
+      //       daily: 0, // TODO ask Mariana
+      //       overnight: 0, // TODO ask Mariana
+      //     },
+      //   },
+      // },
     ],
 
     contact: {
@@ -562,13 +592,14 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/scape/suite-scape/room-4.jpg',
           '/assets/scape/suite-scape/room-5.jpg',
           '/assets/scape/suite-scape/room-6.jpg',
+          '/assets/scape/suite-scape/room-7.webp',
         ],
-        price: 45,
+        price: 49,
         rating: 5,
         amenities: ['TV', 'RADIO', 'SHOWER', 'MINI BAR', 'LOVE SEAT'],
         pricing: {
           weekdays: {
-            fractional: 45,
+            fractional: 49,
             daily: 210,
             overnight: 105,
           },
@@ -589,13 +620,14 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/scape/suite-scape-plus/room-3.jpg',
           '/assets/scape/suite-scape-plus/room-4.jpg',
           '/assets/scape/suite-scape-plus/room-5.jpg',
+          '/assets/scape/suite-scape-plus/room-6.webp',
         ],
-        price: 52,
+        price: 55,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'POLE'],
         pricing: {
           weekdays: {
-            fractional: 52,
+            fractional: 55,
             daily: 218,
             overnight: 109,
           },
@@ -616,13 +648,14 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/scape/suite-jacuzzi/room-3.jpg',
           '/assets/scape/suite-jacuzzi/room-4.jpg',
           '/assets/scape/suite-jacuzzi/room-5.jpg',
+          '/assets/scape/suite-jacuzzi/room-6.webp',
         ],
-        price: 69,
+        price: 75,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'JACUZZI'],
         pricing: {
           weekdays: {
-            fractional: 69,
+            fractional: 75,
             daily: 238,
             overnight: 119,
           },
@@ -642,12 +675,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/scape/suite-vip/room-2.jpg',
           '/assets/scape/suite-vip/room-3.jpg',
         ],
-        price: 79,
+        price: 89,
         rating: 5,
         amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'JACUZZI'],
         pricing: {
           weekdays: {
-            fractional: 79,
+            fractional: 89,
             daily: 258,
             overnight: 129,
           },
@@ -748,12 +781,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/nexx/suite-nexx/room-2.jpg',
           '/assets/nexx/suite-nexx/room-3.jpg',
         ],
-        price: 45,
+        price: 49,
         rating: 5,
         amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR'],
         pricing: {
           weekdays: {
-            fractional: 45,
+            fractional: 49,
             daily: 210,
             overnight: 105,
           },
@@ -773,12 +806,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/nexx/suite-nexx-plus/room-2.jpg',
           '/assets/nexx/suite-nexx-plus/room-3.jpg',
         ],
-        price: 52,
+        price: 55,
         rating: 5,
         amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'DOUBLE SHOWER'],
         pricing: {
           weekdays: {
-            fractional: 52,
+            fractional: 55,
             daily: 218,
             overnight: 109,
           },
@@ -799,12 +832,12 @@ export const motelsConfig: MotelsConfigMap = {
           '/assets/nexx/suite-jacuzzi/room-3.jpg',
           '/assets/nexx/suite-jacuzzi/room-4.jpg',
         ],
-        price: 69,
+        price: 75,
         rating: 5,
         amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'DOUBLE SHOWER', 'JACUZZI'],
         pricing: {
           weekdays: {
-            fractional: 69,
+            fractional: 75,
             daily: 238,
             overnight: 119,
           },
@@ -833,6 +866,9 @@ export const motelsConfig: MotelsConfigMap = {
       mapsUrl: 'https://maps.google.com/?q=699+E+Okeechobee+Rd,+Hialeah,+FL+33010',
       hours: '24/7',
     },
+
+    // Nexx also rents by daily/overnight and charges different weekend rates
+    importantInfoExtras: ['flexibleRates'],
 
     seo: {
       title: 'Nexx Motel - Hialeah',

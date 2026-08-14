@@ -1,10 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
-import { CheckCircle2, Users, DollarSign, Ban } from "lucide-react";
+import { CheckCircle2, Users, DollarSign, Wine, CalendarClock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useMotel } from "@/contexts/MotelContext";
+import type { ImportantInfoExtra } from "@/types/motel";
+
+const extraIcons: Record<ImportantInfoExtra, typeof CalendarClock> = {
+  flexibleRates: CalendarClock,
+};
 
 const ImportantInfo = () => {
   const { t } = useLanguage();
+  const config = useMotel();
 
   const info = [
     {
@@ -23,10 +30,16 @@ const ImportantInfo = () => {
       description: t.importantInfo.extraPerson.description,
     },
     {
-      icon: Ban,
-      title: t.importantInfo.noAlcohol.title,
-      description: t.importantInfo.noAlcohol.description,
+      icon: Wine,
+      title: t.importantInfo.alcohol.title,
+      description: t.importantInfo.alcohol.description,
     },
+    // Motel-specific cards (e.g. Nexx's daily/overnight rates)
+    ...(config.importantInfoExtras ?? []).map((key) => ({
+      icon: extraIcons[key],
+      title: t.importantInfo[key].title,
+      description: t.importantInfo[key].description,
+    })),
   ];
 
   return (
@@ -46,7 +59,9 @@ const ImportantInfo = () => {
           </p>
         </motion.div>
 
-        <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* Flex-wrap (not grid) so motels with a 5th card get it centered on a
+            second row instead of stranded in a 4-column track */}
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-6">
           {info.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -57,7 +72,7 @@ const ImportantInfo = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="rounded-2xl border border-border bg-card p-6 shadow-lg transition-all duration-300 hover:border-primary/30 hover:shadow-xl"
+                className="w-full rounded-2xl border border-border bg-card p-6 shadow-lg transition-all duration-300 hover:border-primary/30 hover:shadow-xl md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
               >
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
                   <Icon className="h-7 w-7 text-primary" />

@@ -108,16 +108,21 @@ export const en = {
       description: 'Valid ID required at check-in',
     },
     occupancy: {
-      title: 'Suites for up to 02 people',
-      description: 'Maximum occupancy per room',
+      title: 'Rates Are for 2 Guests',
+      description: 'Pricing shown is per suite for 2 guests',
     },
     extraPerson: {
       title: 'Extra Person: +50%',
       description: 'Additional charge of suite value',
     },
-    noAlcohol: {
-      title: 'No Alcohol Sales',
-      description: 'Available at nearby locations',
+    alcohol: {
+      title: 'Alcoholic Beverages Available',
+      description: 'For guests 21+ with valid photo ID',
+    },
+    // Opt-in per motel via `importantInfoExtras` in motels.config.ts
+    flexibleRates: {
+      title: 'Daily & Overnight Rates',
+      description: 'Also available by daily and overnight. Weekend rates differ',
     },
   },
 
