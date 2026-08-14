@@ -48,7 +48,7 @@ const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> 
 };
 
 export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -79,7 +79,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
       {/* Header with Back Button */}
       <div className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
         <div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
-          <Link href="/#rooms">
+          <Link href={`/${locale}#rooms`}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

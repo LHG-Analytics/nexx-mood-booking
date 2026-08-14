@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { TiltedCard } from "./ui/tilted-card";
@@ -13,11 +13,28 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const SuiteCarousel = () => {
   const config = useMotel();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [isHovered, setIsHovered] = useState(false);
   const autoplayRef = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true, stopOnMouseEnter: true })
   );
+
+  // A card sliding under the pointer makes the VIEW button miss its target, so
+  // once the visitor interacts we stop autoplay for good instead of resuming it.
+  const autoplayDisabled = useRef(false);
+
+  const disableAutoplay = useCallback(() => {
+    autoplayDisabled.current = true;
+    autoplayRef.current?.stop();
+  }, []);
+
+  // Touch devices never fire mouseenter, so `stopOnMouseEnter` never pauses the
+  // carousel there and taps on VIEW land beside the button. No autoplay at all.
+  useEffect(() => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      disableAutoplay();
+    }
+  }, [disableAutoplay]);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "center", skipSnaps: false },
@@ -34,15 +51,13 @@ const SuiteCarousel = () => {
 
   const handleMouseEnter = useCallback(() => {
     setIsHovered(true);
-    if (autoplayRef.current) {
-      autoplayRef.current.stop();
-    }
+    autoplayRef.current?.stop();
   }, []);
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
-    if (autoplayRef.current) {
-      autoplayRef.current.play();
+    if (!autoplayDisabled.current) {
+      autoplayRef.current?.play();
     }
   }, []);
 
@@ -71,6 +86,7 @@ const SuiteCarousel = () => {
           className="relative px-1 py-6 sm:px-2 sm:py-8 md:px-4 md:py-12"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onPointerDown={disableAutoplay}
         >
           {/* Carousel */}
           <div className="overflow-visible" ref={emblaRef}>
@@ -134,7 +150,7 @@ const SuiteCarousel = () => {
                             <span className="text-[10px] text-muted-foreground xs:text-[11px] sm:text-xs md:text-sm">{t.suites.perNight}</span>
                           </div>
                           <Link
-                            href={`/suites/${suite.id}`}
+                            href={`/${locale}/suites/${suite.id}`}
                             className="relative z-10 w-full sm:w-auto"
                             style={{ pointerEvents: 'auto' }}
                           >
