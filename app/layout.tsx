@@ -33,7 +33,7 @@ export default async function RootLayout({
             />
           </noscript>
         )}
-        <Providers>
+        <Providers initialConfig={config}>
           {children}
         </Providers>
       </body>
