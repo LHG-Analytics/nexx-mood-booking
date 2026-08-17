@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { readdir, stat, mkdir, unlink } from 'fs/promises';
+import { readdir, stat, unlink } from 'fs/promises';
 import { join, extname, basename, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
