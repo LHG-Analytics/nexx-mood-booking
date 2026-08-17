@@ -879,6 +879,10 @@ export const motelsConfig: MotelsConfigMap = {
     },
   },
 
+  // TODO Aqua is a placeholder: the address and phone are still "TBD" and none
+  // of the asset paths below exist on disk (logo-light, logo-dark and room-1..4).
+  // Do not map a domain to it in getMotelConfig.ts before adding those files,
+  // or every image on the site will 404.
   aqua: {
     id: 'aqua',
     name: 'Aqua Motel',

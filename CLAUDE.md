@@ -19,7 +19,11 @@ npm run type-check   # TypeScript type check
 
 ### Multi-tenancy
 
-Motel identity is determined at runtime by **hostname** via `lib/getMotelConfig.ts` and `MotelContext`. All motel configs live in `config/motels.config.ts` — each has unique themes (HSL CSS variables for light/dark), suites, contacts, GA/GTM IDs, and SEO metadata. When adding a new motel, add its entry there and map its domain in `getMotelConfig.ts`.
+Motel identity is determined by **hostname**. `app/layout.tsx` resolves the config server-side from the `Host` header via `getMotelConfigFromHostname()` and passes it to `Providers` as `initialConfig`, which hands it to `MotelProvider`. This must stay wired: without `initialConfig`, `MotelContext` falls back to its `localhost` default and every domain server-renders Nexx, only correcting itself after hydration.
+
+All motel configs live in `config/motels.config.ts` — each has unique themes (HSL CSS variables for light/dark), suites, contacts, GA/GTM IDs, and SEO metadata. When adding a new motel, add its entry there and map its domain in `getMotelConfig.ts`.
+
+Optional per-motel extras: `importantInfoExtras` adds motel-specific cards to the Important Info section (each key maps to an `importantInfo.<key>` entry in every locale file).
 
 ### i18n Routing
 
@@ -36,12 +40,12 @@ Each motel defines CSS variable values (HSL format) in its config. `ThemeInjecto
 ### Component Structure
 
 - `components/ui/` — shadcn/ui components (do not modify directly)
-- Page section components (Navbar, HeroSection, SuiteCarousel, Footer, etc.) are motel-aware via `useMotelContext()`
+- Page section components (Navbar, HeroSection, SuiteCarousel, Footer, etc.) are motel-aware via `useMotel()`
 - `app/providers.tsx` composes all context providers (QueryClient, Themes, Language, Motel)
 
 ### Key Patterns
 
 - **Server components** for layouts and metadata; **Client components** (`"use client"`) only where interactivity is needed
-- Motel config is accessed via `useMotelContext()` hook — never import config files directly in components
+- Motel config is accessed via the `useMotel()` hook — never import config files directly in components
 - Dynamic suite pages: `app/[locale]/suites/[id]/page.tsx` — suite data comes from the motel config
 - SEO metadata (hreflang, OG tags, canonical URLs) is generated per-locale in each page's `generateMetadata`
