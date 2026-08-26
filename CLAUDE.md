@@ -23,6 +23,8 @@ Motel identity is determined by **hostname**. `app/layout.tsx` resolves the conf
 
 All motel configs live in `config/motels.config.ts` — each has unique themes (HSL CSS variables for light/dark), suites, contacts, GA/GTM IDs, and SEO metadata. When adding a new motel, add its entry there and map its domain in `getMotelConfig.ts`.
 
+A motel's `domain` field must be the domain that actually serves the site, and must appear in `DOMAIN_TO_MOTEL`. It feeds every canonical URL, hreflang alternate, OG url and the `llms.txt` "Website:" line, so a wrong value points search engines and AI crawlers at someone else's site. Mood shipped with `moodmotel.com` — a parked domain — while being served from `motelmood.com`; because `getMotelIdFromHostname` falls back to `'mood'`, nothing looked broken.
+
 Optional per-motel extras: `importantInfoExtras` adds motel-specific cards to the Important Info section (each key maps to an `importantInfo.<key>` entry in every locale file).
 
 ### i18n Routing

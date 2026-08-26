@@ -9,7 +9,7 @@ export const motelsConfig: MotelsConfigMap = {
     id: 'mood',
     name: 'Mood Motel',
     displayName: 'MOOD MOTEL',
-    domain: 'moodmotel.com',
+    domain: 'motelmood.com',
 
     theme: {
       light: {
