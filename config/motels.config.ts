@@ -73,13 +73,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 57,
-            daily: 218,
-            overnight: 109,
-          },
-          weekend: {
-            fractional: 59,
             daily: 230,
             overnight: 115,
+          },
+          weekend: {
+            fractional: 65,
+            daily: 248,
+            overnight: 125,
           },
         },
       },
@@ -103,13 +103,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 65,
-            daily: 230,
-            overnight: 115,
+            daily: 250,
+            overnight: 125,
           },
           weekend: {
-            fractional: 65,
-            daily: 244,
-            overnight: 122,
+            fractional: 72,
+            daily: 268,
+            overnight: 135,
           },
         },
       },
@@ -128,13 +128,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 82,
-            daily: 278,
-            overnight: 139,
+            daily: 298,
+            overnight: 149,
           },
           weekend: {
-            fractional: 85,
-            daily: 290,
-            overnight: 145,
+            fractional: 92,
+            daily: 318,
+            overnight: 159,
           },
         },
       },
@@ -154,13 +154,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 109,
-            daily: 370,
-            overnight: 185,
+            daily: 398,
+            overnight: 199,
           },
           weekend: {
-            fractional: 139,
-            daily: 395,
-            overnight: 199,
+            fractional: 125,
+            daily: 418,
+            overnight: 209,
           },
         },
       },
@@ -430,12 +430,12 @@ export const motelsConfig: MotelsConfigMap = {
           weekdays: {
             fractional: 49,
             daily: 210,
-            overnight: 105,
+            overnight: 107,
           },
           weekend: {
-            fractional: 52,
+            fractional: 55,
             daily: 218,
-            overnight: 109,
+            overnight: 112,
           },
         },
       },
@@ -461,21 +461,21 @@ export const motelsConfig: MotelsConfigMap = {
           weekdays: {
             fractional: 55,
             daily: 218,
-            overnight: 109,
+            overnight: 112,
           },
           weekend: {
-            fractional: 57,
+            fractional: 59,
             daily: 230,
-            overnight: 115,
+            overnight: 119,
           },
         },
       },
-      // TODO Jacuzzi Suite — requested by Mariana, $72 / 3 hours (weekdays).
-      // Photos have arrived; image paths below match the files on disk.
-      // Still blocked on Mariana: the daily/overnight/weekend rates (the suite
-      // detail page renders all six figures) and the real amenity list — the
-      // amenities below are copied from the other motels' jacuzzi suites.
-      // Uncomment once those numbers are confirmed.
+      // TODO Jacuzzi Suite — requested by Mariana. Photos are on disk and the
+      // rates below all come from her Calle 8 sheet, so only one thing is left:
+      // the sheet lists no amenities for this suite (the other two rows spell
+      // theirs out), and the list below is inferred from Calle 8 Plus plus the
+      // jacuzzi. Confirm it with her, then uncomment — amenities are a promise
+      // to the guest, so shipping a guessed list is worse than shipping late.
       // {
       //   id: 'calle8-jacuzzi',
       //   name: 'Suite Jacuzzi',
@@ -490,13 +490,13 @@ export const motelsConfig: MotelsConfigMap = {
       //   pricing: {
       //     weekdays: {
       //       fractional: 72,
-      //       daily: 0, // TODO ask Mariana
-      //       overnight: 0, // TODO ask Mariana
+      //       daily: 238,
+      //       overnight: 122,
       //     },
       //     weekend: {
-      //       fractional: 0, // TODO ask Mariana
-      //       daily: 0, // TODO ask Mariana
-      //       overnight: 0, // TODO ask Mariana
+      //       fractional: 79,
+      //       daily: 250,
+      //       overnight: 129,
       //     },
       //   },
       // },
@@ -600,13 +600,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 49,
-            daily: 210,
-            overnight: 105,
+            daily: 219,
+            overnight: 109,
           },
           weekend: {
-            fractional: 52,
-            daily: 218,
-            overnight: 109,
+            fractional: 55,
+            daily: 229,
+            overnight: 119,
           },
         },
       },
@@ -628,13 +628,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 55,
-            daily: 218,
-            overnight: 109,
+            daily: 232,
+            overnight: 115,
           },
           weekend: {
-            fractional: 57,
-            daily: 230,
-            overnight: 115,
+            fractional: 59,
+            daily: 247,
+            overnight: 125,
           },
         },
       },
@@ -656,13 +656,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 75,
-            daily: 238,
-            overnight: 119,
+            daily: 247,
+            overnight: 129,
           },
           weekend: {
-            fractional: 77,
-            daily: 250,
-            overnight: 125,
+            fractional: 79,
+            daily: 265,
+            overnight: 135,
           },
         },
       },
@@ -681,13 +681,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 89,
-            daily: 258,
-            overnight: 129,
+            daily: 272,
+            overnight: 149,
           },
           weekend: {
-            fractional: 89,
-            daily: 278,
-            overnight: 139,
+            fractional: 99,
+            daily: 292,
+            overnight: 159,
           },
         },
       },
@@ -787,13 +787,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 49,
-            daily: 210,
-            overnight: 105,
-          },
-          weekend: {
-            fractional: 52,
             daily: 218,
             overnight: 109,
+          },
+          weekend: {
+            fractional: 55,
+            daily: 238,
+            overnight: 119,
           },
         },
       },
@@ -812,13 +812,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 55,
-            daily: 218,
-            overnight: 109,
-          },
-          weekend: {
-            fractional: 57,
             daily: 230,
             overnight: 115,
+          },
+          weekend: {
+            fractional: 59,
+            daily: 250,
+            overnight: 125,
           },
         },
       },
@@ -838,13 +838,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 75,
-            daily: 238,
-            overnight: 119,
+            daily: 258,
+            overnight: 129,
           },
           weekend: {
-            fractional: 77,
-            daily: 250,
-            overnight: 125,
+            fractional: 79,
+            daily: 270,
+            overnight: 135,
           },
         },
       },
