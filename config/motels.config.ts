@@ -264,13 +264,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 45,
-            daily: 198,
-            overnight: 99,
+            daily: 204,
+            overnight: 102,
           },
           weekend: {
-            fractional: 49,
-            daily: 210,
-            overnight: 105,
+            fractional: 52,
+            daily: 218,
+            overnight: 109,
           },
         },
       },
@@ -291,13 +291,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 52,
-            daily: 210,
-            overnight: 105,
+            daily: 218,
+            overnight: 109,
           },
           weekend: {
-            fractional: 55,
-            daily: 224,
-            overnight: 112,
+            fractional: 57,
+            daily: 230,
+            overnight: 115,
           },
         },
       },
@@ -322,13 +322,13 @@ export const motelsConfig: MotelsConfigMap = {
         pricing: {
           weekdays: {
             fractional: 69,
-            daily: 230,
-            overnight: 115,
+            daily: 238,
+            overnight: 119,
           },
           weekend: {
-            fractional: 72,
-            daily: 244,
-            overnight: 122,
+            fractional: 75,
+            daily: 254,
+            overnight: 127,
           },
         },
       },
