@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { TiltedCard } from "./ui/tilted-card";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -59,6 +60,24 @@ const SuiteCarousel = () => {
     setIsHovered(false);
   }, []);
 
+  // The whole card is a link, so dragging the carousel sideways would otherwise
+  // open a suite on release. Embla's own click guard did not stop it here, so
+  // compare where the pointer went down against where it came up and drop the
+  // navigation if it travelled far enough to count as a drag.
+  const pointerOrigin = useRef<{ x: number; y: number } | null>(null);
+
+  const handleCardPointerDown = useCallback((event: React.PointerEvent) => {
+    pointerOrigin.current = { x: event.clientX, y: event.clientY };
+  }, []);
+
+  const handleCardClick = useCallback((event: React.MouseEvent) => {
+    const origin = pointerOrigin.current;
+    if (!origin) return;
+    const travelled =
+      Math.abs(event.clientX - origin.x) + Math.abs(event.clientY - origin.y);
+    if (travelled > 10) event.preventDefault();
+  }, []);
+
   // Get suites from config
   const suitesBase = config.suites;
 
@@ -97,14 +116,20 @@ const SuiteCarousel = () => {
                   key={index}
                   className="flex min-w-0 flex-[0_0_100%] items-center px-1 sm:flex-[0_0_50%] sm:px-2 lg:flex-[0_0_33.333%] lg:px-2"
                 >
-                  {/* Deliberately static. This card used to sit in a TiltedCard,
-                      whose spring kept moving it for ~700ms after the pointer
-                      stopped — measured 12px across and 19px down, on a button
-                      only 44px tall. The button drifted out from under the cursor
-                      between mousedown and mouseup, so the browser cancelled the
-                      click and selected the label text instead. The card keeps its
-                      hover shadow, which moves nothing. */}
-                  <div className="w-full h-[560px] sm:h-[580px] md:h-[600px]">
+                  {/* The tilt spring keeps moving the card for ~700ms after the
+                      pointer stops (measured 12px across, 19px down), which used
+                      to make the 44px VIEW button impossible to hit. The whole
+                      card is the link now, so the target is ~600px tall and that
+                      drift no longer matters. select-none keeps the drift from
+                      turning a click into a text selection. */}
+                  <TiltedCard className="w-full h-[560px] sm:h-[580px] md:h-[600px]">
+                    <Link
+                      href={`/${locale}/suites/${suite.id}`}
+                      aria-label={`${suite.name} — ${t.suiteDetails.clickToView}`}
+                      className="group block h-full w-full select-none"
+                      onPointerDown={handleCardPointerDown}
+                      onClick={handleCardClick}
+                    >
                     <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl transition-all duration-300 hover:shadow-2xl sm:rounded-2xl">
                       <div className="relative h-48 flex-shrink-0 overflow-hidden xs:h-52 sm:h-56 md:h-60">
                         <Image
@@ -112,7 +137,7 @@ const SuiteCarousel = () => {
                           alt={`${suite.name} - ${config.name}`}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-500 hover:scale-110"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
                           loading="lazy"
                           quality={85}
                         />
@@ -161,24 +186,18 @@ const SuiteCarousel = () => {
                               <span aria-hidden="true">*</span>
                             </span>
                           </div>
-                          <Link
-                            href={`/${locale}/suites/${suite.id}`}
-                            className="relative z-10 w-full sm:w-auto"
-                            style={{ pointerEvents: 'auto' }}
-                          >
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              className="w-full select-none rounded-full bg-primary px-4 py-2 text-[10px] font-medium text-primary-foreground shadow-lg transition-shadow hover:shadow-xl xs:px-4 xs:text-[11px] sm:px-5 sm:py-2.5 sm:text-xs md:px-6 md:py-3 md:text-sm"
-                              style={{ pointerEvents: 'auto' }}
-                            >
-                              {t.suites.viewButton}
-                            </motion.button>
-                          </Link>
+                          {/* A span, not a nested link: the card itself is the
+                              anchor, and an <a> inside an <a> is invalid HTML.
+                              It reacts to group-hover so hovering anywhere on
+                              the card shows the card is clickable. */}
+                          <span className="w-full rounded-full bg-primary px-4 py-2 text-center text-[10px] font-medium text-primary-foreground shadow-lg transition-transform duration-200 group-hover:scale-105 xs:px-4 xs:text-[11px] sm:w-auto sm:px-5 sm:py-2.5 sm:text-xs md:px-6 md:py-3 md:text-sm">
+                            {t.suites.viewButton}
+                          </span>
                         </div>
                       </div>
                     </div>
-                  </div>
+                    </Link>
+                  </TiltedCard>
                 </div>
               ))}
             </div>

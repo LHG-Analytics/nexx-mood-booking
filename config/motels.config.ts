@@ -69,7 +69,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 57, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'SINGLE CRYSTAL SHOWER', 'MINI BAR'],
+        amenities: ['RADIO', 'SINGLE CRYSTAL SHOWER', 'MINI BAR'],
         pricing: {
           weekdays: {
             fractional: 57,
@@ -99,7 +99,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 65, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'DOUBLE CRYSTAL SHOWER', 'MINI BAR', 'POLE DANCE'],
+        amenities: ['RADIO', 'DOUBLE CRYSTAL SHOWER', 'MINI BAR', 'POLE DANCE'],
         pricing: {
           weekdays: {
             fractional: 65,
@@ -124,7 +124,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 82, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'JACUZZI', 'DOUBLE CRYSTAL SHOWER', 'MINI BAR', 'POLE DANCE'],
+        amenities: ['JACUZZI', 'DOUBLE CRYSTAL SHOWER', 'RADIO', 'MINI BAR', 'POLE DANCE'],
         pricing: {
           weekdays: {
             fractional: 82,
@@ -150,7 +150,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 109, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'SPA BATHTUB', 'DOUBLE CRYSTAL SHOWER', 'MINI BAR', 'POLE DANCE'],
+        amenities: ['SPA BATHTUB', 'DOUBLE CRYSTAL SHOWER', 'RADIO', 'MINI BAR', 'POLE DANCE'],
         pricing: {
           weekdays: {
             fractional: 109,
@@ -260,7 +260,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 45,
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'SHOWER'],
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR'],
         pricing: {
           weekdays: {
             fractional: 45,
@@ -425,7 +425,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 49,
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'SHOWER'],
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR'],
         pricing: {
           weekdays: {
             fractional: 49,
