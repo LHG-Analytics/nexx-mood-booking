@@ -10,16 +10,22 @@ interface TiltedCardProps {
   scaleOnHover?: number;
 }
 
+// Stiff and light on purpose. The original spring (damping 30, stiffness 100,
+// mass 2) kept the card drifting for ~700ms after the pointer stopped, which
+// turned anything inside it into a moving target: clicks landed elsewhere, and
+// both Embla's drag guard and ours read the movement as a drag and cancelled
+// the navigation. This settles in roughly 150ms, so the tilt still reads as a
+// tilt but the card is effectively still by the time anyone clicks.
 const springValues = {
-  damping: 30,
-  stiffness: 100,
-  mass: 2,
+  damping: 22,
+  stiffness: 320,
+  mass: 0.6,
 };
 
 export function TiltedCard({
   children,
   className = "",
-  rotateAmplitude = 10,
+  rotateAmplitude = 6,
   scaleOnHover = 1.02,
 }: TiltedCardProps) {
   const ref = useRef<HTMLDivElement>(null);
