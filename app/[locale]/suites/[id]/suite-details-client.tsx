@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, Frame, Cross, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useCallback } from "react";
@@ -48,10 +48,13 @@ const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "CRYSTAL SHOWER": Droplets,
   "SINGLE CRYSTAL SHOWER": Droplets,
   "DOUBLE CRYSTAL SHOWER": Droplets,
+  "ONE SHOWER": Droplets,
   POLE: Users,
   "POLE DANCE": Users,
   JACUZZI: Droplets,
   "SPA BATHTUB": Bath,
+  "MIRRORED CEILING": Frame,
+  "BONDAGE CROSS": Cross,
 };
 
 export default function SuiteDetailsClient({ suite }: { suite: Suite }) {

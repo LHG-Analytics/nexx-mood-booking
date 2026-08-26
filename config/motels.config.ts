@@ -260,7 +260,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 45,
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR'],
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'SHOWER'],
         pricing: {
           weekdays: {
             fractional: 45,
@@ -425,7 +425,7 @@ export const motelsConfig: MotelsConfigMap = {
         ],
         price: 49,
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR'],
+        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'SHOWER'],
         pricing: {
           weekdays: {
             fractional: 49,
@@ -470,36 +470,41 @@ export const motelsConfig: MotelsConfigMap = {
           },
         },
       },
-      // TODO Jacuzzi Suite — requested by Mariana. Photos are on disk and the
-      // rates below all come from her Calle 8 sheet, so only one thing is left:
-      // the sheet lists no amenities for this suite (the other two rows spell
-      // theirs out), and the list below is inferred from Calle 8 Plus plus the
-      // jacuzzi. Confirm it with her, then uncomment — amenities are a promise
-      // to the guest, so shipping a guessed list is worse than shipping late.
-      // {
-      //   id: 'calle8-jacuzzi',
-      //   name: 'Suite Jacuzzi',
-      //   image: '/assets/calle8/suite-jacuzzi/principal.webp',
-      //   images: [
-      //     '/assets/calle8/suite-jacuzzi/room-1.webp',
-      //     '/assets/calle8/suite-jacuzzi/room-2.webp',
-      //   ],
-      //   price: 72,
-      //   rating: 5,
-      //   amenities: ['TV', 'RADIO', 'DOUBLE SHOWER', 'MINI BAR', 'LOVE SEAT', 'JACUZZI'],
-      //   pricing: {
-      //     weekdays: {
-      //       fractional: 72,
-      //       daily: 238,
-      //       overnight: 122,
-      //     },
-      //     weekend: {
-      //       fractional: 79,
-      //       daily: 250,
-      //       overnight: 129,
-      //     },
-      //   },
-      // },
+      {
+        id: 'calle8-jacuzzi',
+        name: 'Suite Jacuzzi',
+        image: '/assets/calle8/suite-jacuzzi/principal.webp',
+        images: [
+          '/assets/calle8/suite-jacuzzi/room-1.webp',
+          '/assets/calle8/suite-jacuzzi/room-2.webp',
+        ],
+        price: 72,
+        rating: 5,
+        // Eight amenities, so the carousel card shows the first six; the suite
+        // detail page lists them all.
+        amenities: [
+          'TV',
+          'RADIO',
+          'MINI BAR',
+          'MIRRORED CEILING',
+          'ONE SHOWER',
+          'POLE DANCE',
+          'JACUZZI',
+          'BONDAGE CROSS',
+        ],
+        pricing: {
+          weekdays: {
+            fractional: 72,
+            daily: 238,
+            overnight: 122,
+          },
+          weekend: {
+            fractional: 79,
+            daily: 250,
+            overnight: 129,
+          },
+        },
+      },
     ],
 
     contact: {

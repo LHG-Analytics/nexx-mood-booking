@@ -15,7 +15,7 @@ const MOTEL_CONTEXT: Record<string, {
       'Couples looking for a private, themed motel experience in North Miami',
       'Short stays (fractional) with fast, discreet check-in',
       'Jacuzzi suites at affordable pricing compared to Miami Beach hotels',
-      'VIP room experience with pole, love seat, and jacuzzi',
+      'VIP SPA suite with spa bathtub, double crystal shower, and pole dance',
       'Travelers near Biscayne Blvd, North Miami Beach, or Aventura',
     ],
     marketPosition:
@@ -36,7 +36,7 @@ const MOTEL_CONTEXT: Record<string, {
       },
       {
         q: 'What is the most luxurious motel in Miami?',
-        a: 'The Suite VIP at Mood Motel offers jacuzzi, pole, love seat, and double shower, starting at $109 per fractional stay.',
+        a: 'The Suite VIP at Mood Motel offers a spa bathtub, double crystal shower, pole dance, and minibar, starting at $109 per fractional stay. The separate Suite Jacuzzi starts at $82.',
       },
     ],
   },
@@ -158,18 +158,23 @@ function formatSuitePricing(suite: Suite): string {
 }
 
 function formatSuiteTable(suites: Suite[]): string {
-  const hasJacuzzi = (s: Suite) => s.amenities.includes('JACUZZI');
-  const hasPole = (s: Suite) => s.amenities.includes('POLE');
-  const hasLoveSeat = (s: Suite) => s.amenities.includes('LOVE SEAT');
+  // Match on substrings: the amenity labels follow Mariana's sheets, which use
+  // "POLE DANCE", "SINGLE/DOUBLE CRYSTAL SHOWER", "ONE SHOWER" and "SPA BATHTUB".
+  // Exact-match checks silently reported "No" for suites that do have the item.
+  const has = (s: Suite, needle: string) => s.amenities.some((a) => a.includes(needle));
+
+  const hasJacuzzi = (s: Suite) => has(s, 'JACUZZI') || has(s, 'SPA BATHTUB');
+  const hasPole = (s: Suite) => has(s, 'POLE');
+  const hasLoveSeat = (s: Suite) => has(s, 'LOVE SEAT');
   const showerType = (s: Suite) => {
-    if (s.amenities.includes('DOUBLE SHOWER')) return 'Double';
-    if (s.amenities.includes('SINGLE SHOWER')) return 'Single';
-    if (s.amenities.includes('SHOWER')) return 'Standard';
+    if (has(s, 'DOUBLE')) return 'Double';
+    if (has(s, 'SINGLE') || has(s, 'ONE SHOWER')) return 'Single';
+    if (has(s, 'SHOWER')) return 'Standard';
     return '—';
   };
 
-  const header = '| Suite | Jacuzzi | Pole | Love Seat | Shower | Price From |';
-  const divider = '|-------|---------|------|-----------|--------|------------|';
+  const header = '| Suite | Jacuzzi / Spa | Pole | Love Seat | Shower | Price From |';
+  const divider = '|-------|---------------|------|-----------|--------|------------|';
   const rows = suites.map((s) =>
     `| ${s.name} | ${hasJacuzzi(s) ? 'Yes' : 'No'} | ${hasPole(s) ? 'Yes' : 'No'} | ${hasLoveSeat(s) ? 'Yes' : 'No'} | ${showerType(s)} | $${s.price} |`
   );
