@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useCallback } from "react";
@@ -35,16 +35,23 @@ interface Suite {
   description: string;
 }
 
+// Unmapped amenities fall back to the TV icon below, which is silently wrong,
+// so every label used in motels.config.ts needs an entry here.
 const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   TV: Tv,
   RADIO: Radio,
+  "MINI BAR": Wine,
+  "LOVE SEAT": Sofa,
+  SHOWER: Droplets,
   "SINGLE SHOWER": Droplets,
   "DOUBLE SHOWER": Droplets,
+  "CRYSTAL SHOWER": Droplets,
+  "SINGLE CRYSTAL SHOWER": Droplets,
   "DOUBLE CRYSTAL SHOWER": Droplets,
-  "MINI BAR": Wine,
   POLE: Users,
+  "POLE DANCE": Users,
   JACUZZI: Droplets,
-  "SPA BATHTUP": Droplets,
+  "SPA BATHTUB": Bath,
 };
 
 export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
