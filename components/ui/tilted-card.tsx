@@ -58,13 +58,23 @@ export function TiltedCard({
       style={{
         perspective: "800px",
         transformStyle: "preserve-3d",
-        pointerEvents: "auto",
+        // Must be none. This element sits at z=0 in the same 3D space as the
+        // tilted child, so wherever the tilt pushes the child behind z=0 this
+        // wrapper wins the hit test and swallows clicks meant for the card. The
+        // dead band moved with the cursor, which is why it felt intermittent.
+        // Mouse events still reach the handlers below by bubbling from children.
+        pointerEvents: "none",
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {/* h-full/w-full matter: without a definite height here, a child's
+          `h-full` resolves against an indefinite height and collapses to content
+          height. That left the outer wrapper taller than its content — an
+          unclickable strip along the bottom of every card. */}
       <motion.div
+        className="h-full w-full"
         style={{
           rotateX,
           rotateY,
