@@ -7,7 +7,6 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { TiltedCard } from "./ui/tilted-card";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -98,7 +97,14 @@ const SuiteCarousel = () => {
                   key={index}
                   className="flex min-w-0 flex-[0_0_100%] items-center px-1 sm:flex-[0_0_50%] sm:px-2 lg:flex-[0_0_33.333%] lg:px-2"
                 >
-                  <TiltedCard className="w-full h-[560px] sm:h-[580px] md:h-[600px]">
+                  {/* Deliberately static. This card used to sit in a TiltedCard,
+                      whose spring kept moving it for ~700ms after the pointer
+                      stopped — measured 12px across and 19px down, on a button
+                      only 44px tall. The button drifted out from under the cursor
+                      between mousedown and mouseup, so the browser cancelled the
+                      click and selected the label text instead. The card keeps its
+                      hover shadow, which moves nothing. */}
+                  <div className="w-full h-[560px] sm:h-[580px] md:h-[600px]">
                     <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl transition-all duration-300 hover:shadow-2xl sm:rounded-2xl">
                       <div className="relative h-48 flex-shrink-0 overflow-hidden xs:h-52 sm:h-56 md:h-60">
                         <Image
@@ -163,7 +169,7 @@ const SuiteCarousel = () => {
                             <motion.button
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
-                              className="w-full rounded-full bg-primary px-4 py-2 text-[10px] font-medium text-primary-foreground shadow-lg transition-shadow hover:shadow-xl xs:px-4 xs:text-[11px] sm:px-5 sm:py-2.5 sm:text-xs md:px-6 md:py-3 md:text-sm"
+                              className="w-full select-none rounded-full bg-primary px-4 py-2 text-[10px] font-medium text-primary-foreground shadow-lg transition-shadow hover:shadow-xl xs:px-4 xs:text-[11px] sm:px-5 sm:py-2.5 sm:text-xs md:px-6 md:py-3 md:text-sm"
                               style={{ pointerEvents: 'auto' }}
                             >
                               {t.suites.viewButton}
@@ -172,7 +178,7 @@ const SuiteCarousel = () => {
                         </div>
                       </div>
                     </div>
-                  </TiltedCard>
+                  </div>
                 </div>
               ))}
             </div>
