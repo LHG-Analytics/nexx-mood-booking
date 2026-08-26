@@ -20,10 +20,12 @@ const SuiteCarousel = () => {
   );
 
   // A card sliding under the pointer makes the VIEW button miss its target, so
-  // once the visitor interacts we stop autoplay for good instead of resuming it.
+  // the first time the visitor reaches the carousel we stop autoplay for good.
+  // Resuming it on mouseleave only sets the same trap again.
   const autoplayDisabled = useRef(false);
 
   const disableAutoplay = useCallback(() => {
+    if (autoplayDisabled.current) return; // keeps this cheap on pointermove
     autoplayDisabled.current = true;
     autoplayRef.current?.stop();
   }, []);
@@ -51,14 +53,11 @@ const SuiteCarousel = () => {
 
   const handleMouseEnter = useCallback(() => {
     setIsHovered(true);
-    autoplayRef.current?.stop();
-  }, []);
+    disableAutoplay();
+  }, [disableAutoplay]);
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
-    if (!autoplayDisabled.current) {
-      autoplayRef.current?.play();
-    }
   }, []);
 
   // Get suites from config
@@ -87,6 +86,9 @@ const SuiteCarousel = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onPointerDown={disableAutoplay}
+          // mouseenter never fires when the page scrolls the carousel up under a
+          // stationary cursor, so aiming at a card would still hit a moving target.
+          onPointerMove={disableAutoplay}
         >
           {/* Carousel */}
           <div className="overflow-visible" ref={emblaRef}>
@@ -147,7 +149,11 @@ const SuiteCarousel = () => {
                             <span className="text-lg font-bold text-foreground xs:text-xl sm:text-2xl md:text-3xl">
                               ${suite.price}
                             </span>
-                            <span className="text-[10px] text-muted-foreground xs:text-[11px] sm:text-xs md:text-sm">{t.suites.perNight}</span>
+                            <span className="text-[10px] text-muted-foreground xs:text-[11px] sm:text-xs md:text-sm">
+                              {t.suites.priceUnit}
+                              {/* Marker for the weekday footnote below the carousel */}
+                              <span aria-hidden="true">*</span>
+                            </span>
                           </div>
                           <Link
                             href={`/${locale}/suites/${suite.id}`}
@@ -196,6 +202,11 @@ const SuiteCarousel = () => {
             <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </motion.button>
         </div>
+
+        {/* Explains the asterisk next to every card price */}
+        <p className="mt-1 text-center text-[11px] text-muted-foreground sm:mt-2 sm:text-xs">
+          {t.suites.weekdayNote}
+        </p>
       </div>
     </section>
   );

@@ -23,7 +23,8 @@ export const en = {
   suites: {
     title: 'Our Suites',
     subtitle: 'Discover comfort and luxury in our carefully designed suites',
-    perNight: '/night',
+    priceUnit: '/3 hours',
+    weekdayNote: '* Rates shown are for weekdays. Weekend rates differ.',
     viewButton: 'VIEW →',
   },
 
