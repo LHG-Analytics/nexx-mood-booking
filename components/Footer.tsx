@@ -55,7 +55,12 @@ const Footer = () => {
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <span>{config.contact.email}</span>
+              <a
+                href={`mailto:${config.contact.email}`}
+                className="transition-colors hover:text-primary"
+              >
+                {config.contact.email}
+              </a>
             </div>
           </motion.div>
 
