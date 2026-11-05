@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import Script from "next/script";
 import { getMotelConfigFromHostname } from "@/lib/getMotelConfig";
-import { generateMotelSchema } from "@/lib/schemaOrg";
+import { generateMotelSchema, generateOtherLocationSchemas } from "@/lib/schemaOrg";
 import { LOCALES, Locale } from "@/types/i18n";
 import { notFound } from "next/navigation";
 
@@ -112,6 +112,13 @@ export default async function LocaleLayout({ children, params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateMotelSchema(config, locale)) }}
       />
+      {generateOtherLocationSchemas(config, locale).map((schema) => (
+        <script
+          key={schema.name}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
 
       {children}
     </>

@@ -95,14 +95,28 @@ export interface Suite {
 /**
  * Contact information
  */
+export interface MotelAddress {
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  full: string;
+}
+
+/**
+ * Another unit of the same brand. Phone and hours are optional so a unit can
+ * be listed before they are confirmed; missing fields are left out, not faked.
+ */
+export interface MotelLocation {
+  name: string;
+  address: MotelAddress;
+  mapsUrl: string;
+  phone?: string;
+  hours?: string;
+}
+
 export interface MotelContact {
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    zip: string;
-    full: string;
-  };
+  address: MotelAddress;
   phone: string;
   email: string;
   instagram: string;
@@ -110,6 +124,7 @@ export interface MotelContact {
   facebookUrl?: string;
   mapsUrl: string;
   hours: string;
+  otherLocations?: MotelLocation[]; // Other units of the brand, listed after the main address
 }
 
 /**

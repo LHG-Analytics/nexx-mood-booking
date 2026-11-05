@@ -870,6 +870,21 @@ export const motelsConfig: MotelsConfigMap = {
       facebookUrl: 'https://www.facebook.com/profile.php?id=100063562179119',
       mapsUrl: 'https://maps.google.com/?q=699+E+Okeechobee+Rd,+Hialeah,+FL+33010',
       hours: '24/7',
+      // TODO Homestead's phone and hours are not confirmed yet, so they are
+      // left out rather than borrowed from Hialeah.
+      otherLocations: [
+        {
+          name: 'Nexx Motel Homestead',
+          address: {
+            street: '841 N Krome Ave',
+            city: 'Homestead',
+            state: 'FL',
+            zip: '33030',
+            full: '841 N Krome Ave, Homestead, FL 33030',
+          },
+          mapsUrl: 'https://maps.google.com/?q=841+N+Krome+Ave,+Homestead,+FL+33030',
+        },
+      ],
     },
 
     // Nexx also rents by daily/overnight and charges different weekend rates

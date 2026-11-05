@@ -195,6 +195,9 @@ function formatMotelInfo(config: MotelConfig): string {
     lines.push(`- Facebook:  ${config.contact.facebookUrl}`);
   }
   lines.push(`- Maps:      ${config.contact.mapsUrl}`);
+  for (const location of config.contact.otherLocations ?? []) {
+    lines.push(`- Also at:   ${location.name}, ${location.address.full} (${location.mapsUrl})`);
+  }
   if (config.id === 'nexx') {
     lines.push(`- Group:     Nexx Hospitality Group`);
   }
