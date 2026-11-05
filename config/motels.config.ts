@@ -903,6 +903,7 @@ export const motelsConfig: MotelsConfigMap = {
         'motel homestead',
       ],
       organizationName: 'Nexx Motels',
+      googleSiteVerification: 'Q8xw-RAqtoEPteuHsnGyTu5me-ZTamr99FRFuR2pq1s',
       googleAnalytics: 'G-FJXEDTW5WE',
       googleTagManager: 'GTM-W64BLFQG',
     },
