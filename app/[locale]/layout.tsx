@@ -53,6 +53,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "x-default": `${baseUrl}/en-US`,
       },
     },
+    // Only motels with a token get the tag, so it never leaks to another domain
+    ...(config.seo.googleSiteVerification && {
+      verification: { google: config.seo.googleSiteVerification },
+    }),
   };
 }
 
