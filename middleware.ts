@@ -18,12 +18,16 @@ export function middleware(request: NextRequest) {
   }
 
   // Check if pathname already has a locale
-  const pathnameHasLocale = LOCALES.some(
+  const pathnameLocale = LOCALES.find(
     locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) {
-    return NextResponse.next();
+  if (pathnameLocale) {
+    // The root layout sits above [locale] and can't read it from params, so
+    // pass it along for <html lang> to be right in the server-rendered HTML.
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set('x-locale', pathnameLocale);
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   // Redirect to default locale (en-US)

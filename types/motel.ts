@@ -134,6 +134,7 @@ export interface MotelSEO {
   title: string;
   description: string;
   keywords: string[];
+  organizationName?: string; // Group the motel belongs to, emitted as a Schema.org Organization
   googleAnalytics?: string; // Google Analytics ID (e.g., G-HT367PH646)
   googleTagManager?: string; // Google Tag Manager ID (e.g., GTM-MD7LXG3S)
 }

@@ -101,11 +101,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         </>
       )}
 
-      {/* hreflang tags for SEO */}
-      <link rel="alternate" hrefLang="en-US" href={`/${locale === 'en-US' ? '' : 'en-US'}`} />
-      <link rel="alternate" hrefLang="pt-BR" href="/pt-BR" />
-      <link rel="alternate" hrefLang="es-ES" href="/es-ES" />
-      <link rel="alternate" hrefLang="x-default" href="/en-US" />
+      {/* hreflang comes from alternates.languages in generateMetadata above.
+          Don't add <link rel="alternate"> tags here: a second, relative set
+          pointed en-US at "/" (a redirect) and contradicted the first. */}
 
       {/* Schema.org JSON-LD — structured data for AI crawlers and search engines */}
       <script
