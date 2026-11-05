@@ -13,8 +13,7 @@ export function generateMotelSchema(config: MotelConfig, locale: string) {
     sameAs.push(config.contact.facebookUrl);
   }
 
-  return {
-    '@context': 'https://schema.org',
+  const motel = {
     '@type': 'Motel',
     name: config.name,
     url: `${baseUrl}/${locale}`,
@@ -47,5 +46,27 @@ export function generateMotelSchema(config: MotelConfig, locale: string) {
         },
       }),
     })),
+  };
+
+  if (!config.seo.organizationName) {
+    return { '@context': 'https://schema.org', ...motel };
+  }
+
+  // Motels that belong to a group also describe the group, so a search for
+  // the group's name (e.g. "Nexx Motels") can resolve to this site.
+  const organizationId = `${baseUrl}/#organization`;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': organizationId,
+        name: config.seo.organizationName,
+        url: baseUrl,
+        logo: `${baseUrl}${config.assets.logo.light}`,
+        sameAs,
+      },
+      { ...motel, parentOrganization: { '@id': organizationId } },
+    ],
   };
 }

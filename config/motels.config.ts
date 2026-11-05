@@ -876,9 +876,18 @@ export const motelsConfig: MotelsConfigMap = {
     importantInfoExtras: ['flexibleRates'],
 
     seo: {
-      title: 'Nexx Motel - Hialeah',
-      description: 'Nexx Motel boasts rooms that are elegantly designed, infused with boutique touches that ensure a comfortable stay. Located in Hialeah, FL.',
-      keywords: ['nexx motel', 'hialeah motel', 'motel hialeah'],
+      title: 'Nexx Motel – Hialeah & Homestead',
+      description: 'Nexx Motel boasts rooms that are elegantly designed, infused with boutique touches that ensure a comfortable stay. Located in Hialeah and Homestead, FL.',
+      keywords: [
+        'nexx motel',
+        'motel nexx',
+        'nexx motels',
+        'hialeah motel',
+        'motel hialeah',
+        'homestead motel',
+        'motel homestead',
+      ],
+      organizationName: 'Nexx Motels',
       googleAnalytics: 'G-FJXEDTW5WE',
       googleTagManager: 'GTM-W64BLFQG',
     },
