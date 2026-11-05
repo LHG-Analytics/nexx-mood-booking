@@ -45,7 +45,17 @@ const Footer = () => {
                   {location.address.city}, {location.address.state} {location.address.zip}
                 </p>
                 {location.phone && (
-                  <p className="text-muted-foreground">{location.phone}</p>
+                  <a
+                    href={`tel:+1${location.phone.replace(/\D/g, '')}`}
+                    className="block text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {location.phone}
+                  </a>
+                )}
+                {location.hours && (
+                  <p className="text-muted-foreground">
+                    {t.footer.frontDesk}: {location.hours}
+                  </p>
                 )}
                 <a
                   href={location.mapsUrl}
