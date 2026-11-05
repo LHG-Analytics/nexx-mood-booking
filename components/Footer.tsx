@@ -36,6 +36,27 @@ const Footer = () => {
             >
               {t.footer.getDirections}
             </a>
+            {config.contact.otherLocations?.map((location) => (
+              <div key={location.address.full} className="mt-6">
+                <p className="mb-1 font-semibold text-foreground">{location.name}</p>
+                <p className="text-muted-foreground">
+                  {location.address.street}
+                  <br />
+                  {location.address.city}, {location.address.state} {location.address.zip}
+                </p>
+                {location.phone && (
+                  <p className="text-muted-foreground">{location.phone}</p>
+                )}
+                <a
+                  href={location.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block text-sm text-primary hover:underline"
+                >
+                  {t.footer.getDirections}
+                </a>
+              </div>
+            ))}
           </motion.div>
 
           {/* Contact */}

@@ -49,3 +49,31 @@ export function generateMotelSchema(config: MotelConfig, locale: string) {
     })),
   };
 }
+
+/**
+ * One Schema.org node per extra unit of the brand (contact.otherLocations).
+ * Each unit is its own place for search engines, so it gets its own Motel node
+ * rather than a second address on the main one. The phone is only emitted
+ * when the config has one.
+ */
+export function generateOtherLocationSchemas(config: MotelConfig, locale: string) {
+  const baseUrl = `https://${config.domain}`;
+
+  return (config.contact.otherLocations ?? []).map((location) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Motel',
+    name: location.name,
+    url: `${baseUrl}/${locale}`,
+    hasMap: location.mapsUrl,
+    ...(location.phone && { telephone: location.phone }),
+    brand: { '@type': 'Brand', name: config.name },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: location.address.street,
+      addressLocality: location.address.city,
+      addressRegion: location.address.state,
+      postalCode: location.address.zip,
+      addressCountry: 'US',
+    },
+  }));
+}
