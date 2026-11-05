@@ -196,7 +196,8 @@ function formatMotelInfo(config: MotelConfig): string {
   }
   lines.push(`- Maps:      ${config.contact.mapsUrl}`);
   for (const location of config.contact.otherLocations ?? []) {
-    lines.push(`- Also at:   ${location.name}, ${location.address.full} (${location.mapsUrl})`);
+    const details = [location.address.full, location.phone, location.hours].filter(Boolean).join(' · ');
+    lines.push(`- Also at:   ${location.name}, ${details} (${location.mapsUrl})`);
   }
   if (config.id === 'nexx') {
     lines.push(`- Group:     Nexx Hospitality Group`);

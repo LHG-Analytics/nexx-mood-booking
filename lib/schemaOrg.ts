@@ -53,8 +53,8 @@ export function generateMotelSchema(config: MotelConfig, locale: string) {
 /**
  * One Schema.org node per extra unit of the brand (contact.otherLocations).
  * Each unit is its own place for search engines, so it gets its own Motel node
- * rather than a second address on the main one. The phone is only emitted
- * when the config has one.
+ * rather than a second address on the main one. Phone and hours are only
+ * emitted when the config has them.
  */
 export function generateOtherLocationSchemas(config: MotelConfig, locale: string) {
   const baseUrl = `https://${config.domain}`;
@@ -66,6 +66,7 @@ export function generateOtherLocationSchemas(config: MotelConfig, locale: string
     url: `${baseUrl}/${locale}`,
     hasMap: location.mapsUrl,
     ...(location.phone && { telephone: location.phone }),
+    ...(location.hours === '24/7' && { openingHours: 'Mo-Su 00:00-24:00' }),
     brand: { '@type': 'Brand', name: config.name },
     address: {
       '@type': 'PostalAddress',
