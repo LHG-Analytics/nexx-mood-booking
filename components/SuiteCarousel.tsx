@@ -160,7 +160,7 @@ const SuiteCarousel = () => {
                               ${suite.price}
                             </span>
                             <span className="text-[10px] text-muted-foreground xs:text-[11px] sm:text-xs md:text-sm">
-                              {t.suites.priceUnit}
+                              {t.suites.priceLabel}
                               {/* Marker for the weekday footnote below the carousel */}
                               <span aria-hidden="true">*</span>
                             </span>

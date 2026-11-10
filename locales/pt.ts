@@ -25,7 +25,7 @@ export const pt: Translation = {
   suites: {
     title: 'Nossas Suítes',
     subtitle: 'Descubra conforto e luxo em nossas suítes cuidadosamente projetadas',
-    priceUnit: '/3 horas',
+    priceLabel: 'Tarifa fracionada',
     weekdayNote: '* Valores para dias de semana. Fins de semana têm tarifas diferentes.',
     viewButton: 'VER →',
   },

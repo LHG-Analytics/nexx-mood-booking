@@ -23,7 +23,9 @@ export const en = {
   suites: {
     title: 'Our Suites',
     subtitle: 'Discover comfort and luxury in our carefully designed suites',
-    priceUnit: '/3 hours',
+    // Don't name the stay length here: the price is for a fractional stay,
+    // whatever its duration at each motel.
+    priceLabel: 'Fractional rate',
     weekdayNote: '* Rates shown are for weekdays. Weekend rates differ.',
     viewButton: 'VIEW →',
   },
