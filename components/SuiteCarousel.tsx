@@ -93,6 +93,10 @@ const SuiteCarousel = () => {
               {suites.map((suite, index) => (
                 <div
                   key={index}
+                  // The second half are loop copies of the same suites. Without
+                  // this every suite was a Tab stop and a heading twice. (Not
+                  // inert: React 18 strips that attribute on hydration.)
+                  aria-hidden={index >= suitesBase.length || undefined}
                   className="flex min-w-0 flex-[0_0_100%] items-center px-1 sm:flex-[0_0_50%] sm:px-2 lg:flex-[0_0_33.333%] lg:px-2"
                 >
                   {/* The tilt spring keeps moving the card for ~700ms after the
@@ -105,6 +109,7 @@ const SuiteCarousel = () => {
                     <Link
                       href={`/${locale}/suites/${suite.id}`}
                       aria-label={`${suite.name} — ${t.suiteDetails.clickToView}`}
+                      tabIndex={index >= suitesBase.length ? -1 : undefined}
                       className="group block h-full w-full select-none"
                       onPointerDown={handleCardPointerDown}
                       onClick={handleCardClick}
@@ -185,7 +190,7 @@ const SuiteCarousel = () => {
           {/* Navigation Buttons - Only visible on hover (desktop) or always visible (mobile) */}
           <motion.button
             onClick={scrollPrev}
-            aria-label="Previous suite"
+            aria-label={t.suites.previousSuite}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 20 }}
             transition={{ duration: 0.3 }}
@@ -196,7 +201,7 @@ const SuiteCarousel = () => {
           </motion.button>
           <motion.button
             onClick={scrollNext}
-            aria-label="Next suite"
+            aria-label={t.suites.nextSuite}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -20 }}
             transition={{ duration: 0.3 }}

@@ -25,8 +25,10 @@ const ADASection = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-4 text-7xl font-bold text-white md:text-9xl">ADA</h2>
-            <h3 className="text-3xl font-bold text-motel-pink md:text-4xl">{t.ada.subtitle1}</h3>
-            <h3 className="mb-6 text-3xl font-bold text-motel-pink md:text-4xl">{t.ada.subtitle2}</h3>
+            <h3 className="mb-6 text-3xl font-bold text-motel-pink md:text-4xl">
+              <span className="block">{t.ada.subtitle1}</span>
+              <span className="block">{t.ada.subtitle2}</span>
+            </h3>
           </motion.div>
 
           {/* Right Side - Content */}

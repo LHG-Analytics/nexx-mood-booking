@@ -32,12 +32,10 @@ const HumanTraffickingSection = () => {
               </div>
             </div>
             <div>
-              <h2 className="text-4xl font-bold tracking-wide text-white md:text-5xl">
-                {t.trafficking.title}
+              <h2 className="text-white">
+                <span className="block text-4xl font-bold tracking-wide md:text-5xl">{t.trafficking.title}</span>
+                <span className="block text-3xl font-light tracking-widest md:text-4xl">{t.trafficking.subtitle}</span>
               </h2>
-              <h3 className="text-3xl font-light tracking-widest text-white md:text-4xl">
-                {t.trafficking.subtitle}
-              </h3>
             </div>
           </motion.div>
 

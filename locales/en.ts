@@ -5,6 +5,10 @@ export const en = {
     rooms: 'Rooms',
     services: 'Services',
     contact: 'Contact',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    toggleTheme: 'Switch between light and dark theme',
+    skipToContent: 'Skip to main content',
   },
 
   // Hero Section
@@ -28,6 +32,8 @@ export const en = {
     priceLabel: 'Fractional rate',
     weekdayNote: '* Rates shown are for weekdays. Weekend rates differ.',
     viewButton: 'VIEW →',
+    previousSuite: 'Previous suite',
+    nextSuite: 'Next suite',
   },
 
   // Footer

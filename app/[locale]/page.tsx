@@ -13,6 +13,7 @@ export default function Home() {
     <div className="min-h-screen overflow-x-hidden bg-background">
       <Navbar />
 
+      <main id="main-content" tabIndex={-1} className="outline-none">
       {/* Hero with Check Availability Card */}
       <div className="relative">
         <HeroSection />
@@ -24,6 +25,7 @@ export default function Home() {
       <ADASection />
       <HumanTraffickingSection />
       <BookNowCTA />
+      </main>
       <Footer />
     </div>
   );

@@ -111,28 +111,27 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
       {/* Header with Back Button */}
-      <div className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/95 backdrop-blur-lg">
         <div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
-          <Link href={`/${locale}#rooms`}>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-1 text-sm text-foreground transition-colors hover:text-primary sm:gap-2 sm:text-base"
-            >
-              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="hidden xs:inline">{t.suiteDetails.backToSuites}</span>
-              <span className="xs:hidden">{t.suiteDetails.back}</span>
-            </motion.button>
+          {/* One link: it used to wrap a <button>, two nested controls
+              that took two Tab stops for one action */}
+          <Link
+            href={`/${locale}#rooms`}
+            className="flex items-center gap-1 rounded-md text-sm text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:gap-2 sm:text-base"
+          >
+            <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+            <span className="hidden xs:inline">{t.suiteDetails.backToSuites}</span>
+            <span className="xs:hidden">{t.suiteDetails.back}</span>
           </Link>
           <div className="flex items-center gap-1 sm:gap-2">
             <span className="text-xl font-bold text-foreground sm:text-2xl md:text-3xl">${suite.price}</span>
             <span className="text-xs text-muted-foreground sm:text-sm md:text-base">{t.suiteDetails.startingFrom}</span>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Main Content */}
-      <div className="overflow-x-hidden px-4 pb-12 pt-20 sm:px-6 sm:pb-20 sm:pt-32">
+      <main id="main-content" tabIndex={-1} className="overflow-x-hidden px-4 pb-12 pt-20 outline-none sm:px-6 sm:pb-20 sm:pt-32">
         <div className="container mx-auto">
           {/* Suite Header */}
           <motion.div
@@ -371,7 +370,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
             </div>
           </div>
         </div>
-      </div>
+      </main>
 
       <PhotoLightbox
         open={isModalOpen}

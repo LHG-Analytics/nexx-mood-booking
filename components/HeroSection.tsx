@@ -21,9 +21,11 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <h2 className="mb-1 text-lg font-light text-foreground sm:mb-2 sm:text-2xl md:text-3xl">{t.hero.welcomeTo}</h2>
-              <h1 className="text-4xl font-bold leading-tight text-foreground sm:text-6xl md:text-8xl">
-                {config.displayName}
+              {/* One h1 for both lines: "Welcome to" used to be an h2 placed
+                  before the page's h1, which breaks the heading outline */}
+              <h1 className="text-foreground">
+                <span className="mb-1 block text-lg font-light sm:mb-2 sm:text-2xl md:text-3xl">{t.hero.welcomeTo}</span>
+                <span className="block text-4xl font-bold leading-tight sm:text-6xl md:text-8xl">{config.displayName}</span>
               </h1>
             </motion.div>
 

@@ -4,6 +4,7 @@ import Script from "next/script";
 import { getMotelConfigFromHostname } from "@/lib/getMotelConfig";
 import { generateMotelSchema, generateOtherLocationSchemas } from "@/lib/schemaOrg";
 import { LOCALES, Locale } from "@/types/i18n";
+import { getTranslationByLocale } from "@/locales";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -73,6 +74,15 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <>
+      {/* First Tab stop on every page: lets keyboard users jump past the
+          navigation (WCAG 2.4.1). Both pages put id="main-content" on <main>. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:font-medium focus:text-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
+      >
+        {getTranslationByLocale(locale as Locale).nav.skipToContent}
+      </a>
+
       {/* Google Tag Manager - placed as high as possible in head */}
       {config.seo.googleTagManager && (
         <Script
