@@ -36,6 +36,16 @@ export const en = {
     nextSuite: 'Next suite',
   },
 
+  // Unit selector (motels with several locations)
+  units: {
+    selectorLabel: 'Choose your Nexx location',
+    useMyLocation: 'Use my location',
+    locating: 'Finding the nearest location…',
+    nearest: 'Nearest location: {unit}. Showing its suites and prices.',
+    showing: 'Showing {unit} suites and prices.',
+    locationError: "Couldn't get your location. Please choose a location.",
+  },
+
   // Footer
   footer: {
     location: 'Location',
@@ -163,6 +173,8 @@ export const en = {
     defaultDescription: 'Experience comfort and luxury in our {suiteName}.',
     weekdayHours: 'SUNDAY 11PM TO FRIDAY 7AM',
     weekendHours: 'FRIDAY 7AM TO SUNDAY 11PM',
+    fractionalBookingWindows: 'Fractional rate can be booked {windows}',
+    and: 'and',
   },
 };
 

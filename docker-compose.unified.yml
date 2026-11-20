@@ -3,6 +3,9 @@ version: "3.8"
 services:
   motels-web:
     image: ghcr.io/lhg-analytics/nexx-mood-booking:latest
+    # GeoLite2 database downloaded by the deploy workflow; see deploy.yml
+    volumes:
+      - /opt/stacks/unified/geo:/app/geo:ro
     networks:
       - network_public
     deploy:

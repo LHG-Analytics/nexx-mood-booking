@@ -768,27 +768,33 @@ export const motelsConfig: MotelsConfigMap = {
         dark: '/assets/nexx/logo-dark.webp',
       },
       heroImages: [
-        '/assets/nexx/suite-nexx/principal.jpg',
-        '/assets/nexx/suite-nexx-plus/principal.jpg',
-        '/assets/nexx/suite-jacuzzi/principal.jpg',
-        '/assets/nexx/suite-jacuzzi/room-1.jpg',
+        '/assets/nexx/hialeah/nexx-suite/principal.webp',
+        '/assets/nexx/hialeah/nexx-plus/principal.webp',
+        '/assets/nexx/hialeah/jacuzzi-suite/principal.webp',
+        '/assets/nexx/homestead/vip-suite/principal.webp',
       ],
       favicon: '/assets/nexx/favicon/favicon.ico',
     },
 
+    // Suites of both units; each carries its unitId (see units below).
+    // Amenities list the distinctive ones first: suite cards show only six.
+    // Hialeah keeps the original ids so already-indexed URLs still work.
     suites: [
       {
         id: 'nexx',
-        name: 'Suite Nexx',
-        image: '/assets/nexx/suite-nexx/principal.jpg',
+        unitId: 'hialeah',
+        name: 'Nexx Suite',
+        image: '/assets/nexx/hialeah/nexx-suite/principal.webp',
         images: [
-          '/assets/nexx/suite-nexx/room-1.jpg',
-          '/assets/nexx/suite-nexx/room-2.jpg',
-          '/assets/nexx/suite-nexx/room-3.jpg',
+          '/assets/nexx/hialeah/nexx-suite/principal.webp',
+          '/assets/nexx/hialeah/nexx-suite/room-1.webp',
+          '/assets/nexx/hialeah/nexx-suite/room-2.webp',
+          '/assets/nexx/hialeah/nexx-suite/room-3.webp',
+          '/assets/nexx/hialeah/nexx-suite/room-4.webp',
         ],
-        price: 49,
+        price: 49, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'CRYSTAL SHOWER'],
+        amenities: ['ONE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
         pricing: {
           weekdays: {
             fractional: 49,
@@ -804,16 +810,20 @@ export const motelsConfig: MotelsConfigMap = {
       },
       {
         id: 'nexx-plus',
-        name: 'Suite Nexx Plus',
-        image: '/assets/nexx/suite-nexx-plus/principal.jpg',
+        unitId: 'hialeah',
+        name: 'Nexx Plus',
+        image: '/assets/nexx/hialeah/nexx-plus/principal.webp',
         images: [
-          '/assets/nexx/suite-nexx-plus/room-1.jpg',
-          '/assets/nexx/suite-nexx-plus/room-2.jpg',
-          '/assets/nexx/suite-nexx-plus/room-3.jpg',
+          '/assets/nexx/hialeah/nexx-plus/principal.webp',
+          '/assets/nexx/hialeah/nexx-plus/room-1.webp',
+          '/assets/nexx/hialeah/nexx-plus/room-2.webp',
+          '/assets/nexx/hialeah/nexx-plus/room-3.webp',
+          '/assets/nexx/hialeah/nexx-plus/room-4.webp',
+          '/assets/nexx/hialeah/nexx-plus/room-5.webp',
         ],
-        price: 55,
+        price: 55, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'DOUBLE SHOWER', 'POLE DANCE'],
+        amenities: ['POLE DANCE', 'LOVE SEAT', 'DOUBLE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
         pricing: {
           weekdays: {
             fractional: 55,
@@ -829,17 +839,21 @@ export const motelsConfig: MotelsConfigMap = {
       },
       {
         id: 'nexx-jacuzzi',
-        name: 'Suite Jacuzzi',
-        image: '/assets/nexx/suite-jacuzzi/principal.jpg',
+        unitId: 'hialeah',
+        name: 'Jacuzzi Suite',
+        image: '/assets/nexx/hialeah/jacuzzi-suite/principal.webp',
         images: [
-          '/assets/nexx/suite-jacuzzi/room-1.jpg',
-          '/assets/nexx/suite-jacuzzi/room-2.jpg',
-          '/assets/nexx/suite-jacuzzi/room-3.jpg',
-          '/assets/nexx/suite-jacuzzi/room-4.jpg',
+          '/assets/nexx/hialeah/jacuzzi-suite/principal.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-1.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-2.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-3.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-4.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-5.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-6.webp',
         ],
-        price: 75,
+        price: 75, // Lowest price (fractional weekday)
         rating: 5,
-        amenities: ['TV', 'RADIO', 'LOVE SEAT', 'MINI BAR', 'DOUBLE SHOWER', 'JACUZZI'],
+        amenities: ['JACUZZI', 'POLE DANCE', 'LOVE SEAT', 'DOUBLE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
         pricing: {
           weekdays: {
             fractional: 75,
@@ -850,6 +864,122 @@ export const motelsConfig: MotelsConfigMap = {
             fractional: 79,
             daily: 270,
             overnight: 135,
+          },
+        },
+      },
+      {
+        id: 'homestead-nexx',
+        unitId: 'homestead',
+        name: 'Nexx Suite',
+        image: '/assets/nexx/homestead/nexx-suite/principal.webp',
+        images: [
+          '/assets/nexx/homestead/nexx-suite/principal.webp',
+          '/assets/nexx/homestead/nexx-suite/room-1.webp',
+          '/assets/nexx/homestead/nexx-suite/room-2.webp',
+          '/assets/nexx/homestead/nexx-suite/room-3.webp',
+          '/assets/nexx/homestead/nexx-suite/room-4.webp',
+          '/assets/nexx/homestead/nexx-suite/room-5.webp',
+        ],
+        price: 39, // Lowest price (fractional weekday)
+        rating: 5,
+        amenities: ['ONE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
+        pricing: {
+          weekdays: {
+            fractional: 39,
+            daily: 197,
+            overnight: 99,
+          },
+          weekend: {
+            fractional: 47,
+            daily: 207,
+            overnight: 105,
+          },
+        },
+      },
+      {
+        id: 'homestead-nexx-plus',
+        unitId: 'homestead',
+        name: 'Nexx Plus',
+        image: '/assets/nexx/homestead/nexx-plus/principal.webp',
+        images: [
+          '/assets/nexx/homestead/nexx-plus/principal.webp',
+          '/assets/nexx/homestead/nexx-plus/room-1.webp',
+          '/assets/nexx/homestead/nexx-plus/room-2.webp',
+          '/assets/nexx/homestead/nexx-plus/room-3.webp',
+          '/assets/nexx/homestead/nexx-plus/room-4.webp',
+          '/assets/nexx/homestead/nexx-plus/room-5.webp',
+        ],
+        price: 47, // Lowest price (fractional weekday)
+        rating: 5,
+        amenities: ['POLE DANCE', 'LOVE SEAT', 'DOUBLE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
+        pricing: {
+          weekdays: {
+            fractional: 47,
+            daily: 207,
+            overnight: 105,
+          },
+          weekend: {
+            fractional: 52,
+            daily: 217,
+            overnight: 109,
+          },
+        },
+      },
+      {
+        id: 'homestead-jacuzzi',
+        unitId: 'homestead',
+        name: 'Jacuzzi Suite',
+        image: '/assets/nexx/homestead/jacuzzi-suite/principal.webp',
+        images: [
+          '/assets/nexx/homestead/jacuzzi-suite/principal.webp',
+          '/assets/nexx/homestead/jacuzzi-suite/room-1.webp',
+          '/assets/nexx/homestead/jacuzzi-suite/room-2.webp',
+          '/assets/nexx/homestead/jacuzzi-suite/room-3.webp',
+          '/assets/nexx/homestead/jacuzzi-suite/room-4.webp',
+          '/assets/nexx/homestead/jacuzzi-suite/room-5.webp',
+        ],
+        price: 62, // Lowest price (fractional weekday)
+        rating: 5,
+        amenities: ['JACUZZI', 'POLE DANCE', 'LOVE SEAT', 'DOUBLE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
+        pricing: {
+          weekdays: {
+            fractional: 62,
+            daily: 227,
+            overnight: 115,
+          },
+          weekend: {
+            fractional: 69,
+            daily: 232,
+            overnight: 117,
+          },
+        },
+      },
+      {
+        id: 'homestead-vip',
+        unitId: 'homestead',
+        name: 'VIP Suite',
+        image: '/assets/nexx/homestead/vip-suite/principal.webp',
+        images: [
+          '/assets/nexx/homestead/vip-suite/principal.webp',
+          '/assets/nexx/homestead/vip-suite/room-1.webp',
+          '/assets/nexx/homestead/vip-suite/room-2.webp',
+          '/assets/nexx/homestead/vip-suite/room-3.webp',
+          '/assets/nexx/homestead/vip-suite/room-4.webp',
+          '/assets/nexx/homestead/vip-suite/room-5.webp',
+        ],
+        price: 75, // Lowest price (fractional weekday)
+        rating: 5,
+        amenities: ['JACUZZI', 'BONDAGE CROSS', 'POLE DANCE', 'LOVE SEAT', 'ONE SHOWER', 'MIRRORED CEILING', 'MOOD LIGHTING', 'MINI BAR', 'TV', 'RADIO'],
+        pricing: {
+          weekdays: {
+            fractional: 75,
+            daily: 272,
+            overnight: 135,
+          },
+          weekend: {
+            fractional: 85,
+            daily: 285,
+            overnight: 152,
           },
         },
       },
@@ -873,6 +1003,7 @@ export const motelsConfig: MotelsConfigMap = {
       otherLocations: [
         {
           name: 'Nexx Motel Homestead',
+          unitId: 'homestead',
           address: {
             street: '841 N Krome Ave',
             city: 'Homestead',
@@ -889,6 +1020,24 @@ export const motelsConfig: MotelsConfigMap = {
 
     // Nexx also rents by daily/overnight and charges different weekend rates
     importantInfoExtras: ['flexibleRates'],
+
+    // Two locations with their own suites and prices; the unit selector
+    // defaults to the visitor's saved choice, else the nearest by IP
+    units: [
+      {
+        id: 'hialeah',
+        label: 'Hialeah',
+        coordinates: { lat: 25.826, lng: -80.272 },
+        weekendOvernightStart: 'evening', // 11PM to 11AM every day
+      },
+      {
+        id: 'homestead',
+        label: 'Homestead',
+        coordinates: { lat: 25.4791, lng: -80.4778 },
+        weekendOvernightStart: 'lateNight', // 2AM to 11AM on weekends
+        fractionalBookingWindows: [[8, 11], [16, 19], [23, 2]],
+      },
+    ],
 
     seo: {
       title: 'Nexx Motel – Hialeah & Homestead',

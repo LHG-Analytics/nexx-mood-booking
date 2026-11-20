@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { UnitSelector } from "./UnitSelector";
 
 const Navbar = () => {
   const config = useMotel();
@@ -81,6 +82,8 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden items-center gap-8 md:flex">
+          {/* Location switch for multi-location motels; renders nothing otherwise */}
+          <UnitSelector />
           {[
             { label: t.nav.home, href: "#home" },
             { label: t.nav.rooms, href: "#rooms" },
@@ -135,6 +138,11 @@ const Navbar = () => {
             {mobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
+      </div>
+
+      {/* On phones the location switch gets its own row so it stays visible */}
+      <div className="container mx-auto px-6 md:hidden">
+        <UnitSelector className="pb-1 pt-1" />
       </div>
 
       {/* Mobile Menu */}

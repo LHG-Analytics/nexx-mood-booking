@@ -125,10 +125,11 @@ const MOTEL_CONTEXT: Record<string, {
       "Short stays with privacy in Miami's second-largest city",
       'Jacuzzi suite experience in the Hialeah area',
       'Travelers near Okeechobee Road or the Palmetto Expressway',
+      'Couples in Homestead, Florida City or the Redland area (Nexx Homestead, on N Krome Ave)',
     ],
     marketPosition:
       "Nexx Motel is the premier boutique motel in Hialeah, FL, serving Miami's second-largest city with a Brazilian-style short-stay experience. Part of Nexx Hospitality Group, located on E Okeechobee Rd near major expressways, offering private themed suites including jacuzzi for couples in the greater Hialeah and North Miami area.",
-    nearbyAreas: ['Hialeah', 'Miami Lakes', 'Doral', 'Miami Springs', 'Opa-locka', 'North Miami'],
+    nearbyAreas: ['Hialeah', 'Miami Lakes', 'Doral', 'Miami Springs', 'Opa-locka', 'North Miami', 'Homestead', 'Florida City'],
     faq: [
       {
         q: 'Is there a motel in Hialeah FL?',
@@ -140,7 +141,11 @@ const MOTEL_CONTEXT: Record<string, {
       },
       {
         q: 'Is there a motel with jacuzzi in Hialeah?',
-        a: 'Nexx Motel offers a jacuzzi suite starting at $75 per fractional stay.',
+        a: 'Nexx Motel Hialeah offers a jacuzzi suite starting at $75 per fractional stay.',
+      },
+      {
+        q: 'Is there a Nexx Motel in Homestead FL?',
+        a: 'Yes — Nexx Motel Homestead is at 841 N Krome Ave, Homestead, FL 33030, with four suites including a VIP Suite with jacuzzi, from $39 per fractional stay on weekdays.',
       },
     ],
   },
@@ -206,11 +211,17 @@ function formatMotelInfo(config: MotelConfig): string {
   return lines.join('\n');
 }
 
+/** "Nexx Suite (Homestead)": both Nexx units have suites with the same names */
+function suiteLabel(config: MotelConfig, suite: Suite): string {
+  const unit = config.units?.find((u) => u.id === suite.unitId);
+  return unit ? `${suite.name} (${unit.label})` : suite.name;
+}
+
 function formatSuiteDetails(config: MotelConfig): string {
   const lines: string[] = [];
 
   for (const suite of config.suites) {
-    lines.push(`#### ${suite.name}`);
+    lines.push(`#### ${suiteLabel(config, suite)}`);
     lines.push(`- Amenities: ${suite.amenities.join(', ')}`);
     lines.push('- Pricing:');
     lines.push(formatSuitePricing(suite));
@@ -253,7 +264,7 @@ export async function GET() {
     '',
     '## Suite Comparison',
     '',
-    formatSuiteTable(config.suites),
+    formatSuiteTable(config.suites.map((suite) => ({ ...suite, name: suiteLabel(config, suite) }))),
     '',
     '---',
     '',
