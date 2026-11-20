@@ -76,7 +76,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
   // Opening a Homestead suite makes Homestead the visitor's unit, so going
   // back to the home page shows the same location
   useEffect(() => {
-    if (suite.unitId) setUnitId(suite.unitId);
+    if (suite.unitId) setUnitId(suite.unitId, "silent");
   }, [suite.unitId, setUnitId]);
 
   const totalImages = suite.images.length;

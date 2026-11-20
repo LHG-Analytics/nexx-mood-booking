@@ -9,6 +9,8 @@ export interface UnitContact {
   phone: string;
   hours: string;
   mapsUrl: string;
+  instagram: string;
+  instagramUrl: string;
 }
 
 export function getUnit(config: MotelConfig, unitId: string | undefined): MotelUnit | undefined {
@@ -38,6 +40,8 @@ export function getUnitContact(config: MotelConfig, unitId: string | undefined):
     phone: config.contact.phone,
     hours: config.contact.hours,
     mapsUrl: config.contact.mapsUrl,
+    instagram: config.contact.instagram,
+    instagramUrl: config.contact.instagramUrl,
   };
   if (!config.units?.length || unitId === config.units[0].id) return main;
   const location = config.contact.otherLocations?.find((l) => l.unitId === unitId);
@@ -48,6 +52,8 @@ export function getUnitContact(config: MotelConfig, unitId: string | undefined):
     phone: location.phone ?? config.contact.phone,
     hours: location.hours ?? config.contact.hours,
     mapsUrl: location.mapsUrl,
+    instagram: location.instagram ?? config.contact.instagram,
+    instagramUrl: location.instagramUrl ?? config.contact.instagramUrl,
   };
 }
 

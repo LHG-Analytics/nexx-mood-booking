@@ -4,11 +4,23 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
+import { useUnit } from "@/contexts/UnitContext";
+import { getUnit } from "@/lib/units";
+import { getImageAlt } from "@/lib/imageAlt";
 
 const HeroSection = () => {
   const config = useMotel();
-  const { t } = useLanguage();
-  const images = config.assets.heroImages;
+  const { t, language } = useLanguage();
+  const { unitId } = useUnit();
+  // Multi-location motels show the selected unit's suites here
+  const images = getUnit(config, unitId)?.heroImages ?? config.assets.heroImages;
+  // Descriptive alt from the photo map; the old "Suite view 1" said nothing (WCAG 1.1.1)
+  const altFor = (src: string, index: number) =>
+    getImageAlt(src, language, translateWithVars(t.suiteDetails.photoAlt, {
+      suiteName: config.name,
+      n: String(index + 1),
+      total: String(images.length),
+    }));
 
   // Motels with several units get a second navbar row on phones (the
   // location switch), so the hero starts lower there
@@ -63,7 +75,7 @@ const HeroSection = () => {
                 >
                   <Image
                     src={image}
-                    alt={`${config.name} - Suite view ${index + 1}`}
+                    alt={altFor(image, index)}
                     fill
                     sizes="(max-width: 1024px) 50vw, 0vw"
                     className="object-cover"
@@ -117,7 +129,7 @@ const HeroSection = () => {
               >
                 <Image
                   src={image}
-                  alt={`${config.name} - Suite view ${index + 1}`}
+                  alt={altFor(image, index)}
                   fill
                   sizes="(min-width: 1024px) 25vw, 0vw"
                   className="object-cover"

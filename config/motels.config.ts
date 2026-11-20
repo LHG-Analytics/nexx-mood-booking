@@ -771,7 +771,7 @@ export const motelsConfig: MotelsConfigMap = {
         '/assets/nexx/hialeah/nexx-suite/principal.webp',
         '/assets/nexx/hialeah/nexx-plus/principal.webp',
         '/assets/nexx/hialeah/jacuzzi-suite/principal.webp',
-        '/assets/nexx/homestead/vip-suite/principal.webp',
+        '/assets/nexx/hialeah/jacuzzi-suite/room-4.webp',
       ],
       favicon: '/assets/nexx/favicon/favicon.ico',
     },
@@ -1014,6 +1014,8 @@ export const motelsConfig: MotelsConfigMap = {
           mapsUrl: 'https://maps.google.com/?q=841+N+Krome+Ave,+Homestead,+FL+33030',
           phone: '(305) 247-2442',
           hours: '24/7',
+          instagram: '@nexxmotel_homestead',
+          instagramUrl: 'https://www.instagram.com/nexxmotel_homestead/',
         },
       ],
     },
@@ -1029,6 +1031,12 @@ export const motelsConfig: MotelsConfigMap = {
         label: 'Hialeah',
         coordinates: { lat: 25.826, lng: -80.272 },
         weekendOvernightStart: 'evening', // 11PM to 11AM every day
+        heroImages: [
+          '/assets/nexx/hialeah/nexx-suite/principal.webp',
+          '/assets/nexx/hialeah/nexx-plus/principal.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/principal.webp',
+          '/assets/nexx/hialeah/jacuzzi-suite/room-4.webp',
+        ],
       },
       {
         id: 'homestead',
@@ -1036,6 +1044,12 @@ export const motelsConfig: MotelsConfigMap = {
         coordinates: { lat: 25.4791, lng: -80.4778 },
         weekendOvernightStart: 'lateNight', // 2AM to 11AM on weekends
         fractionalBookingWindows: [[8, 11], [16, 19], [23, 2]],
+        heroImages: [
+          '/assets/nexx/homestead/nexx-suite/principal.webp',
+          '/assets/nexx/homestead/nexx-plus/principal.webp',
+          '/assets/nexx/homestead/jacuzzi-suite/principal.webp',
+          '/assets/nexx/homestead/vip-suite/principal.webp',
+        ],
       },
     ],
 

@@ -201,7 +201,7 @@ function formatMotelInfo(config: MotelConfig): string {
   }
   lines.push(`- Maps:      ${config.contact.mapsUrl}`);
   for (const location of config.contact.otherLocations ?? []) {
-    const details = [location.address.full, location.phone, location.hours].filter(Boolean).join(' · ');
+    const details = [location.address.full, location.phone, location.hours, location.instagramUrl].filter(Boolean).join(' · ');
     lines.push(`- Also at:   ${location.name}, ${details} (${location.mapsUrl})`);
   }
   if (config.id === 'nexx') {
