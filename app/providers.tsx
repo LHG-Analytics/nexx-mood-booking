@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeInjector } from "@/components/ThemeInjector";
 import { LanguageHtmlUpdater } from "@/components/LanguageHtmlUpdater";
 import { useState } from "react";
+import { MotionConfig } from "framer-motion";
 import type { MotelConfig } from "@/types/motel";
 
 /**
@@ -42,7 +43,11 @@ export function Providers({
         <MotelProvider initialConfig={initialConfig}>
           <ThemeInjector />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-            {children}
+            {/* "user": skip slide and scale animations for visitors whose
+                system asks for reduced motion */}
+            <MotionConfig reducedMotion="user">
+              {children}
+            </MotionConfig>
             <Toaster />
           </ThemeProvider>
         </MotelProvider>

@@ -296,19 +296,19 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 <div className="space-y-2.5 sm:space-y-3 md:space-y-4">
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
                     <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.fractionalRate}</span>
-                    <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
+                    <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekdays.fractional}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
                     <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.dailyRate}</span>
-                    <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
+                    <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekdays.daily}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
                     <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.overnightWeekday}</span>
-                    <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
+                    <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekdays.overnight}
                     </span>
                   </div>
@@ -327,19 +327,19 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 <div className="space-y-2.5 sm:space-y-3 md:space-y-4">
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
                     <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.fractionalRate}</span>
-                    <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
+                    <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekend.fractional}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
                     <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.dailyRate}</span>
-                    <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
+                    <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekend.daily}
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
                     <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.overnightWeekend}</span>
-                    <span className="text-lg font-bold text-primary sm:text-xl md:text-2xl">
+                    <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekend.overnight}
                     </span>
                   </div>

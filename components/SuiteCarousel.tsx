@@ -108,7 +108,6 @@ const SuiteCarousel = () => {
                   <TiltedCard className="w-full h-[560px] sm:h-[580px] md:h-[600px]">
                     <Link
                       href={`/${locale}/suites/${suite.id}`}
-                      aria-label={`${suite.name} — ${t.suiteDetails.clickToView}`}
                       tabIndex={index >= suitesBase.length ? -1 : undefined}
                       className="group block h-full w-full select-none"
                       onPointerDown={handleCardPointerDown}

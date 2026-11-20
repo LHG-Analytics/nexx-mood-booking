@@ -25,7 +25,9 @@ const ADASection = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-4 text-7xl font-bold text-white md:text-9xl">ADA</h2>
-            <h3 className="mb-6 text-3xl font-bold text-motel-pink md:text-4xl">
+            {/* pink-100, not motel-pink: motel-pink on this purple measured
+                1.72-2.02:1, below the 3:1 large text needs (WCAG 1.4.3) */}
+            <h3 className="mb-6 text-3xl font-bold text-pink-100 md:text-4xl">
               <span className="block">{t.ada.subtitle1}</span>
               <span className="block">{t.ada.subtitle2}</span>
             </h3>
