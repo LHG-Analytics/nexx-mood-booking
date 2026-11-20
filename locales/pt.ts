@@ -7,6 +7,10 @@ export const pt: Translation = {
     rooms: 'Quartos',
     services: 'Serviços',
     contact: 'Contato',
+    openMenu: 'Abrir menu',
+    closeMenu: 'Fechar menu',
+    toggleTheme: 'Alternar entre tema claro e escuro',
+    skipToContent: 'Pular para o conteúdo principal',
   },
 
   // Hero Section
@@ -28,6 +32,8 @@ export const pt: Translation = {
     priceLabel: 'Tarifa fracionada',
     weekdayNote: '* Valores para dias de semana. Fins de semana têm tarifas diferentes.',
     viewButton: 'VER →',
+    previousSuite: 'Suíte anterior',
+    nextSuite: 'Próxima suíte',
   },
 
   // Rodapé

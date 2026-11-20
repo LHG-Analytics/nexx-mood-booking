@@ -7,6 +7,10 @@ export const es: Translation = {
     rooms: 'Habitaciones',
     services: 'Servicios',
     contact: 'Contacto',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Cerrar menú',
+    toggleTheme: 'Cambiar entre tema claro y oscuro',
+    skipToContent: 'Saltar al contenido principal',
   },
 
   // Hero Section
@@ -28,6 +32,8 @@ export const es: Translation = {
     priceLabel: 'Tarifa fraccionada',
     weekdayNote: '* Tarifas para días de semana. Los fines de semana tienen tarifas distintas.',
     viewButton: 'VER →',
+    previousSuite: 'Suite anterior',
+    nextSuite: 'Suite siguiente',
   },
 
   // Pie de página
