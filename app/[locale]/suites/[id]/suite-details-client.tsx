@@ -1,13 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, Frame, Cross, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, Frame, Cross, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
 import Footer from "@/components/Footer";
+import { PhotoLightbox } from "@/components/PhotoLightbox";
+import { getImageAlt } from "@/lib/imageAlt";
 
 interface Suite {
   id: string;
@@ -58,9 +60,23 @@ const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> 
 };
 
 export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
-  const { t, locale } = useLanguage();
+  const { t, locale, language } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const totalImages = suite.images.length;
+  const imageAlts = suite.images.map((src, index) =>
+    getImageAlt(
+      src,
+      language,
+      translateWithVars(t.suiteDetails.photoAlt, {
+        suiteName: suite.name,
+        n: String(index + 1),
+        total: String(totalImages),
+      })
+    )
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
 
@@ -80,9 +96,17 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
     }
   }, [emblaApi]);
 
-  const closeModal = useCallback(() => {
-    setIsModalOpen(false);
-  }, []);
+  const changeModalImage = useCallback((index: number) => {
+    setSelectedImageIndex(index);
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  // Return focus to the thumbnail of the photo last shown, not the one that
+  // opened the dialog, so keyboard users continue from where they were
+  const returnFocusToThumbnail = useCallback((event: Event) => {
+    event.preventDefault();
+    thumbnailRefs.current[selectedImageIndex]?.focus();
+  }, [selectedImageIndex]);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background">
@@ -142,14 +166,25 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                     key={index}
                     className="min-w-0 flex-[0_0_100%] px-1 sm:flex-[0_0_50%] sm:px-2 md:flex-[0_0_33.333%]"
                   >
-                    <div
-                      className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-2xl sm:rounded-3xl"
+                    {/* A real button: the clickable div it replaced could not
+                        be reached or opened from the keyboard (WCAG 2.1.1) */}
+                    <button
+                      type="button"
+                      ref={(el) => { thumbnailRefs.current[index] = el; }}
                       onClick={() => openModal(index)}
+                      className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl text-left shadow-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:rounded-3xl"
                     >
+                      <span className="sr-only">
+                        {translateWithVars(t.suiteDetails.enlargePhoto, {
+                          n: String(index + 1),
+                          total: String(totalImages),
+                        })}
+                        {": "}
+                      </span>
                       <div className="relative h-64 w-full sm:h-80 md:h-96">
                         <Image
                           src={image}
-                          alt={`${suite.name} view ${index + 1}`}
+                          alt={imageAlts[index]}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -160,14 +195,17 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                         />
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      {/* An icon rather than "Click to view": visible text that
+                          isn't part of the button's name breaks WCAG 2.5.3 */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+                      >
                         <div className="rounded-full bg-primary/90 p-3 sm:p-4">
-                          <span className="text-xs font-medium text-primary-foreground sm:text-sm">
-                            {t.suiteDetails.clickToView}
-                          </span>
+                          <ZoomIn className="h-5 w-5 text-primary-foreground sm:h-6 sm:w-6" />
                         </div>
                       </div>
-                    </div>
+                    </button>
                   </div>
                 ))}
               </div>
@@ -175,18 +213,20 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
 
             {/* Navigation Buttons */}
             <button
+              type="button"
               onClick={scrollPrev}
-              aria-label="Previous image"
+              aria-label={t.suiteDetails.previousPhoto}
               className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground sm:left-4 sm:h-12 sm:w-12"
             >
-              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
             </button>
             <button
+              type="button"
               onClick={scrollNext}
-              aria-label="Next image"
+              aria-label={t.suiteDetails.nextPhoto}
               className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground sm:right-4 sm:h-12 sm:w-12"
             >
-              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
             </button>
           </motion.div>
 
@@ -333,69 +373,16 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
         </div>
       </div>
 
-      {/* Image Modal */}
-      {isModalOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
-          onClick={closeModal}
-        >
-          <button
-            onClick={closeModal}
-            aria-label="Close modal"
-            className="absolute right-4 top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
-          >
-            <X className="h-6 w-6" />
-          </button>
-
-          <div className="relative h-full w-full max-w-7xl px-4 py-20" onClick={(e) => e.stopPropagation()}>
-            <div className="relative h-full w-full">
-              <Image
-                src={suite.images[selectedImageIndex]}
-                alt={`${suite.name} view ${selectedImageIndex + 1}`}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                quality={90}
-                priority
-              />
-
-              {/* Modal Navigation Buttons */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  scrollPrev();
-                  setSelectedImageIndex((prev) => (prev === 0 ? suite.images.length - 1 : prev - 1));
-                }}
-                aria-label="Previous image"
-                className="absolute left-4 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <ChevronLeft className="h-8 w-8" />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  scrollNext();
-                  setSelectedImageIndex((prev) => (prev === suite.images.length - 1 ? 0 : prev + 1));
-                }}
-                aria-label="Next image"
-                className="absolute right-4 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <ChevronRight className="h-8 w-8" />
-              </button>
-
-              {/* Image Counter */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-card/90 px-6 py-2 backdrop-blur-sm">
-                <span className="text-sm font-medium text-foreground">
-                  {selectedImageIndex + 1} / {suite.images.length}
-                </span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      )}
+      <PhotoLightbox
+        open={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        title={translateWithVars(t.suiteDetails.photosOf, { suiteName: suite.name })}
+        images={suite.images}
+        alts={imageAlts}
+        index={selectedImageIndex}
+        onIndexChange={changeModalImage}
+        onCloseAutoFocus={returnFocusToThumbnail}
+      />
 
       {/* Footer */}
       <Footer />
