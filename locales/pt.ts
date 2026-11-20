@@ -36,6 +36,16 @@ export const pt: Translation = {
     nextSuite: 'Próxima suíte',
   },
 
+  // Seletor de unidade (motéis com mais de um endereço)
+  units: {
+    selectorLabel: 'Escolha sua unidade Nexx',
+    useMyLocation: 'Usar minha localização',
+    locating: 'Buscando a unidade mais próxima…',
+    nearest: 'Unidade mais próxima: {unit}. Mostrando suas suítes e preços.',
+    showing: 'Mostrando suítes e preços de {unit}.',
+    locationError: 'Não foi possível obter sua localização. Escolha uma unidade.',
+  },
+
   // Rodapé
   footer: {
     location: 'Localização',
@@ -163,5 +173,7 @@ export const pt: Translation = {
     defaultDescription: 'Experimente conforto e luxo em nossa {suiteName}.',
     weekdayHours: 'DOMINGO 23H À SEXTA 7H',
     weekendHours: 'SEXTA 7H A DOMINGO 23H',
+    fractionalBookingWindows: 'Tarifa fracionada disponível para reserva {windows}',
+    and: 'e',
   },
 };

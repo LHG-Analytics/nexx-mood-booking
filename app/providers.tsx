@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 import { MotelProvider } from "@/contexts/MotelContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { UnitProvider } from "@/contexts/UnitContext";
 import { ThemeInjector } from "@/components/ThemeInjector";
 import { LanguageHtmlUpdater } from "@/components/LanguageHtmlUpdater";
 import { useState } from "react";
@@ -20,9 +21,11 @@ import type { MotelConfig } from "@/types/motel";
 export function Providers({
   children,
   initialConfig,
+  initialUnitId,
 }: {
   children: React.ReactNode;
   initialConfig?: MotelConfig;
+  initialUnitId?: string;
 }) {
   const [queryClient] = useState(
     () =>
@@ -41,6 +44,7 @@ export function Providers({
       <LanguageProvider>
         <LanguageHtmlUpdater />
         <MotelProvider initialConfig={initialConfig}>
+          <UnitProvider initialUnitId={initialUnitId}>
           <ThemeInjector />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
             {/* "user": skip slide and scale animations for visitors whose
@@ -50,6 +54,7 @@ export function Providers({
             </MotionConfig>
             <Toaster />
           </ThemeProvider>
+          </UnitProvider>
         </MotelProvider>
       </LanguageProvider>
     </QueryClientProvider>

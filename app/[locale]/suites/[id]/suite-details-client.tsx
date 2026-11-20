@@ -1,15 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, Frame, Cross, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ArrowLeft, Tv, Radio, Droplets, Wine, Users, Sofa, Bath, Frame, Cross, ZoomIn, ChevronLeft, ChevronRight, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { useLanguage, translateWithVars } from "@/contexts/LanguageContext";
 import Footer from "@/components/Footer";
 import { PhotoLightbox } from "@/components/PhotoLightbox";
 import { getImageAlt } from "@/lib/imageAlt";
+import { useUnit } from "@/contexts/UnitContext";
 
 interface Suite {
   id: string;
@@ -35,6 +36,11 @@ interface Suite {
   amenities: string[];
   images: string[];
   description: string;
+  unitId?: string;
+  unitName?: string; // e.g. "Nexx Motel Homestead", for motels with several units
+  phone: string;
+  overnightWeekendLabel: string; // Weekend overnight starts at 11PM or 2AM depending on the unit
+  fractionalBookingWindows?: string; // Already formatted, e.g. "8 AM–11 AM, 4 PM–7 PM and 11 PM–2 AM"
 }
 
 // Unmapped amenities fall back to the TV icon below, which is silently wrong,
@@ -57,6 +63,7 @@ const amenityIcons: Record<string, React.ComponentType<{ className?: string }>> 
   "SPA BATHTUB": Bath,
   "MIRRORED CEILING": Frame,
   "BONDAGE CROSS": Cross,
+  "MOOD LIGHTING": Lightbulb,
 };
 
 export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
@@ -64,6 +71,13 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const { setUnitId } = useUnit();
+
+  // Opening a Homestead suite makes Homestead the visitor's unit, so going
+  // back to the home page shows the same location
+  useEffect(() => {
+    if (suite.unitId) setUnitId(suite.unitId);
+  }, [suite.unitId, setUnitId]);
 
   const totalImages = suite.images.length;
   const imageAlts = suite.images.map((src, index) =>
@@ -141,6 +155,9 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
             className="mb-6 text-center sm:mb-8 md:mb-12"
           >
             <h1 className="mb-2 text-3xl font-bold text-foreground sm:mb-4 sm:text-5xl md:text-6xl lg:text-7xl">{suite.name}</h1>
+            {suite.unitName && (
+              <p className="mb-2 text-base font-semibold text-foreground sm:mb-3 sm:text-lg">{suite.unitName}</p>
+            )}
             <p className="mx-auto mb-3 max-w-2xl text-sm text-muted-foreground sm:mb-4 sm:text-base md:mb-6 md:text-lg">
               {suite.description}
             </p>
@@ -241,6 +258,12 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
               >
                 <h2 className="mb-2 text-xl font-bold text-foreground sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">{t.suiteDetails.location}</h2>
                 <p className="text-sm text-muted-foreground sm:text-base md:text-lg">{suite.address}</p>
+                <a
+                  href={`tel:+1${suite.phone.replace(/\D/g, "")}`}
+                  className="mt-1 inline-block text-sm text-foreground underline-offset-4 hover:text-primary hover:underline sm:text-base md:text-lg"
+                >
+                  {suite.phone}
+                </a>
               </motion.div>
 
               {/* Hours */}
@@ -254,6 +277,11 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                 <div className="space-y-2 sm:space-y-3">
                   <p className="text-sm text-muted-foreground sm:text-base md:text-lg">{suite.hours.weekdays}</p>
                   <p className="text-sm text-muted-foreground sm:text-base md:text-lg">{suite.hours.weekend}</p>
+                  {suite.fractionalBookingWindows && (
+                    <p className="text-sm text-foreground sm:text-base md:text-lg">
+                      {translateWithVars(t.suiteDetails.fractionalBookingWindows, { windows: suite.fractionalBookingWindows })}
+                    </p>
+                  )}
                 </div>
               </motion.div>
 
@@ -338,7 +366,7 @@ export default function SuiteDetailsClient({ suite }: { suite: Suite }) {
                     </span>
                   </div>
                   <div className="flex items-center justify-between rounded-xl bg-secondary/50 p-3 sm:p-4">
-                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{t.suiteDetails.overnightWeekend}</span>
+                    <span className="text-xs font-medium text-foreground sm:text-sm md:text-base">{suite.overnightWeekendLabel}</span>
                     <span className="text-xl font-bold text-primary md:text-2xl">
                       ${suite.pricing.weekend.overnight}
                     </span>

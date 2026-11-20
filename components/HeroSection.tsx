@@ -10,8 +10,13 @@ const HeroSection = () => {
   const { t } = useLanguage();
   const images = config.assets.heroImages;
 
+  // Motels with several units get a second navbar row on phones (the
+  // location switch), so the hero starts lower there
   return (
-    <section className="relative min-h-screen px-4 pb-12 pt-24 sm:px-6 sm:pb-20 sm:pt-32" id="home">
+    <section
+      className={`relative min-h-screen px-4 pb-12 sm:px-6 sm:pb-20 sm:pt-32 ${config.units?.length ? "pt-36" : "pt-24"}`}
+      id="home"
+    >
       <div className="container mx-auto">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Side - Text Content */}

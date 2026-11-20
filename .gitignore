@@ -54,3 +54,6 @@ next-env.d.ts
 # Logs
 logs
 *.log
+
+# GeoLite2 database (downloaded on the server, never committed)
+/geo/

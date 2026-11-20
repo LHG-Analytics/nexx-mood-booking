@@ -90,6 +90,22 @@ export interface Suite {
   description?: string;
   images?: string[];
   pricing?: SuitePricing; // Optional detailed pricing
+  unitId?: string; // Which of the motel's units (MotelConfig.units) this suite belongs to
+}
+
+/**
+ * One physical location of a brand that has several (Nexx: Hialeah and
+ * Homestead). Each unit has its own suites, prices and hours; visitors pick one
+ * with the unit selector, which defaults to the nearest.
+ */
+export interface MotelUnit {
+  id: string;
+  label: string; // Short name for the selector, e.g. "Hialeah"
+  coordinates: { lat: number; lng: number }; // To find the nearest unit; never sent anywhere
+  /** Weekend overnight starts at 11PM ("evening") or 2AM ("lateNight"); weekdays always start at 11PM */
+  weekendOvernightStart: 'evening' | 'lateNight';
+  /** Hours (24h clock, [start, end]) when a fractional stay can be booked, if limited */
+  fractionalBookingWindows?: Array<[number, number]>;
 }
 
 /**
@@ -109,6 +125,7 @@ export interface MotelAddress {
  */
 export interface MotelLocation {
   name: string;
+  unitId?: string; // Set when this location is one of MotelConfig.units
   address: MotelAddress;
   mapsUrl: string;
   phone?: string;
@@ -160,6 +177,12 @@ export interface MotelConfig {
   contact: MotelContact;
   seo: MotelSEO;
   importantInfoExtras?: ImportantInfoExtra[]; // Extra Important Info cards for this motel
+  /**
+   * Locations with their own suites (see MotelUnit). The first is the default and
+   * is the one described by `contact`; the others match `contact.otherLocations`
+   * by unitId. Every suite then needs a unitId.
+   */
+  units?: MotelUnit[];
 }
 
 /**

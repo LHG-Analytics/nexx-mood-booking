@@ -9,10 +9,13 @@ import Image from "next/image";
 import { TiltedCard } from "./ui/tilted-card";
 import { useMotel } from "@/contexts/MotelContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useUnit } from "@/contexts/UnitContext";
+import { getUnitContact, suitesForUnit } from "@/lib/units";
 
 const SuiteCarousel = () => {
   const config = useMotel();
   const { t, locale } = useLanguage();
+  const { unitId } = useUnit();
   const [isHovered, setIsHovered] = useState(false);
 
   // No autoplay. Each card is the primary call to action, and autoplay only
@@ -62,7 +65,9 @@ const SuiteCarousel = () => {
   }, []);
 
   // Get suites from config
-  const suitesBase = config.suites;
+  // Multi-location motels show only the chosen unit's suites
+  const suitesBase = suitesForUnit(config, unitId);
+  const unitContact = unitId ? getUnitContact(config, unitId) : undefined;
 
   // Duplicate slides for smoother infinite loop
   const suites = [...suitesBase, ...suitesBase];
@@ -80,6 +85,11 @@ const SuiteCarousel = () => {
           <p className="mx-auto max-w-2xl text-sm text-muted-foreground sm:text-base md:text-lg">
             {t.suites.subtitle}
           </p>
+          {unitContact && (
+            <p className="mt-2 text-sm font-medium text-foreground sm:text-base">
+              {unitContact.name} · {unitContact.address.full}
+            </p>
+          )}
         </motion.div>
 
         <div
@@ -92,7 +102,7 @@ const SuiteCarousel = () => {
             <div className="flex">
               {suites.map((suite, index) => (
                 <div
-                  key={index}
+                  key={`${unitId ?? "all"}-${index}`}
                   // The second half are loop copies of the same suites. Without
                   // this every suite was a Tab stop and a heading twice. (Not
                   // inert: React 18 strips that attribute on hydration.)

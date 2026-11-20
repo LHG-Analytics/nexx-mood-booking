@@ -52,12 +52,35 @@ jobs:
 
       - name: Deploy to Docker Swarm via SSH
         uses: appleboy/ssh-action@v1.0.0
+        env:
+          MAXMIND_ACCOUNT_ID: ${{ secrets.MAXMIND_ACCOUNT_ID }}
+          MAXMIND_LICENSE_KEY: ${{ secrets.MAXMIND_LICENSE_KEY }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
+          envs: MAXMIND_ACCOUNT_ID,MAXMIND_LICENSE_KEY
           script: |
+            # GeoLite2 City (MaxMind) for "nearest Nexx unit by IP". It stays on
+            # the server and is mounted into the container read-only: the image
+            # is pushed to GHCR from a public repo, and the GeoLite2 licence
+            # doesn't allow redistributing the database. Refreshed weekly;
+            # skipped entirely when the secrets aren't set (the site then falls
+            # back to the visitor's saved choice or the first unit).
+            GEO_DIR=/opt/stacks/unified/geo
+            mkdir -p "$GEO_DIR"
+            if [ -n "$MAXMIND_LICENSE_KEY" ] && { [ ! -f "$GEO_DIR/GeoLite2-City.mmdb" ] || [ -n "$(find "$GEO_DIR/GeoLite2-City.mmdb" -mtime +7)" ]; }; then
+              TMP=$(mktemp -d)
+              if curl -fsSL -u "$MAXMIND_ACCOUNT_ID:$MAXMIND_LICENSE_KEY"                   "https://download.maxmind.com/geoip/databases/GeoLite2-City/download?suffix=tar.gz" -o "$TMP/geo.tar.gz"                 && tar -xzf "$TMP/geo.tar.gz" -C "$TMP" --wildcards --strip-components=1 '*/GeoLite2-City.mmdb'; then
+                mv "$TMP/GeoLite2-City.mmdb" "$GEO_DIR/GeoLite2-City.mmdb"
+                echo "GeoLite2 updated"
+              else
+                echo "GeoLite2 download failed; keeping the previous copy if any"
+              fi
+              rm -rf "$TMP"
+            fi
+
             # Pull latest image
             docker pull ghcr.io/lhg-analytics/nexx-mood-booking:latest
 

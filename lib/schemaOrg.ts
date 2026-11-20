@@ -1,4 +1,25 @@
-import { MotelConfig } from '@/types/motel';
+import { MotelConfig, Suite } from '@/types/motel';
+import { suitesForUnit } from '@/lib/units';
+
+function roomsSchema(suites: Suite[]) {
+  return suites.map((suite) => ({
+    '@type': 'HotelRoom',
+    name: suite.name,
+    amenityFeature: suite.amenities.map((amenity) => ({
+      '@type': 'LocationFeatureSpecification',
+      name: amenity,
+      value: true,
+    })),
+    ...(suite.pricing && {
+      offers: {
+        '@type': 'Offer',
+        price: suite.pricing.weekdays.fractional.toString(),
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+    }),
+  }));
+}
 
 /**
  * Generates Schema.org JSON-LD structured data for a motel.
@@ -29,23 +50,8 @@ export function generateMotelSchema(config: MotelConfig, locale: string) {
       postalCode: config.contact.address.zip,
       addressCountry: 'US',
     },
-    containsPlace: config.suites.map((suite) => ({
-      '@type': 'HotelRoom',
-      name: suite.name,
-      amenityFeature: suite.amenities.map((amenity) => ({
-        '@type': 'LocationFeatureSpecification',
-        name: amenity,
-        value: true,
-      })),
-      ...(suite.pricing && {
-        offers: {
-          '@type': 'Offer',
-          price: suite.pricing.weekdays.fractional.toString(),
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock',
-        },
-      }),
-    })),
+    // With several units, this node is the first unit and lists only its suites
+    containsPlace: roomsSchema(suitesForUnit(config, config.units?.[0]?.id)),
   };
 
   if (!config.seo.organizationName) {
@@ -97,5 +103,8 @@ export function generateOtherLocationSchemas(config: MotelConfig, locale: string
       postalCode: location.address.zip,
       addressCountry: 'US',
     },
+    ...(location.unitId && {
+      containsPlace: roomsSchema(suitesForUnit(config, location.unitId)),
+    }),
   }));
 }

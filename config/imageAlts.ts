@@ -458,70 +458,215 @@ export const imageAlts: Record<string, Record<Language, string>> = {
     es: 'Cama frente a papel tapiz de rosas rojas, cruz roja en X, tubo de baile y TV',
   },
 
-  // nexx
-  '/assets/nexx/suite-nexx/principal.jpg': {
-    en: 'Bed on a yellow platform beneath a black and white city skyline mural',
-    pt: 'Cama em plataforma amarela sob mural preto e branco de skyline da cidade',
-    es: 'Cama sobre plataforma amarilla bajo un mural en blanco y negro del horizonte urbano',
+  // nexx (Hialeah and Homestead, photos from the team, Nov 2026)
+  '/assets/nexx/hialeah/nexx-suite/principal.webp': {
+    en: 'Nexx Suite with white bed, blue LED ceiling lines, swirl wall mural and glass shower',
+    pt: 'Nexx Suite com cama branca, LED azul no teto, mural em espiral e box de vidro',
+    es: 'Nexx Suite con cama blanca, techo con LED azul, mural en espiral y ducha de vidrio',
   },
-  '/assets/nexx/suite-nexx/room-1.jpg': {
-    en: 'Bed and city skyline mural in blue LED light',
-    pt: 'Cama e mural de skyline da cidade sob luz LED azul',
-    es: 'Cama y mural del horizonte urbano bajo luz LED azul',
+  '/assets/nexx/hialeah/nexx-suite/room-1.webp': {
+    en: 'Bed seen past a glass shower, with black love seat and blue lighting',
+    pt: 'Cama vista além do box de vidro, com poltrona erótica preta e iluminação azul',
+    es: 'Cama vista detrás de la ducha de vidrio, con sillón erótico negro e iluminación azul',
   },
-  '/assets/nexx/suite-nexx/room-2.jpg': {
-    en: 'Yellow desk with wall TV, black chaise lounge, mirror and brick-walled shower',
-    pt: 'Bancada amarela com TV na parede, chaise longue preta, espelho e chuveiro com paredes de tijolinho',
-    es: 'Escritorio amarillo con TV en la pared, chaise longue negra, espejo y ducha con paredes de ladrillo',
+  '/assets/nexx/hialeah/nexx-suite/room-2.webp': {
+    en: 'Red-lit suite with rose-pattern walls, white bed, black love seat and disco lights',
+    pt: 'Suíte em luz vermelha com rosas na parede, cama branca, poltrona erótica e luzes de balada',
+    es: 'Suite con luz roja, paredes con rosas, cama blanca, sillón erótico negro y luces de discoteca',
   },
-  '/assets/nexx/suite-nexx/room-3.jpg': {
-    en: 'Glass shower with brick walls beside a yellow vanity with vessel sink',
-    pt: 'Box de vidro com paredes de tijolinho ao lado de bancada amarela com cuba de apoio',
-    es: 'Ducha de vidrio con paredes de ladrillo junto a tocador amarillo con lavabo sobre encimera',
+  '/assets/nexx/hialeah/nexx-suite/room-3.webp': {
+    en: 'Black love seat beside a mirrored pillar, with bed and red curtains behind',
+    pt: 'Poltrona erótica preta ao lado de pilar espelhado, com cama e cortinas vermelhas ao fundo',
+    es: 'Sillón erótico negro junto a un pilar con espejo, con cama y cortinas rojas al fondo',
   },
-  '/assets/nexx/suite-nexx-plus/principal.jpg': {
-    en: 'Bed in magenta LED light with dance pole, slatted wood walls and champagne table',
-    pt: 'Cama sob luz LED magenta com barra de pole dance, paredes de ripas de madeira e mesa com champanhe',
-    es: 'Cama bajo luz LED magenta con tubo de baile, paredes de listones de madera y mesa con champán',
+  '/assets/nexx/hialeah/nexx-suite/room-4.webp': {
+    en: 'White bed under red and blue LEDs, with mirrored walls and disco light spots',
+    pt: 'Cama branca sob LEDs vermelhos e azuis, com paredes espelhadas e luzes de balada',
+    es: 'Cama blanca bajo LED rojos y azules, con paredes de espejo y luces de discoteca',
   },
-  '/assets/nexx/suite-nexx-plus/room-1.jpg': {
-    en: 'Glass shower with wood-look tiles, dance pole and TV on a slatted wood wall',
-    pt: 'Box de vidro com azulejos amadeirados, barra de pole dance e TV em parede de ripas de madeira',
-    es: 'Ducha de vidrio con azulejos imitación madera, tubo de baile y TV en pared de listones',
+  '/assets/nexx/hialeah/nexx-plus/principal.webp': {
+    en: 'Suite with white bed, pink geometric wall art, cloud lamps, pole and glass shower',
+    pt: 'Suíte com cama branca, arte geométrica rosa, luminárias de nuvem, pole dance e box de vidro',
+    es: 'Cama blanca, arte geométrico rosa, lámparas de nube, barra de pole y ducha de vidrio',
   },
-  '/assets/nexx/suite-nexx-plus/room-2.jpg': {
-    en: 'Bed on a wooden platform, dance pole and black chaise lounge under a palm ceiling mural',
-    pt: 'Cama em plataforma de madeira, barra de pole dance e chaise longue preta sob mural de palmeiras no teto',
-    es: 'Cama sobre plataforma de madera, tubo de baile y chaise longue negra bajo mural de palmeras en el techo',
+  '/assets/nexx/hialeah/nexx-plus/room-1.webp': {
+    en: 'Green-lit suite with white bed, marbled wall mural and black dining table',
+    pt: 'Suíte em luz verde com cama branca, mural marmorizado e mesa de jantar preta',
+    es: 'Suite con luz verde, cama blanca, mural marmoleado y mesa de comedor negra',
   },
-  '/assets/nexx/suite-nexx-plus/room-3.jpg': {
-    en: 'Dance pole, black chaise lounge and desk with champagne against slatted wood walls',
-    pt: 'Barra de pole dance, chaise longue preta e bancada com champanhe junto a paredes de ripas de madeira',
-    es: 'Tubo de baile, chaise longue negra y escritorio con champán junto a paredes de listones de madera',
+  '/assets/nexx/hialeah/nexx-plus/room-2.webp': {
+    en: 'White bed under green LED ceiling with mirrored panel, pole and black lounge chair',
+    pt: 'Cama branca sob teto com LED verde e painel espelhado, pole dance e poltrona preta',
+    es: 'Cama blanca bajo techo con LED verde y espejo, barra de pole y sillón negro',
   },
-  '/assets/nexx/suite-jacuzzi/principal.jpg': {
-    en: 'Bed with wooden headboard, mirrored ceiling panels and jacuzzi in a glass-enclosed bathroom',
-    pt: 'Cama com cabeceira de madeira, painéis espelhados no teto e hidromassagem em banheiro de vidro',
-    es: 'Cama con cabecero de madera, paneles espejados en el techo y jacuzzi en baño de vidrio',
+  '/assets/nexx/hialeah/nexx-plus/room-3.webp': {
+    en: 'Bed and dining table under green ceiling LEDs with blue disco light spots',
+    pt: 'Cama e mesa de jantar sob LEDs verdes no teto, com luzes de balada azuis',
+    es: 'Cama y mesa de comedor bajo LED verdes en el techo, con luces de discoteca azules',
   },
-  '/assets/nexx/suite-jacuzzi/room-1.jpg': {
-    en: 'Bed and glass-enclosed jacuzzi in purple LED light under mirrored ceiling panels',
-    pt: 'Cama e hidromassagem em ambiente de vidro sob luz LED roxa e painéis espelhados no teto',
-    es: 'Cama y jacuzzi en ambiente de vidrio bajo luz LED morada y paneles espejados en el techo',
+  '/assets/nexx/hialeah/nexx-plus/room-4.webp': {
+    en: 'White bed beside a marble-look glass shower, with pink wall art and cloud lamps',
+    pt: 'Cama branca ao lado do box de vidro marmorizado, com arte rosa e luminárias de nuvem',
+    es: 'Cama blanca junto a la ducha de vidrio con mármol, arte rosa y lámparas de nube',
   },
-  '/assets/nexx/suite-jacuzzi/room-2.jpg': {
-    en: 'Jacuzzi inside a glass-walled room with green tiles and rain shower',
-    pt: 'Hidromassagem em ambiente com paredes de vidro, azulejos verdes e chuveiro de teto',
-    es: 'Jacuzzi en ambiente con paredes de vidrio, azulejos verdes y ducha tipo lluvia',
+  '/assets/nexx/hialeah/nexx-plus/room-5.webp': {
+    en: 'Purple-lit suite with pole, glass shower and white bed under disco lights',
+    pt: 'Suíte em luz roxa com pole dance, box de vidro e cama sob luzes de balada',
+    es: 'Suite con luz morada, barra de pole, ducha de vidrio y cama bajo luces de discoteca',
   },
-  '/assets/nexx/suite-jacuzzi/room-3.jpg': {
-    en: 'Desk with champagne before a sunset pier mural, vessel sink and green-tiled glass shower',
-    pt: 'Bancada com champanhe diante de mural de píer ao pôr do sol, cuba de apoio e box com azulejos verdes',
-    es: 'Escritorio con champán ante un mural de muelle al atardecer, lavabo y ducha con azulejos verdes',
+  '/assets/nexx/hialeah/jacuzzi-suite/principal.webp': {
+    en: 'Jacuzzi Suite with white bed, red swirl wall art, disco ball and glass-enclosed jacuzzi',
+    pt: 'Suíte Jacuzzi com cama branca, arte vermelha em espiral, globo espelhado e jacuzzi envidraçada',
+    es: 'Suite Jacuzzi con cama blanca, arte rojo en espiral, bola de discoteca y jacuzzi tras vidrio',
   },
-  '/assets/nexx/suite-jacuzzi/room-4.jpg': {
-    en: 'Bed with wooden headboard under mirrored ceiling panels beside black curtains',
-    pt: 'Cama com cabeceira de madeira sob painéis espelhados no teto ao lado de cortinas pretas',
-    es: 'Cama con cabecero de madera bajo paneles espejados en el techo junto a cortinas negras',
+  '/assets/nexx/hialeah/jacuzzi-suite/room-1.webp': {
+    en: 'White bed with towel swans, glass-walled jacuzzi area and red LED ceiling',
+    pt: 'Cama branca com cisnes de toalha, jacuzzi envidraçada e teto com LED vermelho',
+    es: 'Cama blanca con cisnes de toalla, jacuzzi tras vidrio y techo con LED rojo',
+  },
+  '/assets/nexx/hialeah/jacuzzi-suite/room-2.webp': {
+    en: 'Close view of the bed with towel swans and lit jacuzzi behind glass',
+    pt: 'Vista próxima da cama com cisnes de toalha e jacuzzi iluminada atrás do vidro',
+    es: 'Vista cercana de la cama con cisnes de toalla y jacuzzi iluminado tras el vidrio',
+  },
+  '/assets/nexx/hialeah/jacuzzi-suite/room-3.webp': {
+    en: 'Bed seen through a glass partition, with disco ball, red curtains and entrance door',
+    pt: 'Cama vista através de divisória de vidro, com globo espelhado, cortinas vermelhas e porta de entrada',
+    es: 'Cama tras un panel de vidrio, con bola de discoteca, cortinas rojas y puerta de entrada',
+  },
+  '/assets/nexx/hialeah/jacuzzi-suite/room-4.webp': {
+    en: 'Blue-lit suite with white bed, mirrored ceiling panel, jacuzzi and desk',
+    pt: 'Suíte em luz azul com cama branca, painel espelhado no teto, jacuzzi e bancada',
+    es: 'Suite con luz azul, cama blanca, panel de espejo en el techo, jacuzzi y escritorio',
+  },
+  '/assets/nexx/hialeah/jacuzzi-suite/room-5.webp': {
+    en: 'White bed with towel swans beside a glass-enclosed jacuzzi under blue lighting',
+    pt: 'Cama branca com cisnes de toalha ao lado da jacuzzi envidraçada, em luz azul',
+    es: 'Cama blanca con cisnes de toalla junto al jacuzzi tras vidrio, con luz azul',
+  },
+  '/assets/nexx/hialeah/jacuzzi-suite/room-6.webp': {
+    en: 'Blue suite with white bed, mirrored ceiling panel, disco ball and blue curtains',
+    pt: 'Suíte azul com cama branca, painel espelhado no teto, globo espelhado e cortinas azuis',
+    es: 'Suite azul con cama blanca, techo con espejo, bola de discoteca y cortinas azules',
+  },
+  '/assets/nexx/homestead/nexx-suite/principal.webp': {
+    en: 'Nexx Suite with white bed, teal LED lighting, dandelion wall mural and mirrored ceiling',
+    pt: 'Nexx Suite com cama branca, LED azul-turquesa, mural de dente-de-leão e teto espelhado',
+    es: 'Nexx Suite con cama blanca, LED turquesa, mural de diente de león y techo de espejo',
+  },
+  '/assets/nexx/homestead/nexx-suite/room-1.webp': {
+    en: 'White bed under a mirrored ceiling, with teal lighting, dandelion mural and wall TV',
+    pt: 'Cama branca sob teto espelhado, com luz turquesa, mural de dente-de-leão e TV na parede',
+    es: 'Cama blanca bajo techo de espejo, con luz turquesa, mural de diente de león y TV',
+  },
+  '/assets/nexx/homestead/nexx-suite/room-2.webp': {
+    en: 'Pink-lit suite with white bed, geometric wall art and illuminated vanity mirror',
+    pt: 'Suíte em luz rosa com cama branca, arte geométrica na parede e espelho iluminado',
+    es: 'Suite con luz rosa, cama blanca, arte geométrico en la pared y espejo iluminado',
+  },
+  '/assets/nexx/homestead/nexx-suite/room-3.webp': {
+    en: 'Pink-lit bed under a mirrored ceiling, with wall-mounted TV and mirrored wall',
+    pt: 'Cama em luz rosa sob teto espelhado, com TV na parede e parede espelhada',
+    es: 'Cama con luz rosa bajo techo de espejo, con TV y pared de espejo',
+  },
+  '/assets/nexx/homestead/nexx-suite/room-4.webp': {
+    en: 'Bed with disco light spots, wall-mounted TV and large mirror under pink lighting',
+    pt: 'Cama com luzes de balada, TV na parede e espelho grande sob iluminação rosa',
+    es: 'Cama con luces de discoteca, TV en la pared y espejo grande bajo luz rosa',
+  },
+  '/assets/nexx/homestead/nexx-suite/room-5.webp': {
+    en: 'Bed facing an illuminated vanity mirror and glass shower, with pink LED lighting',
+    pt: 'Cama de frente para o espelho iluminado e o box de vidro, com LED rosa',
+    es: 'Cama frente al espejo iluminado y la ducha de vidrio, con LED rosa',
+  },
+  '/assets/nexx/homestead/nexx-plus/principal.webp': {
+    en: 'Nexx Plus suite with white bed, red LED underglow, mirrored ceiling, pole and wave mural',
+    pt: 'Nexx Plus com cama branca, LED vermelho embaixo, teto espelhado, pole dance e mural de ondas',
+    es: 'Nexx Plus con cama blanca, LED rojo, techo de espejo, barra de pole y mural ondulado',
+  },
+  '/assets/nexx/homestead/nexx-plus/room-1.webp': {
+    en: 'White bed with red LED underglow beside a black wave mural and red love seat',
+    pt: 'Cama branca com LED vermelho embaixo, mural de ondas pretas e poltrona erótica vermelha',
+    es: 'Cama blanca con LED rojo debajo, mural de ondas negras y sillón erótico rojo',
+  },
+  '/assets/nexx/homestead/nexx-plus/room-2.webp': {
+    en: 'Glass shower with dark tiles, red love seat and vessel-sink vanity',
+    pt: 'Box de vidro com azulejos escuros, poltrona erótica vermelha e bancada com cuba de apoio',
+    es: 'Ducha de vidrio con azulejos oscuros, sillón erótico rojo y lavabo de sobreponer',
+  },
+  '/assets/nexx/homestead/nexx-plus/room-3.webp': {
+    en: 'Glass shower and towels, with pole, red love seat and bed under disco lights',
+    pt: 'Box de vidro com toalhas, pole dance, poltrona erótica vermelha e cama com luzes de balada',
+    es: 'Ducha de vidrio con toallas, barra de pole, sillón erótico rojo y luces de discoteca',
+  },
+  '/assets/nexx/homestead/nexx-plus/room-4.webp': {
+    en: 'Red-lit suite with white bed, pole, glass shower and illuminated slatted wall',
+    pt: 'Suíte em luz vermelha com cama branca, pole dance, box de vidro e parede ripada iluminada',
+    es: 'Suite con luz roja, cama blanca, barra de pole, ducha de vidrio y pared de listones',
+  },
+  '/assets/nexx/homestead/nexx-plus/room-5.webp': {
+    en: 'Blue-lit suite with white bed, cloud wall mural and black ottoman',
+    pt: 'Suíte em luz azul com cama branca, mural de nuvens e pufe preto',
+    es: 'Suite con luz azul, cama blanca, mural de nubes y puf negro',
+  },
+  '/assets/nexx/homestead/jacuzzi-suite/principal.webp': {
+    en: 'Jacuzzi Suite with white bed, red LED underglow, abstract mural and glass-walled jacuzzi',
+    pt: 'Suíte Jacuzzi com cama branca, LED vermelho sob a cama, mural abstrato e jacuzzi envidraçada',
+    es: 'Suite Jacuzzi con cama blanca, LED rojo bajo la cama, mural abstracto y jacuzzi tras vidrio',
+  },
+  '/assets/nexx/homestead/jacuzzi-suite/room-1.webp': {
+    en: 'Jacuzzi with blue lights beside the bed, under red LED lighting',
+    pt: 'Jacuzzi com luzes azuis ao lado da cama, sob iluminação de LED vermelho',
+    es: 'Jacuzzi con luces azules junto a la cama, bajo iluminación LED roja',
+  },
+  '/assets/nexx/homestead/jacuzzi-suite/room-2.webp': {
+    en: 'Wide view across the jacuzzi toward the bed, desk and entrance door',
+    pt: 'Vista ampla da jacuzzi em direção à cama, à bancada e à porta de entrada',
+    es: 'Vista amplia desde el jacuzzi hacia la cama, el escritorio y la puerta de entrada',
+  },
+  '/assets/nexx/homestead/jacuzzi-suite/room-3.webp': {
+    en: 'Amber-lit suite with jacuzzi in the foreground, bed, black love seat and mirror',
+    pt: 'Suíte em luz âmbar com jacuzzi em primeiro plano, cama, poltrona erótica preta e espelho',
+    es: 'Suite con luz ámbar, jacuzzi en primer plano, cama, sillón erótico negro y espejo',
+  },
+  '/assets/nexx/homestead/jacuzzi-suite/room-4.webp': {
+    en: 'Bed facing a glass-enclosed jacuzzi, with red and black abstract wall art',
+    pt: 'Cama de frente para a jacuzzi envidraçada, com arte abstrata vermelha e preta',
+    es: 'Cama frente al jacuzzi tras vidrio, con arte abstracto rojo y negro',
+  },
+  '/assets/nexx/homestead/jacuzzi-suite/room-5.webp': {
+    en: 'Square jacuzzi with blue lights beside the bed under red LED lighting',
+    pt: 'Jacuzzi quadrada com luzes azuis ao lado da cama, sob LED vermelho',
+    es: 'Jacuzzi cuadrado con luces azules junto a la cama, bajo LED rojo',
+  },
+  '/assets/nexx/homestead/vip-suite/principal.webp': {
+    en: 'VIP Suite with white bed, pole, black-and-white wave walls and brick-wall jacuzzi',
+    pt: 'Suíte VIP com cama branca, pole dance, paredes com ondas pretas e jacuzzi de tijolos',
+    es: 'Suite VIP con cama blanca, barra de pole, paredes con ondas negras y jacuzzi de ladrillo',
+  },
+  '/assets/nexx/homestead/vip-suite/room-1.webp': {
+    en: 'Red bondage cross on a black wall, with pole, bed and jacuzzi',
+    pt: 'Cruz de bondage vermelha em parede preta, com pole dance, cama e jacuzzi',
+    es: 'Cruz de bondage roja en pared negra, con barra de pole, cama y jacuzzi',
+  },
+  '/assets/nexx/homestead/vip-suite/room-2.webp': {
+    en: 'Red bondage cross beside a dining table, with jacuzzi steps and pole',
+    pt: 'Cruz de bondage vermelha junto à mesa de jantar, degraus da jacuzzi e pole dance',
+    es: 'Cruz de bondage roja junto al comedor, escalones del jacuzzi y barra de pole',
+  },
+  '/assets/nexx/homestead/vip-suite/room-3.webp': {
+    en: 'Bondage cross, pole and double vessel sinks seen from the bed',
+    pt: 'Cruz de bondage, pole dance e cubas duplas de apoio vistas a partir da cama',
+    es: 'Cruz de bondage, barra de pole y lavabos dobles de sobreponer vistos desde la cama',
+  },
+  '/assets/nexx/homestead/vip-suite/room-4.webp': {
+    en: 'Bed, pole and jacuzzi below a red brick wall with sconces',
+    pt: 'Cama, pole dance e jacuzzi junto a parede de tijolos vermelhos com arandelas',
+    es: 'Cama, barra de pole y jacuzzi junto a pared de ladrillo rojo con apliques',
+  },
+  '/assets/nexx/homestead/vip-suite/room-5.webp': {
+    en: 'White bed with many pillows, pole, red love seat and red LED ceiling panel',
+    pt: 'Cama branca com vários travesseiros, pole dance, poltrona erótica vermelha e LED vermelho no teto',
+    es: 'Cama blanca con varias almohadas, barra de pole, sillón erótico rojo y techo con LED rojo',
   },
 };

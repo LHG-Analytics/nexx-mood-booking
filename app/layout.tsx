@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { getMotelConfigFromHostname } from "@/lib/getMotelConfig";
 import { DEFAULT_LOCALE } from "@/types/i18n";
+import { unitIdFromRequest } from "@/lib/unitFromRequest";
 
 export const metadata: Metadata = {
   title: "Motel Booking",
@@ -21,6 +22,7 @@ export default async function RootLayout({
   const config = getMotelConfigFromHostname(hostname);
   // Set by middleware.ts; LanguageHtmlUpdater keeps it in sync on the client
   const lang = headersList.get('x-locale') || DEFAULT_LOCALE;
+  const initialUnitId = await unitIdFromRequest(config, headersList);
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -36,7 +38,7 @@ export default async function RootLayout({
             />
           </noscript>
         )}
-        <Providers initialConfig={config}>
+        <Providers initialConfig={config} initialUnitId={initialUnitId}>
           {children}
         </Providers>
       </body>
