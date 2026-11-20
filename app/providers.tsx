@@ -22,10 +22,12 @@ export function Providers({
   children,
   initialConfig,
   initialUnitId,
+  initialUnitSaved,
 }: {
   children: React.ReactNode;
   initialConfig?: MotelConfig;
   initialUnitId?: string;
+  initialUnitSaved?: boolean;
 }) {
   const [queryClient] = useState(
     () =>
@@ -44,7 +46,7 @@ export function Providers({
       <LanguageProvider>
         <LanguageHtmlUpdater />
         <MotelProvider initialConfig={initialConfig}>
-          <UnitProvider initialUnitId={initialUnitId}>
+          <UnitProvider initialUnitId={initialUnitId} initialUnitSaved={initialUnitSaved}>
           <ThemeInjector />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
             {/* "user": skip slide and scale animations for visitors whose

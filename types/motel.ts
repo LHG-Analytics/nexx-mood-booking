@@ -106,6 +106,8 @@ export interface MotelUnit {
   weekendOvernightStart: 'evening' | 'lateNight';
   /** Hours (24h clock, [start, end]) when a fractional stay can be booked, if limited */
   fractionalBookingWindows?: Array<[number, number]>;
+  /** The home page's hero photos while this unit is selected (falls back to assets.heroImages) */
+  heroImages?: string[];
 }
 
 /**
@@ -130,6 +132,8 @@ export interface MotelLocation {
   mapsUrl: string;
   phone?: string;
   hours?: string;
+  instagram?: string; // This location's own account, if it has one (else the brand's)
+  instagramUrl?: string;
 }
 
 export interface MotelContact {

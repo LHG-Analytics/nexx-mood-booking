@@ -39,11 +39,8 @@ export const en = {
   // Unit selector (motels with several locations)
   units: {
     selectorLabel: 'Choose your Nexx location',
-    useMyLocation: 'Use my location',
-    locating: 'Finding the nearest location…',
     nearest: 'Nearest location: {unit}. Showing its suites and prices.',
     showing: 'Showing {unit} suites and prices.',
-    locationError: "Couldn't get your location. Please choose a location.",
   },
 
   // Footer

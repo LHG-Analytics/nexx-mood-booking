@@ -95,6 +95,8 @@ export function generateOtherLocationSchemas(config: MotelConfig, locale: string
     ...(location.phone && { telephone: location.phone }),
     ...(location.hours === '24/7' && { openingHours: 'Mo-Su 00:00-24:00' }),
     brand: { '@type': 'Brand', name: config.name },
+    // The location's own Instagram when it has one; Facebook is the brand's
+    sameAs: [location.instagramUrl ?? config.contact.instagramUrl, config.contact.facebookUrl].filter(Boolean),
     address: {
       '@type': 'PostalAddress',
       streetAddress: location.address.street,

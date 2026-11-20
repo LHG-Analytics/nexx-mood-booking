@@ -39,11 +39,8 @@ export const es: Translation = {
   // Selector de unidad (moteles con varias ubicaciones)
   units: {
     selectorLabel: 'Elige tu unidad Nexx',
-    useMyLocation: 'Usar mi ubicación',
-    locating: 'Buscando la unidad más cercana…',
     nearest: 'Unidad más cercana: {unit}. Mostrando sus suites y precios.',
     showing: 'Mostrando suites y precios de {unit}.',
-    locationError: 'No se pudo obtener tu ubicación. Elige una unidad.',
   },
 
   // Pie de página
