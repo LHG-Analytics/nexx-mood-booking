@@ -46,6 +46,17 @@ const SuiteCarousel = () => {
     setIsHovered(false);
   }, []);
 
+  // The arrows also show while keyboard focus is anywhere in the carousel (a
+  // :focus-within done in state, because framer-motion's inline opacity would
+  // override a CSS class). Before, Tab reached them at opacity 0: an invisible
+  // focused button (WCAG 2.4.7).
+  const [hasFocus, setHasFocus] = useState(false);
+  const handleFocus = useCallback(() => setHasFocus(true), []);
+  const handleBlur = useCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setHasFocus(false);
+  }, []);
+  const showArrows = isHovered || hasFocus;
+
   // The whole card is a link, so dragging the carousel sideways would otherwise
   // open a suite on release. Embla's own click guard did not stop it here, so
   // compare where the pointer went down against where it came up and drop the
@@ -96,6 +107,8 @@ const SuiteCarousel = () => {
           className="relative px-1 py-6 sm:px-2 sm:py-8 md:px-4 md:py-12"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         >
           {/* Carousel */}
           <div className="overflow-visible" ref={emblaRef}>
@@ -196,15 +209,15 @@ const SuiteCarousel = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons - Only visible on hover (desktop) or always visible (mobile) */}
+          {/* Navigation Buttons - shown on hover or keyboard focus (desktop only; hidden on phones) */}
           <motion.button
             onClick={scrollPrev}
             aria-label={t.suites.previousSuite}
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 20 }}
+            animate={{ opacity: showArrows ? 1 : 0, x: showArrows ? 0 : 20 }}
             transition={{ duration: 0.3 }}
             className="absolute left-0 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground sm:h-10 sm:w-10 md:flex lg:h-12 lg:w-12"
-            style={{ pointerEvents: isHovered ? "auto" : "none" }}
+            style={{ pointerEvents: showArrows ? "auto" : "none" }}
           >
             <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </motion.button>
@@ -212,10 +225,10 @@ const SuiteCarousel = () => {
             onClick={scrollNext}
             aria-label={t.suites.nextSuite}
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -20 }}
+            animate={{ opacity: showArrows ? 1 : 0, x: showArrows ? 0 : -20 }}
             transition={{ duration: 0.3 }}
             className="absolute right-0 top-1/2 z-10 hidden h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-xl backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground sm:h-10 sm:w-10 md:flex lg:h-12 lg:w-12"
-            style={{ pointerEvents: isHovered ? "auto" : "none" }}
+            style={{ pointerEvents: showArrows ? "auto" : "none" }}
           >
             <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </motion.button>
